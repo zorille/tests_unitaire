@@ -1,0 +1,86 @@
+<phpunit>
+<testsuites>
+  <testsuite name="All">
+      	<file>php_framework/fonctions_standardsTest.php</file>
+      	<directory suffix="Test.php" >php_framework/bladelogic/</directory>
+        <directory suffix="Test.php" >php_framework/cacti/</directory>
+        <directory suffix="Test.php" >php_framework/class_globals/</directory>
+        <directory suffix="Test.php" >php_framework/commandline/</directory>
+        <directory suffix="Test.php" >php_framework/copie_donnees/</directory>
+        <directory suffix="Test.php" >php_framework/dates/</directory>
+        <directory suffix="Test.php" >php_framework/fichier/</directory>
+        <directory suffix="Test.php" >php_framework/flux/</directory>
+        <directory suffix="Test.php" >php_framework/fork/</directory>
+        <directory suffix="Test.php" >php_framework/generation/</directory>
+        <directory suffix="Test.php" >php_framework/gestion_machines/</directory>
+        <directory suffix="Test.php" >php_framework/HP/HPOM/</directory>
+        <directory suffix="Test.php" >php_framework/HP/sitescope/</directory>
+        <directory suffix="Test.php" >php_framework/HP/Stars/</directory>
+        <directory suffix="Test.php" >php_framework/HP/ucmdb/</directory>
+        <directory suffix="Test.php" >php_framework/html/</directory>
+        <directory suffix="Test.php" >php_framework/itop/</directory>
+        <directory suffix="Test.php" >php_framework/mail/</directory>
+        <directory suffix="Test.php" >php_framework/monitoring/</directory>
+        <directory suffix="Test.php" >php_framework/pingdom/</directory>
+        <directory suffix="Test.php" >php_framework/sgbd/db_connue/</directory>
+        <directory suffix="Test.php" >php_framework/sgbd/rep_requete/</directory>
+        <directory suffix="Test.php" >php_framework/slurm/</directory>
+        <directory suffix="Test.php" >php_framework/splunk/</directory>
+        <directory suffix="Test.php" >php_framework/solarwinds/</directory>
+        <directory suffix="Test.php" >php_framework/strings/</directory>
+        <directory suffix="Test.php" >php_framework/utilisateurs/</directory>
+        <directory suffix="Test.php" >php_framework/vmware/</directory>
+        <directory suffix="Test.php" >php_framework/vmware/Configurations</directory>
+        <directory suffix="Test.php" >php_framework/vmware/Configurations/Network</directory>
+        <directory suffix="Test.php" >php_framework/vmware/ManagedEntity</directory>
+        <directory suffix="Test.php" >php_framework/vmware/ManagedObject</directory>
+        <directory suffix="Test.php" >php_framework/vmware/Managers</directory>
+        <directory suffix="Test.php" >php_framework/vmware/Services</directory>
+        <directory suffix="Test.php" >php_framework/vmware/vim25</directory>
+        <directory suffix="Test.php" >php_framework/vmware/WebService</directory>
+        <directory suffix="Test.php" >php_framework/webService/</directory>
+        <directory suffix="Test.php" >php_framework/windows/</directory>
+        <directory suffix="Test.php" >php_framework/xml/</directory>
+        <directory suffix="Test.php" >php_framework/zabbix/</directory>
+  </testsuite>
+</testsuites>
+
+<logging>
+  <log type="coverage-html" target="/tmp/coverage" charset="UTF-8"
+       yui="true" highlight="false"
+       lowUpperBound="35" highLowerBound="70"/>
+</logging>
+
+<filter>
+ <whitelist processUncoveredFilesFromWhitelist="true">
+    <directory suffix=".php">../php_framework</directory>
+    <exclude>
+      <directory suffix=".php">../php_framework/aws_cloudwatch</directory>
+      <directory suffix=".php">../php_framework/sgbd/customers</directory>
+      <file>../php_framework/sgbd/rep_requete/mongoDbAbstract.class.php</file>
+      <file>../php_framework/sgbd/rep_requete/requeteMongoDB.class.php</file>
+      <file>../php_framework/sgbd/db_connue/requete_base_mongoDB.class.php</file>
+      <file>../php_framework/sgbd/db_connue/gestion_bd_mongoDB.class.php</file>
+      <file>../php_framework/sgbd/db_connue/desc_bd_bo.class.php</file>
+      <file>../php_framework/sgbd/db_connue/desc_bd_cacti.class.php</file>
+      <file>../php_framework/sgbd/db_connue/desc_bd_dba.class.php</file>
+      <file>../php_framework/sgbd/db_connue/desc_bd_gestion_cacti.class.php</file>
+      <file>../php_framework/sgbd/db_connue/desc_bd_gestion_idat.class.php</file>
+      <file>../php_framework/sgbd/db_connue/desc_bd_gestion_sam.class.php</file>
+      <file>../php_framework/sgbd/db_connue/desc_bd_gestion_zabbix.class.php</file>
+      <file>../php_framework/sgbd/db_connue/desc_bd_sitescope.class.php</file>
+      <file>../php_framework/sgbd/db_connue/desc_bd_tools.class.php</file>
+      <file>../php_framework/sgbd/db_connue/requete_complexe_bo.class.php</file>
+      <file>../php_framework/sgbd/db_connue/requete_complexe_gestion_cacti.class.php</file>
+      <file>../php_framework/sgbd/db_connue/requete_complexe_gestion_idat.class.php</file>
+      <file>../php_framework/sgbd/db_connue/requete_complexe_gestion_sam.class.php</file>
+      <file>../php_framework/sgbd/db_connue/requete_complexe_gestion_zabbix.class.php</file>
+      <file>../php_framework/sgbd/db_connue/requete_complexe_sitescope.class.php</file>
+      <file>../php_framework/config.php</file>
+      <file>../php_framework/HP/HPOM/config_hpom.php</file>
+      <file>../php_framework/HP/sitescope/config_sitescope.php</file>
+    </exclude>
+    <!-- <file>../php_framework/HP/HPOM/hpom_client.class.php</file> -->
+  </whitelist>
+</filter>
+</phpunit>
