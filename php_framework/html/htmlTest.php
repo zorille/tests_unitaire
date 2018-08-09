@@ -353,7 +353,7 @@ class htmlTest extends MockedListeOptions {
      * @covers html::importer_fichier_dans_entete
      */
 	public function testImporter_fichier_dans_entete() {
-		$datas = 'TEXTE\n';
+		$datas = "TEXTE\n";
 		$this->fichier = "/tmp/html_test" . getmypid () . ".txt";
 		system ( "echo '" . $datas . "' > " . $this->fichier, $retour );
 		

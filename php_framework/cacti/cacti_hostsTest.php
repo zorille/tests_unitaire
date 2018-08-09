@@ -12,7 +12,7 @@ require_once "cacti_API_fonctions.php";
 
 /**
  */
-class cacti_hostsTest extends PHPUnit_Framework_TestCase {
+class cacti_hostsTest extends PHPUnit\Framework\TestCase {
 	/**
      * @var cacti_hosts
      */

@@ -1,12 +1,15 @@
 <?php
 
+use PHPUnit\Framework\TestCase;
+
 /**
  * @ignore
  */
-abstract class MockedListeOptions extends PHPUnit_Framework_TestCase {
+abstract class MockedListeOptions extends PHPUnit\Framework\TestCase {
 	public $liste_options;
 
 	public function __construct() {
+	    parent::__construct();
 		$this->creer_liste_option ();
 	}
 

@@ -5,6 +5,7 @@
 if (! defined ( '__DOCUMENT_ROOT__' )) {
 	require_once $_SERVER ["PWD"] . '/prepare.php';
 }
+
 class xmlTest extends MockedListeOptions {
 	/**
      * @var xml
@@ -63,6 +64,8 @@ class xmlTest extends MockedListeOptions {
 	 * @covers xml::prepare_xml
 	 */
 	public function testprepare_xml() {
+	    // Remove the following lines when you implement this test.
+	    $this->markTestIncomplete ( 'This test has not been implemented yet.' );
 	}
 
 	/**

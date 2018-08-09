@@ -38,7 +38,7 @@ class gestion_workspaceTest extends MockedListeOptions {
 			->method ( 'verifie_option_existe' ) 
 			->will ( $this ->returnValue ( false ) );
 		$this ->assertSame ( $this->object, $this->object ->creer_workspace () );
-		$this ->assertContains ( "Tests_unitaire", $this->object ->getAllWorkspace () );
+		$this ->assertContains ( "tests_unitaire", $this->object ->getAllWorkspace () );
 	}
 
 	/**

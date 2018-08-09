@@ -21,7 +21,7 @@ class fonctions_standards_moniteurTest extends MockedListeOptions {
      * This method is called before a test is executed.
      */
 	protected function setUp() {
-		$datas = '[Info] TEST\n\r[Warning] WARNING\n\r[Error] ERROR\n\r[Info]Liste destinataire : toto@toto.com,tutu@tutu.com\n\r[Exit]0';
+		$datas = "[Info] TEST\n\r[Warning] WARNING\n\r[Error] ERROR\n\r[Info]Liste destinataire : toto@toto.com,tutu@tutu.com\n\r[Exit]0";
 		$this->fichier = "/tmp/fonctions_standards_moniteur_test" . getmypid () . ".txt";
 		system ( "echo '" . $datas . "' > " . $this->fichier, $retour );
 		ob_start ();
@@ -133,7 +133,7 @@ class fonctions_standards_moniteurTest extends MockedListeOptions {
 			->expects ( $this->any () )
 			->method ( 'ecrit' )
 			->will ( $this->returnSelf () );
-		$datas = '[Info] TEST\n\r[Warning] WARNING\n\r[Error] ERROR\n\r[Info]Liaire : toto@toto.com,tutu@tutu.com\n\r[Exit]0';
+		$datas = "[Info] TEST\n\r[Warning] WARNING\n\r[Error] ERROR\n\r[Info]Liaire : toto@toto.com,tutu@tutu.com\n\r[Exit]0";
 		$fichier = "/tmp/fonctions_standards_moniteur_test" . getmypid () . "_bis.txt";
 		system ( "echo '" . $datas . "' > " . $fichier, $retour );
 		

@@ -103,7 +103,7 @@ class fonctions_standardsTest extends MockedListeOptions
             ->expects($this->any())
             ->method('getOption')
             ->will($this->returnValue('100019185 ko'));
-        $this->assertEquals(97674.0, $this->object->renvoi_taille_octet($this->getListeOption()));
+        $this->assertEquals(97674, $this->object->renvoi_taille_octet($this->getListeOption()));
     }
 
     /**

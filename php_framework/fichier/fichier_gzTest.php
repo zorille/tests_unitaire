@@ -146,19 +146,5 @@ class fichier_gzTest extends MockedListeOptions {
 		$this->object ->ouvrir ( "r" );
 		$this ->assertTrue ( $this->object ->close () );
 	}
-
-	/**
-	 * Implement testHelp().
-	 */
-	public function testHelp() {
-		fichier_gz::help ( "oui" );
-	}
-
-	/**
-	 * Implement test__destruct().
-	 */
-	public function test__destruct() {
-		unset ( $this->object );
-	}
 }
 ?>
