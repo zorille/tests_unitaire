@@ -371,13 +371,13 @@ class fonctions_standards_sgbdTest extends MockedListeOptions {
 		$this->assertEquals ( "SGBD connexion",$this->object->recupere_db_sitescope ( $connexion, false ) );
 	}
 	
-	/**
-	 * @covers fonctions_standards_sgbd::recupere_db_bo
-	 */
-	public function testRecupere_db_bo_prod() {
-		$connexion = array("bo_prod"=>"SGBD connexion");
-		$this->assertEquals ( "SGBD connexion",$this->object->recupere_db_bo ( $connexion, false ) );
-	}
+// 	/**
+// 	 * @covers fonctions_standards_sgbd::recupere_db_bo
+// 	 */
+// 	public function testRecupere_db_bo_prod() {
+// 		$connexion = array("bo_prod"=>"SGBD connexion");
+// 		$this->assertEquals ( "SGBD connexion",$this->object->recupere_db_bo ( $connexion, false ) );
+// 	}
 	
 	/**
 	 * @covers fonctions_standards_sgbd::recupere_db_gestion_sam
@@ -387,11 +387,11 @@ class fonctions_standards_sgbdTest extends MockedListeOptions {
 		$this->assertEquals ( "SGBD connexion",$this->object->recupere_db_gestion_sam ( $connexion, false ) );
 	}
 	
-	/**
-	 * @covers fonctions_standards_sgbd::recupere_db_cmdb_vodafone
-	 */
-	public function testrecupere_db_cmdb_vodafone() {
-		$connexion = array("cmdb_vodafone_prod"=>"SGBD connexion");
-		$this->assertEquals ( "SGBD connexion",$this->object->recupere_db_cmdb_vodafone ( $connexion, false ) );
-	}
+// 	/**
+// 	 * @covers fonctions_standards_sgbd::recupere_db_cmdb_vodafone
+// 	 */
+// 	public function testrecupere_db_cmdb_vodafone() {
+// 		$connexion = array("cmdb_vodafone_prod"=>"SGBD connexion");
+// 		$this->assertEquals ( "SGBD connexion",$this->object->recupere_db_cmdb_vodafone ( $connexion, false ) );
+// 	}
 }
