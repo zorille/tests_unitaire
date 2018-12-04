@@ -1,5 +1,6 @@
 <?php
-
+namespace Zorille\framework;
+use \Exception as Exception;
 /**
  * @author dvargas
  * @package Lib
@@ -36,14 +37,14 @@ class cacti_hostsTemplatesTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers cacti_hostsTemplates::charge_templates
+     * @covers Zorille\framework\cacti_hostsTemplates::charge_templates
      */
 	public function testcharge_templates() {
-		$this ->assertInstanceOf ( 'cacti_hostsTemplates', $this->object ->charge_templates () );
+		$this ->assertInstanceOf ( 'Zorille\framework\cacti_hostsTemplates', $this->object ->charge_templates () );
 	}
 
 	/**
-	 * @covers cacti_hostsTemplates::valide_template_by_id
+	 * @covers Zorille\framework\cacti_hostsTemplates::valide_template_by_id
 	 */
 	public function testvalide_template_by_id() {
 		$this->object ->setTemplates ( array ( 
@@ -53,10 +54,10 @@ class cacti_hostsTemplatesTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers cacti_hostsTemplates::retrouve_templateid_par_nom
+	 * @covers Zorille\framework\cacti_hostsTemplates::retrouve_templateid_par_nom
 	 */
 	public function testretrouve_templateid_par_nom_exception1() {
-		$dbCon = $this ->createMock ( "requete_complexe_cacti" );
+		$dbCon = $this ->createMock('Zorille\framework\requete_complexe_cacti' );
 		$dbCon ->expects ( $this ->at ( 0 ) ) 
 			->method ( 'requete_select_standard' ) 
 			->will ( $this ->returnValue ( false ) );
@@ -73,10 +74,10 @@ class cacti_hostsTemplatesTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers cacti_hostsTemplates::retrouve_templateid_par_nom
+	 * @covers Zorille\framework\cacti_hostsTemplates::retrouve_templateid_par_nom
 	 */
 	public function testretrouve_templateid_par_nom_exception2() {
-		$dbCon = $this ->createMock ( "requete_complexe_cacti" );
+		$dbCon = $this ->createMock('Zorille\framework\requete_complexe_cacti' );
 		$dbCon ->expects ( $this ->at ( 0 ) ) 
 			->method ( 'requete_select_standard' ) 
 			->will ( $this ->returnValue ( array () ) );
@@ -93,10 +94,10 @@ class cacti_hostsTemplatesTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers cacti_hostsTemplates::retrouve_templateid_par_nom
+	 * @covers Zorille\framework\cacti_hostsTemplates::retrouve_templateid_par_nom
 	 */
 	public function testretrouve_templateid_par_nom_exception3() {
-		$dbCon = $this ->createMock ( "requete_complexe_cacti" );
+		$dbCon = $this ->createMock('Zorille\framework\requete_complexe_cacti' );
 		$dbCon ->expects ( $this ->any () ) 
 			->method ( 'requete_select_standard' ) 
 			->will ( $this ->returnValue ( array ( 
@@ -110,10 +111,10 @@ class cacti_hostsTemplatesTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers cacti_hostsTemplates::retrouve_templateid_par_nom
+	 * @covers Zorille\framework\cacti_hostsTemplates::retrouve_templateid_par_nom
 	 */
 	public function testretrouve_templateid_par_nom_valide() {
-		$dbCon = $this ->createMock ( "requete_complexe_cacti" );
+		$dbCon = $this ->createMock('Zorille\framework\requete_complexe_cacti' );
 		$dbCon ->expects ( $this ->any () ) 
 			->method ( 'requete_select_standard' ) 
 			->will ( $this ->returnValue ( array ( 

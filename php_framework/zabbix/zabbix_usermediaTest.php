@@ -1,4 +1,6 @@
 <?php
+namespace Zorille\framework;
+use \Exception as Exception;
 if (! defined ( '__DOCUMENT_ROOT__' )) {
 	require_once $_SERVER ["PWD"] . '/prepare.php';
 }
@@ -18,7 +20,7 @@ class zabbix_usermediaTest extends MockedListeOptions {
      */
 	protected function setUp() {
 		ob_start ();
-		$zabbix_wsclient = $this ->createMock ( "zabbix_wsclient" );
+		$zabbix_wsclient = $this ->createMock('Zorille\framework\zabbix_wsclient' );
 		
 		$this->object = new zabbix_usermedia ( false, "zabbix_usermedia" );
 		$this->object ->setObjetZabbixWsclient ( $zabbix_wsclient );
@@ -33,7 +35,7 @@ class zabbix_usermediaTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_usermedia::retrouve_zabbix_param
+     * @covers Zorille\framework\zabbix_usermedia::retrouve_zabbix_param
      */
 	public function testRetrouve_zabbix_param_Exception() {
 		$this ->getListeOption () 
@@ -48,7 +50,7 @@ class zabbix_usermediaTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_usermedia::retrouve_zabbix_param
+	 * @covers Zorille\framework\zabbix_usermedia::retrouve_zabbix_param
 	 */
 	public function testRetrouve_zabbix_param() {
 		$this ->getListeOption () 
@@ -66,7 +68,7 @@ class zabbix_usermediaTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_usermedia::creer_definition_usermedia_create_ws
+     * @covers Zorille\framework\zabbix_usermedia::creer_definition_usermedia_create_ws
      */
 	public function testCreer_definition_usermedia_create_ws() {
 		$this->object ->setSendto ( "SendTo" );
@@ -85,7 +87,7 @@ class zabbix_usermediaTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_usermedia::creer_usermedia
+     * @covers Zorille\framework\zabbix_usermedia::creer_usermedia
      */
 	public function testCreer_usermedia() {
 		$this->object ->setSendto ( "SendTo" );
@@ -103,7 +105,7 @@ class zabbix_usermediaTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_usermedia::creer_definition_usermedia_delete_ws
+     * @covers Zorille\framework\zabbix_usermedia::creer_definition_usermedia_delete_ws
      */
 	public function testCreer_definition_usermedia_delete_ws() {
 		$this ->assertEquals ( array (), $this->object ->creer_definition_usermedia_delete_ws () );
@@ -113,7 +115,7 @@ class zabbix_usermediaTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_usermedia::supprime_usermedia
+     * @covers Zorille\framework\zabbix_usermedia::supprime_usermedia
      */
 	public function testSupprime_usermedia() {
 		$this->object ->getObjetZabbixWsclient () 
@@ -137,7 +139,7 @@ class zabbix_usermediaTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_usermedia::creer_definition_usermedia_get_ws
+     * @covers Zorille\framework\zabbix_usermedia::creer_definition_usermedia_get_ws
      */
 	public function testCreer_definition_usermedia_get_ws() {
 		$this->object ->setSendto ( "SendTo" );
@@ -148,7 +150,7 @@ class zabbix_usermediaTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_usermedia::recherche_usermedia
+     * @covers Zorille\framework\zabbix_usermedia::recherche_usermedia
      */
 	public function testRecherche_usermedia() {
 		$this->object ->getObjetZabbixWsclient () 
@@ -164,7 +166,7 @@ class zabbix_usermediaTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_usermedia::retrouve_Active
+     * @covers Zorille\framework\zabbix_usermedia::retrouve_Active
      */
 	public function testRetrouve_Active() {
 		$this ->assertEquals ( 0, $this->object ->retrouve_Active ( "" ) );

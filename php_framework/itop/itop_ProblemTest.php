@@ -1,4 +1,6 @@
 <?php
+namespace Zorille\itop;
+use Zorille\framework as Core;
 /**
  * @author dvargas
  * @package Lib
@@ -7,9 +9,9 @@
 if (! defined ( '__DOCUMENT_ROOT__' )) {
 	require_once $_SERVER ["PWD"] . '/prepare.php';
 }
-class itop_ProblemTest extends MockedListeOptions {
+class ProblemTest extends Core\MockedListeOptions {
 	/**
-	 * @var itop_Problem
+	 * @var Problem
 	 */
 	protected $object;
 
@@ -20,10 +22,10 @@ class itop_ProblemTest extends MockedListeOptions {
 	protected function setUp() {
 		ob_start ();
 		
-		$itop_wsclient_rest = $this ->createMock ( "itop_wsclient_rest" );
-		$itop_Organization = $this ->createMock ( "itop_Organization" );
+		$itop_wsclient_rest = $this ->createMock('Zorille\itop\wsclient_rest' );
+		$itop_Organization = $this ->createMock('Zorille\itop\Organization' );
 		
-		$this->object = new itop_Problem ( false, "TESTS itop_Problem" );
+		$this->object = new Problem ( false, "TESTS Problem" );
 		$this->object ->setListeOptions ( $this ->getListeOption () ) 
 			->setObjetItopWsclientRest ( $itop_wsclient_rest ) 
 			->setObjetItopOrganization ( $itop_Organization );
@@ -44,7 +46,7 @@ class itop_ProblemTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers itop_Problem::retrouve_Problem
+	 * @covers Zorille\itop\Problem::retrouve_Problem
 	 */
 	public function testretrouve_Problem() {
 		$this->object ->getObjetItopWsclientRest () 
@@ -62,7 +64,7 @@ class itop_ProblemTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers itop_Problem::creer_oql
+	 * @covers Zorille\itop\Problem::creer_oql
 	 */
 	public function testcreer_oql_all() {
 		$this ->assertSame ( $this->object, $this->object ->creer_oql ( '' ) );
@@ -70,7 +72,7 @@ class itop_ProblemTest extends MockedListeOptions {
 	}
 	
 	/**
-	 * @covers itop_Problem::creer_oql
+	 * @covers Zorille\itop\Problem::creer_oql
 	 */
 	public function testcreer_oql_all_other_status() {
 		$this ->assertSame ( $this->object, $this->object ->creer_oql ( '', "closed','new" ) );
@@ -78,7 +80,7 @@ class itop_ProblemTest extends MockedListeOptions {
 	}
 	
 	/**
-	 * @covers itop_Problem::creer_oql
+	 * @covers Zorille\itop\Problem::creer_oql
 	 */
 	public function testcreer_oql_avec_titre() {
 		$this ->assertSame ( $this->object, $this->object ->creer_oql ( 'Test' ) );
@@ -86,7 +88,7 @@ class itop_ProblemTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers itop_Problem::gestion_Problem
+	 * @covers Zorille\itop\Problem::gestion_Problem
 	 */
 	public function testgestion_Problem() {
 		$this->object ->getObjetItopWsclientRest () 

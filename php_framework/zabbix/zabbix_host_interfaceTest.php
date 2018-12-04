@@ -1,4 +1,6 @@
 <?php
+namespace Zorille\framework;
+use \Exception as Exception;
 if (! defined ( '__DOCUMENT_ROOT__' )) {
 	require_once $_SERVER ["PWD"] . '/prepare.php';
 }
@@ -32,7 +34,7 @@ class zabbix_host_interfaceTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_host_interface::retrouve_zabbix_param
+	 * @covers Zorille\framework\zabbix_host_interface::retrouve_zabbix_param
 	 */
 	public function testRetrouve_zabbix_param_Exception1() {
 		$this ->getListeOption () 
@@ -52,7 +54,7 @@ class zabbix_host_interfaceTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_host_interface::retrouve_zabbix_param
+	 * @covers Zorille\framework\zabbix_host_interface::retrouve_zabbix_param
 	 */
 	public function testRetrouve_zabbix_param_Exception2() {
 		$this ->getListeOption () 
@@ -72,7 +74,7 @@ class zabbix_host_interfaceTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_host_interface::retrouve_zabbix_param
+	 * @covers Zorille\framework\zabbix_host_interface::retrouve_zabbix_param
 	 */
 	public function testRetrouve_zabbix_param_Exception3() {
 		$this ->getListeOption () 
@@ -92,7 +94,7 @@ class zabbix_host_interfaceTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_host_interface::retrouve_zabbix_param
+	 * @covers Zorille\framework\zabbix_host_interface::retrouve_zabbix_param
 	 */
 	public function testRetrouve_zabbix_param_Exception4() {
 		$this ->getListeOption () 
@@ -112,7 +114,7 @@ class zabbix_host_interfaceTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_host_interface::retrouve_zabbix_param
+	 * @covers Zorille\framework\zabbix_host_interface::retrouve_zabbix_param
 	 */
 	public function testRetrouve_zabbix_param_Exception5() {
 		$this ->getListeOption () 
@@ -132,7 +134,7 @@ class zabbix_host_interfaceTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_host_interface::retrouve_zabbix_param
+	 * @covers Zorille\framework\zabbix_host_interface::retrouve_zabbix_param
 	 */
 	public function testRetrouve_zabbix_param() {
 		$interface = 'agent|oui|10050';
@@ -140,7 +142,7 @@ class zabbix_host_interfaceTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_host_interface::compare_interface
+	 * @covers Zorille\framework\zabbix_host_interface::compare_interface
 	 */
 	public function testCompare_interface() {
 		$this->object ->creer_une_interface ( "USEIP", "IP", "FQDN" );
@@ -166,7 +168,7 @@ class zabbix_host_interfaceTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_host_interface::retrouve_code_interface
+	 * @covers Zorille\framework\zabbix_host_interface::retrouve_code_interface
 	 */
 	public function testRetrouve_code_interface() {
 		$this ->assertEquals ( 1, $this->object ->retrouve_code_interface ( "" ) );
@@ -178,7 +180,7 @@ class zabbix_host_interfaceTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_host_interface::retrouve_main
+	 * @covers Zorille\framework\zabbix_host_interface::retrouve_main
 	 */
 	public function testRetrouve_main() {
 		$this ->assertEquals ( 1, $this->object ->retrouve_main ( "" ) );
@@ -188,7 +190,7 @@ class zabbix_host_interfaceTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_host_interface::creer_definition_host_interface_ws
+     * @covers Zorille\framework\zabbix_host_interface::creer_definition_host_interface_ws
      */
 	public function testCreer_definition_host_interface_ws() {
 		$this->object ->setType ( "agent" );

@@ -1,4 +1,7 @@
 <?php
+namespace Zorille\itop;
+use Zorille\framework as Core;
+use \Exception as Exception;
 /**
  * @author dvargas
  * @package Lib
@@ -7,9 +10,9 @@
 if (! defined ( '__DOCUMENT_ROOT__' )) {
 	require_once $_SERVER ["PWD"] . '/prepare.php';
 }
-class itop_ApplicationSolutionTest extends MockedListeOptions {
+class ApplicationSolutionTest extends Core\MockedListeOptions {
 	/**
-	 * @var itop_ApplicationSolution
+	 * @var ApplicationSolution
 	 */
 	protected $object;
 
@@ -20,10 +23,10 @@ class itop_ApplicationSolutionTest extends MockedListeOptions {
 	protected function setUp() {
 		ob_start ();
 		
-		$itop_wsclient_rest = $this ->createMock ( "itop_wsclient_rest" );
-		$itop_Organization = $this ->createMock ( "itop_Organization" );
+		$itop_wsclient_rest = $this ->createMock('Zorille\itop\wsclient_rest' );
+		$itop_Organization = $this ->createMock('Zorille\itop\Organization' );
 		
-		$this->object = new itop_ApplicationSolution ( false, "TESTS itop_ApplicationSolution" );
+		$this->object = new ApplicationSolution ( false, "TESTS ApplicationSolution" );
 		$this->object ->setListeOptions ( $this ->getListeOption () ) 
 			->setObjetItopWsclientRest ( $itop_wsclient_rest ) 
 			->setObjetItopOrganization ( $itop_Organization );
@@ -44,7 +47,7 @@ class itop_ApplicationSolutionTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers itop_ApplicationSolution::retrouve_ApplicationSolution
+	 * @covers Zorille\itop\ApplicationSolution::retrouve_ApplicationSolution
 	 */
 	public function testretrouve_ApplicationSolution() {
 		$this->object ->getObjetItopWsclientRest () 
@@ -62,7 +65,7 @@ class itop_ApplicationSolutionTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers itop_ApplicationSolution::creer_oql
+	 * @covers Zorille\itop\ApplicationSolution::creer_oql
 	 */
 	public function testcreer_oql() {
 		$this ->assertSame ( $this->object, $this->object ->creer_oql ( 'NAME1' ) );
@@ -70,7 +73,7 @@ class itop_ApplicationSolutionTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers itop_ApplicationSolution::gestion_ApplicationSolution
+	 * @covers Zorille\itop\ApplicationSolution::gestion_ApplicationSolution
 	 */
 	public function testgestion_ApplicationSolution() {
 		$this->object ->getObjetItopWsclientRest () 
@@ -95,7 +98,7 @@ class itop_ApplicationSolutionTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers itop_ApplicationSolution::creer_lnkApplicationSolutionToBusinessProcess
+	 * @covers Zorille\itop\ApplicationSolution::creer_lnkApplicationSolutionToBusinessProcess
 	 */
 	public function testcreer_lnkApplicationSolutionToBusinessProcess_exception() {
 		$this->object ->setFormat ( "ApplicationSolution" )
@@ -103,12 +106,12 @@ class itop_ApplicationSolutionTest extends MockedListeOptions {
 				'name' => 'NOM2' ) );
 	
 		$this ->expectException(Exception::class);
-        $this->expectExceptionMessage( '(TESTS itop_ApplicationSolution) Il faut un ID a cette ApplicationSolution' );
+        $this->expectExceptionMessage( '(TESTS ApplicationSolution) Il faut un ID a cette ApplicationSolution' );
 		$this->object ->creer_lnkApplicationSolutionToBusinessProcess ( "FRIENDLYNAME", 15 );
 	}
 	
 	/**
-	 * @covers itop_ApplicationSolution::creer_lnkApplicationSolutionToBusinessProcess
+	 * @covers Zorille\itop\ApplicationSolution::creer_lnkApplicationSolutionToBusinessProcess
 	 */
 	public function testcreer_lnkApplicationSolutionToBusinessProcess() {
 		$this->object ->setId ( 10 ) 

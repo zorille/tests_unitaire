@@ -1,4 +1,6 @@
 <?php
+namespace Zorille\itop;
+use Zorille\framework as Core;
 /**
  * @author dvargas
  * @package Lib
@@ -7,9 +9,9 @@
 if (! defined ( '__DOCUMENT_ROOT__' )) {
 	require_once $_SERVER ["PWD"] . '/prepare.php';
 }
-class itop_ServiceSubcategoryTest extends MockedListeOptions {
+class ServiceSubcategoryTest extends Core\MockedListeOptions {
 	/**
-	 * @var itop_ServiceSubcategory
+	 * @var ServiceSubcategory
 	 */
 	protected $object;
 
@@ -20,11 +22,11 @@ class itop_ServiceSubcategoryTest extends MockedListeOptions {
 	protected function setUp() {
 		ob_start ();
 		
-		$itop_wsclient_rest = $this ->createMock ( "itop_wsclient_rest" );
-		$itop_Organization = $this ->createMock ( "itop_Organization" );
-		$itop_Service = $this ->createMock ( "itop_Service" );
+		$itop_wsclient_rest = $this ->createMock('Zorille\itop\wsclient_rest' );
+		$itop_Organization = $this ->createMock('Zorille\itop\Organization' );
+		$itop_Service = $this ->createMock('Zorille\itop\Service' );
 		
-		$this->object = new itop_ServiceSubcategory ( false, "TESTS itop_ServiceSubcategory" );
+		$this->object = new ServiceSubcategory ( false, "TESTS ServiceSubcategory" );
 		$this->object ->setListeOptions ( $this ->getListeOption () ) 
 			->setObjetItopWsclientRest ( $itop_wsclient_rest ) 
 			->setObjetItopOrganization ( $itop_Organization ) 
@@ -52,7 +54,7 @@ class itop_ServiceSubcategoryTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers itop_ServiceSubcategory::retrouve_ServiceSubcategory
+	 * @covers Zorille\itop\ServiceSubcategory::retrouve_ServiceSubcategory
 	 */
 	public function testretrouve_ServiceSubcategory() {
 		$this->object ->getObjetItopWsclientRest () 
@@ -70,7 +72,7 @@ class itop_ServiceSubcategoryTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers itop_ServiceSubcategory::creer_oql
+	 * @covers Zorille\itop\ServiceSubcategory::creer_oql
 	 */
 	public function testcreer_oql() {
 		$this ->assertSame ( $this->object, $this->object ->creer_oql ( 'NAME1' ) );
@@ -78,7 +80,7 @@ class itop_ServiceSubcategoryTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers itop_ServiceSubcategory::gestion_ServiceSubcategory
+	 * @covers Zorille\itop\ServiceSubcategory::gestion_ServiceSubcategory
 	 */
 	public function testgestion_ServiceSubcategory() {
 		$this->object ->getObjetItopWsclientRest () 

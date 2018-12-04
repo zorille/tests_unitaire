@@ -1,4 +1,6 @@
 <?php
+namespace Zorille\framework;
+use \Exception as Exception;
 /**
  * @ignore
  */
@@ -34,7 +36,7 @@ class CommandLineTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers CommandLine::CreerListeFichiers
+	 * @covers Zorille\framework\CommandLine::CreerListeFichiers
 	 */
 	public function testCreerListeFichiers_ArrayVide() {
 		$liste_vide = array ();
@@ -43,7 +45,7 @@ class CommandLineTest extends MockedListeOptions {
 
 	/**
 	 * Verifie pour un tableau de string.
-	 * @covers CommandLine::CreerListeFichiers
+	 * @covers Zorille\framework\CommandLine::CreerListeFichiers
 	 */
 	public function testCreerListeFichiers_ArrayString() {
 		$liste_fichiers = array ( 
@@ -54,7 +56,7 @@ class CommandLineTest extends MockedListeOptions {
 
 	/**
 	 * Verifie pour un tableau de string.
-	 * @covers CommandLine::CreerListeFichiers
+	 * @covers Zorille\framework\CommandLine::CreerListeFichiers
 	 */
 	public function testCreerListeFichiers_ArrayStringIsFileExist() {
 		$liste_fichiers = array ( 
@@ -65,7 +67,7 @@ class CommandLineTest extends MockedListeOptions {
 
 	/**
 	 * Verifie pour un tableau de string avec des entrees vides.
-	 * @covers CommandLine::CreerListeFichiers
+	 * @covers Zorille\framework\CommandLine::CreerListeFichiers
 	 */
 	public function testCreerListeFichiers_ArrayStringEntreeVide() {
 		$liste_fichiers = array ( 
@@ -78,10 +80,10 @@ class CommandLineTest extends MockedListeOptions {
 
 	/**
 	 * Verifie pour un tableau de string.
-	 * @covers CommandLine::CreerListeFichiers
+	 * @covers Zorille\framework\CommandLine::CreerListeFichiers
 	 */
 	public function testCreerListeFichiers_ArrayObject() {
-		$fichier1 = $this ->createMock ( "relation_fichier_machine", array ( 
+		$fichier1 = $this ->createMock('Zorille\framework\relation_fichier_machine', array ( 
 				"renvoi_parametre_fichier" ) );
 		$fichier1 ->expects ( $this ->at ( 0 ) ) 
 			->method ( 'renvoi_parametre_fichier' ) 
@@ -92,7 +94,7 @@ class CommandLineTest extends MockedListeOptions {
 			->with ( 'nom' ) 
 			->will ( $this ->returnValue ( "test1" ) );
 		
-		$fichier2 = $this ->createMock ( "relation_fichier_machine", array ( 
+		$fichier2 = $this ->createMock('Zorille\framework\relation_fichier_machine', array ( 
 				"renvoi_parametre_fichier" ) );
 		$fichier2 ->expects ( $this ->at ( 0 ) ) 
 			->method ( 'renvoi_parametre_fichier' ) 
@@ -111,12 +113,11 @@ class CommandLineTest extends MockedListeOptions {
 
 	/**
 	 * Verifie qu'il y a bien 2 lignes lorsqu'il y a plus de 4000 fichiers.
-	 * @covers CommandLine::CreerListeFichiers
+	 * @covers Zorille\framework\CommandLine::CreerListeFichiers
 	 */
 	public function testCreerListeFichiers_ArrayStringSup4000() {
 		$liste_fichiers = array ();
 		$ligne_retour1 = "";
-		$ligne_retour2 = "";
 		
 		for($i = 0; $i < 4555; $i ++) {
 			$liste_fichiers [$i] = "test" . $i;
@@ -131,7 +132,7 @@ class CommandLineTest extends MockedListeOptions {
 
 	/**
 	 * Verifie le changement de separateur.
-	 * @covers CommandLine::CreerListeFichiers
+	 * @covers Zorille\framework\CommandLine::CreerListeFichiers
 	 */
 	public function testCreerListeFichiers_ArrayStringAvecSeparateur() {
 		$liste_fichiers = array ( 
@@ -142,7 +143,7 @@ class CommandLineTest extends MockedListeOptions {
 
 	/**
 	 * Verifie que la string est bien renvoye.
-	 * @covers CommandLine::RenvoieNomFichier
+	 * @covers Zorille\framework\CommandLine::RenvoieNomFichier
 	 */
 	public function testRenvoieNomFichier_String() {
 		$this ->assertEquals ( "test1", $this->object ->renvoieNomFichier ( "test1" ) );
@@ -150,7 +151,7 @@ class CommandLineTest extends MockedListeOptions {
 
 	/**
 	 * Verifie la creation de nom automatique.
-	 * @covers CommandLine::RenvoieNomFichier
+	 * @covers Zorille\framework\CommandLine::RenvoieNomFichier
 	 */
 	public function testRenvoieNomFichier_vide() {
 		$this ->assertContains ( "fichier_" . getmypid (), $this->object ->renvoieNomFichier ( "" ) );
@@ -158,10 +159,10 @@ class CommandLineTest extends MockedListeOptions {
 
 	/**
 	 * Verifie qu'un objet machine_fichier_standard est bien traite.
-	 * @covers CommandLine::RenvoieNomFichier
+	 * @covers Zorille\framework\CommandLine::RenvoieNomFichier
 	 */
 	public function testRenvoieNomFichier_Object() {
-		$fichier1 = $this ->createMock ( "relation_fichier_machine", array ( 
+		$fichier1 = $this ->createMock('Zorille\framework\relation_fichier_machine', array ( 
 				"renvoi_parametre_fichier" ) );
 		$fichier1 ->expects ( $this ->at ( 0 ) ) 
 			->method ( 'renvoi_parametre_fichier' ) 
@@ -177,7 +178,7 @@ class CommandLineTest extends MockedListeOptions {
 
 	/**
 	 * Verifie que la string est bien renvoye.
-	 * @covers CommandLine::ExtraireFichier
+	 * @covers Zorille\framework\CommandLine::ExtraireFichier
 	 */
 	public function testExtraireFichier_String() {
 		$this ->assertEquals ( "test1", $this->object ->extraireFichier ( "test1" ) );
@@ -185,7 +186,7 @@ class CommandLineTest extends MockedListeOptions {
 
 	/**
 	 * Verifie qu'il n'y a pas de creation de nom automatique.
-	 * @covers CommandLine::ExtraireFichier
+	 * @covers Zorille\framework\CommandLine::ExtraireFichier
 	 */
 	public function testExtraireFichier_vide() {
 		$this ->assertEquals ( "", $this->object ->extraireFichier ( "" ) );
@@ -193,10 +194,10 @@ class CommandLineTest extends MockedListeOptions {
 
 	/**
 	 * Verifie qu'un objet machine_fichier_standard est bien traite.
-	 * @covers CommandLine::ExtraireFichier
+	 * @covers Zorille\framework\CommandLine::ExtraireFichier
 	 */
 	public function testExtraireFichier_Object() {
-		$fichier1 = $this ->createMock ( "relation_fichier_machine", array ( 
+		$fichier1 = $this ->createMock('Zorille\framework\relation_fichier_machine', array ( 
 				"renvoi_parametre_fichier" ) );
 		$fichier1 ->expects ( $this ->at ( 0 ) ) 
 			->method ( 'renvoi_parametre_fichier' ) 
@@ -212,7 +213,7 @@ class CommandLineTest extends MockedListeOptions {
 
 	/**
 	 * ConcatDataWithValue throws Exception
-	 * @covers CommandLine::ConcatDataWithValue
+	 * @covers Zorille\framework\CommandLine::ConcatDataWithValue
 	 */
 	public function testConcatDataWithValue_Exception() {
 		$this ->expectException(Exception::class);
@@ -222,7 +223,7 @@ class CommandLineTest extends MockedListeOptions {
 
 	/**
 	 * ConcatDataWithValue correct
-	 * @covers CommandLine::ConcatDataWithValue
+	 * @covers Zorille\framework\CommandLine::ConcatDataWithValue
 	 */
 	public function testConcatDataWithValue_correct() {
 		$this ->assertEquals ( '"DATA1,DATA2"', $this->object ->ConcatDataWithValue ( array ( 
@@ -232,7 +233,7 @@ class CommandLineTest extends MockedListeOptions {
 
 	/**
 	 * ConcatDataWithValue throws Exception
-	 * @covers CommandLine::AddParam
+	 * @covers Zorille\framework\CommandLine::AddParam
 	 */
 	public function testAddParam_Exception() {
 		$this ->expectException(Exception::class);
@@ -242,7 +243,7 @@ class CommandLineTest extends MockedListeOptions {
 
 	/**
 	 * ConcatDataWithValue with NULL
-	 * @covers CommandLine::AddParam
+	 * @covers Zorille\framework\CommandLine::AddParam
 	 */
 	public function testAddParam_NULL() {
 		$this ->assertEquals ( NULL, $this->object ->AddParam ( false, "", false ) );
@@ -250,7 +251,7 @@ class CommandLineTest extends MockedListeOptions {
 
 	/**
 	 * ConcatDataWithValue correct
-	 * @covers CommandLine::AddParam
+	 * @covers Zorille\framework\CommandLine::AddParam
 	 */
 	public function testAddParam_correct() {
 		$this ->assertEquals ( ' param valeur', $this->object ->AddParam ( "param", "valeur" ) );
@@ -258,7 +259,7 @@ class CommandLineTest extends MockedListeOptions {
 
 	/**
 	 * Verifie le code retour 0
-	 * @covers CommandLine::executeCommandLine
+	 * @covers Zorille\framework\CommandLine::executeCommandLine
 	 */
 	public function testExecuteCommandLine_simpleRetour0() {
 		$this->object ->setCmd ( "echo test" );
@@ -267,7 +268,7 @@ class CommandLineTest extends MockedListeOptions {
 
 	/**
 	 * Verifie le code retour 1
-	 * @covers CommandLine::executeCommandLine
+	 * @covers Zorille\framework\CommandLine::executeCommandLine
 	 */
 	public function testExecuteCommandLine_Exception() {
 		$this->object ->setCmd ( "eho test > /dev/null 2>&1" );
@@ -278,7 +279,7 @@ class CommandLineTest extends MockedListeOptions {
 
 	/**
 	 * Verifie le code retour false
-	 * @covers CommandLine::executeCommandLine
+	 * @covers Zorille\framework\CommandLine::executeCommandLine
 	 */
 	public function testExecuteCommandLine_vide() {
 		$this->object ->setCmd ( "" );
@@ -287,7 +288,7 @@ class CommandLineTest extends MockedListeOptions {
 
 	/**
 	 * Verifie que les parametres sont bien traite.
-	 * @covers CommandLine::executeCommandLine
+	 * @covers Zorille\framework\CommandLine::executeCommandLine
 	 */
 	public function testExecuteCommandLine_AvecParam() {
 		$texte = "[Ram]123456";
@@ -298,7 +299,7 @@ class CommandLineTest extends MockedListeOptions {
 
 	/**
 	 * AfficheLogs correct
-	 * @covers CommandLine::AfficheLogs
+	 * @covers Zorille\framework\CommandLine::AfficheLogs
 	 */
 	public function testAfficheLogs_String() {
 		$this ->assertFalse ( $this->object ->AfficheLogs ( "VAL" ) );
@@ -306,7 +307,7 @@ class CommandLineTest extends MockedListeOptions {
 
 	/**
 	 * AfficheLogs correct
-	 * @covers CommandLine::AfficheLogs
+	 * @covers Zorille\framework\CommandLine::AfficheLogs
 	 */
 	public function testAfficheLogs_Array() {
 		$this ->assertTrue ( $this->object ->AfficheLogs ( array ( 
@@ -315,7 +316,7 @@ class CommandLineTest extends MockedListeOptions {
 
 	/**
 	 * Verifie la condition is_array().
-	 * @covers CommandLine::recupereInfoDesLogs
+	 * @covers Zorille\framework\CommandLine::recupereInfoDesLogs
 	 */
 	public function testRecupereInfoDesLogs_sansTableau() {
 		$tableau = "";
@@ -324,7 +325,7 @@ class CommandLineTest extends MockedListeOptions {
 
 	/**
 	 * Verifie la condition is_array().
-	 * @covers CommandLine::recupereInfoDesLogs
+	 * @covers Zorille\framework\CommandLine::recupereInfoDesLogs
 	 */
 	public function testRecupereInfoDesLogs_avecTableau() {
 		$tableau = array ( 

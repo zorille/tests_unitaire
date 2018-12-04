@@ -1,4 +1,6 @@
 <?php
+namespace Zorille\framework;
+use \Exception as Exception;
 if (! defined ( '__DOCUMENT_ROOT__' )) {
 	require_once $_SERVER ["PWD"] . '/prepare.php';
 }
@@ -18,8 +20,8 @@ class zabbix_hostsTest extends MockedListeOptions {
      */
 	protected function setUp() {
 		ob_start ();
-		$zabbix_wsclient = $this ->createMock ( "zabbix_wsclient" );
-		$zabbix_host_reference = $this ->createMock ( "zabbix_host" );
+		$zabbix_wsclient = $this ->createMock('Zorille\framework\zabbix_wsclient' );
+		$zabbix_host_reference = $this ->createMock('Zorille\framework\zabbix_host' );
 		
 		$this->object = new zabbix_hosts ( false, "zabbix_hosts" );
 		$this->object ->setObjetZabbixWsclient ( $zabbix_wsclient ) 
@@ -35,7 +37,7 @@ class zabbix_hostsTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_hosts::retrouve_liste_hosts
+     * @covers Zorille\framework\zabbix_hosts::retrouve_liste_hosts
      */
 	public function testretrouve_liste_hosts_Exception() {
 		$this ->getListeOption () 
@@ -50,7 +52,7 @@ class zabbix_hostsTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_hosts::retrouve_liste_hosts
+	 * @covers Zorille\framework\zabbix_hosts::retrouve_liste_hosts
 	 */
 	public function testretrouve_liste_hosts_vide() {
 		$this ->getListeOption () 
@@ -63,7 +65,7 @@ class zabbix_hostsTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_hosts::retrouve_liste_hosts
+	 * @covers Zorille\framework\zabbix_hosts::retrouve_liste_hosts
 	 */
 	public function testretrouve_liste_hosts() {
 		$this ->getListeOption () 
@@ -84,7 +86,7 @@ class zabbix_hostsTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_hosts::retrouve_zabbix_param
+	 * @covers Zorille\framework\zabbix_hosts::retrouve_zabbix_param
 	 */
 	public function testRetrouve_zabbix_param() {
 		$this ->getListeOption () 
@@ -110,7 +112,7 @@ class zabbix_hostsTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_hosts::recherche_liste_hosts
+     * @covers Zorille\framework\zabbix_hosts::recherche_liste_hosts
      */
 	public function testRecherche_liste_hosts() {
 		$this->object ->getObjetHostRef () 
@@ -129,7 +131,7 @@ class zabbix_hostsTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_hosts::valide_liste_hosts
+     * @covers Zorille\framework\zabbix_hosts::valide_liste_hosts
      */
 	public function testValide_liste_hosts() {
 		$liste_host_cli = array ( 
@@ -170,7 +172,7 @@ class zabbix_hostsTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_hosts::creer_host
+     * @covers Zorille\framework\zabbix_hosts::creer_host
      */
 	public function testCreer_host() {
 		$this->object ->getObjetHostRef () 
@@ -184,7 +186,7 @@ class zabbix_hostsTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_hosts::ajoute_hosts
+     * @covers Zorille\framework\zabbix_hosts::ajoute_hosts
      */
 	public function testAjoute_hosts() {
 		$liste_host = array ( 
@@ -220,7 +222,7 @@ class zabbix_hostsTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_hosts::supprime_hosts
+     * @covers Zorille\framework\zabbix_hosts::supprime_hosts
      */
 	public function testSupprime_hosts() {
 		$liste_host = array ( 
@@ -254,7 +256,7 @@ class zabbix_hostsTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_hosts::creer_definition_hosts_ws
+     * @covers Zorille\framework\zabbix_hosts::creer_definition_hosts_ws
      */
 	public function testCreer_definition_hosts_ws() {
 		$this->object ->getObjetHostRef () 
@@ -271,7 +273,7 @@ class zabbix_hostsTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_hosts::creer_definition_hostids_ws
+     * @covers Zorille\framework\zabbix_hosts::creer_definition_hostids_ws
      */
 	public function testCreer_definition_hostids_ws() {
 		$this->object ->getObjetHostRef () 
@@ -290,7 +292,7 @@ class zabbix_hostsTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_hosts::creer_definition_hostids_sans_champ_hostid_ws
+	 * @covers Zorille\framework\zabbix_hosts::creer_definition_hostids_sans_champ_hostid_ws
 	 */
 	public function testcreer_definition_hostids_sans_champ_hostid_ws() {
 		$this->object ->getObjetHostRef () 

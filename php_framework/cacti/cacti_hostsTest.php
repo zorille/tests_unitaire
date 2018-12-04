@@ -1,5 +1,6 @@
 <?php
-
+namespace Zorille\framework;
+use PHPUnit\Framework\TestCase as TestCase;
 /**
  * @author dvargas
  * @package Lib
@@ -12,7 +13,7 @@ require_once "cacti_API_fonctions.php";
 
 /**
  */
-class cacti_hostsTest extends PHPUnit\Framework\TestCase {
+class cacti_hostsTest extends TestCase {
 	/**
      * @var cacti_hosts
      */
@@ -37,14 +38,14 @@ class cacti_hostsTest extends PHPUnit\Framework\TestCase {
 	}
 
 	/**
-     * @covers cacti_hosts::charge_hosts
+     * @covers Zorille\framework\cacti_hosts::charge_hosts
      */
 	public function testcharge_hosts() {
-		$this->assertInstanceOf ( 'cacti_hosts', $this->object->charge_hosts () );
+		$this->assertInstanceOf ( 'Zorille\framework\cacti_hosts', $this->object->charge_hosts () );
 	}
 
 	/**
-     * @covers cacti_hosts::valide_host_by_id
+     * @covers Zorille\framework\cacti_hosts::valide_host_by_id
      */
 	public function testvalide_host_by_id() {
 		$this->assertFalse ( $this->object->valide_host_by_id ( '1234' ) );
@@ -52,7 +53,7 @@ class cacti_hostsTest extends PHPUnit\Framework\TestCase {
 	}
 
 	/**
-	 * @covers cacti_hosts::valide_host_by_description
+	 * @covers Zorille\framework\cacti_hosts::valide_host_by_description
 	 */
 	public function testvalide_host_by_description() {
 		$this->assertFalse ( $this->object->valide_host_by_description ( 'Host' ) );
@@ -60,7 +61,7 @@ class cacti_hostsTest extends PHPUnit\Framework\TestCase {
 	}
 
 	/**
-	 * @covers cacti_hosts::renvoi_hostid_by_description
+	 * @covers Zorille\framework\cacti_hosts::renvoi_hostid_by_description
 	 */
 	public function testrenvoi_hostid_by_description() {
 		$this->assertFalse ( $this->object->renvoi_hostid_by_description ( 'Host' ) );
@@ -68,7 +69,7 @@ class cacti_hostsTest extends PHPUnit\Framework\TestCase {
 	}
 
 	/**
-	 * @covers cacti_hosts::valide_host_by_ip
+	 * @covers Zorille\framework\cacti_hosts::valide_host_by_ip
 	 */
 	public function testvalide_host_by_ip() {
 		$this->assertFalse ( $this->object->valide_host_by_ip ( 'Address1' ) );
@@ -76,7 +77,7 @@ class cacti_hostsTest extends PHPUnit\Framework\TestCase {
 	}
 
 	/**
-	 * @covers cacti_hosts::renvoi_hostid_by_ip
+	 * @covers Zorille\framework\cacti_hosts::renvoi_hostid_by_ip
 	 */
 	public function testrenvoi_hostid_by_ip() {
 		$this->assertFalse ( $this->object->renvoi_hostid_by_ip ( 'Address1' ) );
@@ -84,7 +85,7 @@ class cacti_hostsTest extends PHPUnit\Framework\TestCase {
 	}
 
 	/**
-    * @covers cacti_hosts::getOneHosts
+    * @covers Zorille\framework\cacti_hosts::getOneHosts
     */
 	public function testgetOneHosts() {
 		$this->assertFalse ( $this->object->getOneHosts ( 'Host' ) );
@@ -94,7 +95,7 @@ class cacti_hostsTest extends PHPUnit\Framework\TestCase {
 	}
 
 	/**
-	 * @covers cacti_hosts::ajouteHosts
+	 * @covers Zorille\framework\cacti_hosts::ajouteHosts
 	 */
 	public function testajouteHosts() {
 		$this->assertFalse ( $this->object->renvoi_hostid_by_description ( 'Host3' ) );
@@ -103,7 +104,7 @@ class cacti_hostsTest extends PHPUnit\Framework\TestCase {
 	}
 
 	/**
-	 * @covers cacti_hosts::ajouteHostsByIPs
+	 * @covers Zorille\framework\cacti_hosts::ajouteHostsByIPs
 	 */
 	public function testajouteHostsByIPs() {
 		$this->assertFalse ( $this->object->renvoi_hostid_by_ip ( 'Addresse2' ) );

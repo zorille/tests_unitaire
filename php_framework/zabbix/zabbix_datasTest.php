@@ -1,5 +1,6 @@
 <?php
-
+namespace Zorille\framework;
+use \Exception as Exception;
 /**
  * @author dvargas
  * @package Lib
@@ -24,7 +25,7 @@ class zabbix_datasTest extends MockedListeOptions {
 	protected function setUp() {
 		ob_start ();
 		
-		$utilisateurs = $this->createMock ( "utilisateurs" );
+		$utilisateurs = $this->createMock('Zorille\framework\utilisateurs' );
 		$utilisateurs->expects ( $this->any () )
 			->method ( 'retrouve_utilisateurs_array' )
 			->will ( $this->returnValue ( $utilisateurs ) );
@@ -49,7 +50,7 @@ class zabbix_datasTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_datas::retrouve_zabbix_param
+	 * @covers Zorille\framework\zabbix_datas::retrouve_zabbix_param
 	 */
 	public function testRetrouve_zabbix_param_exception() {
 		$this->object->getListeOptions ()
@@ -63,7 +64,7 @@ class zabbix_datasTest extends MockedListeOptions {
 	}
 	
 	/**
-	 * @covers zabbix_datas::retrouve_zabbix_param
+	 * @covers Zorille\framework\zabbix_datas::retrouve_zabbix_param
 	 */
 	public function testRetrouve_zabbix_param() {
 		$this->object->getListeOptions ()
@@ -77,11 +78,11 @@ class zabbix_datasTest extends MockedListeOptions {
 				"#comment" => "et voila un commentaire",
 				"nom" => "SIS_TEST"
 		) ) );
-		$this->assertInstanceOf ( 'zabbix_datas', $this->object->retrouve_zabbix_param () );
+		$this->assertInstanceOf ( 'Zorille\framework\zabbix_datas', $this->object->retrouve_zabbix_param () );
 	}
 
 	/**
-	 * @covers zabbix_datas::valide_presence_zabbix_data
+	 * @covers Zorille\framework\zabbix_datas::valide_presence_zabbix_data
 	 */
 	public function testvalide_presence_zabbix_data() {
 		$this->object->setServeurData ( array (

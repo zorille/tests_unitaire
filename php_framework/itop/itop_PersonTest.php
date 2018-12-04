@@ -1,4 +1,7 @@
 <?php
+namespace Zorille\itop;
+use Zorille\framework as Core;
+use \Exception as Exception;
 /**
  * @author dvargas
  * @package Lib
@@ -7,9 +10,9 @@
 if (! defined ( '__DOCUMENT_ROOT__' )) {
 	require_once $_SERVER ["PWD"] . '/prepare.php';
 }
-class itop_PersonTest extends MockedListeOptions {
+class PersonTest extends Core\MockedListeOptions {
 	/**
-	 * @var itop_Person
+	 * @var Person
 	 */
 	protected $object;
 
@@ -20,10 +23,10 @@ class itop_PersonTest extends MockedListeOptions {
 	protected function setUp() {
 		ob_start ();
 		
-		$itop_wsclient_rest = $this ->createMock ( "itop_wsclient_rest" );
-		$itop_Organization = $this ->createMock ( "itop_Organization" );
+		$itop_wsclient_rest = $this ->createMock('Zorille\itop\wsclient_rest' );
+		$itop_Organization = $this ->createMock('Zorille\itop\Organization' );
 		
-		$this->object = new itop_Person ( false, "TESTS itop_Person" );
+		$this->object = new Person ( false, "TESTS Person" );
 		$this->object ->setListeOptions ( $this ->getListeOption () ) 
 			->setObjetItopWsclientRest ( $itop_wsclient_rest ) 
 			->setObjetItopOrganization ( $itop_Organization );
@@ -44,7 +47,7 @@ class itop_PersonTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers itop_Person::retrouve_Person
+	 * @covers Zorille\itop\Person::retrouve_Person
 	 */
 	public function testretrouve_Person() {
 		$this->object ->getObjetItopWsclientRest () 
@@ -62,7 +65,7 @@ class itop_PersonTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers itop_Person::creer_oql
+	 * @covers Zorille\itop\Person::creer_oql
 	 */
 	public function testcreer_oql() {
 		$this ->assertSame ( $this->object, $this->object ->creer_oql ( 'NAME1', 'FIRSTNAME1' ) );
@@ -70,7 +73,7 @@ class itop_PersonTest extends MockedListeOptions {
 	}
 	
 	/**
-	 * @covers itop_Person::creer_oql
+	 * @covers Zorille\itop\Person::creer_oql
 	 */
 	public function testcreer_oql_sans_servername() {
 		$this ->assertSame ( $this->object, $this->object ->creer_oql ( 'FIRSTNAME2 NAME2' ) );
@@ -78,7 +81,7 @@ class itop_PersonTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers itop_Person::gestion_Person
+	 * @covers Zorille\itop\Person::gestion_Person
 	 */
 	public function testgestion_Person() {
 		$this->object ->getObjetItopWsclientRest () 
@@ -103,7 +106,7 @@ class itop_PersonTest extends MockedListeOptions {
 	}
 	
 	/**
-	 * @covers itop_Person::creer_lnkContactToFunctionalCI
+	 * @covers Zorille\itop\Person::creer_lnkContactToFunctionalCI
 	 */
 	public function testcreer_lnkContactToFunctionalCI_exception() {
 		$this->object ->setFormat ( "Person" )
@@ -111,12 +114,12 @@ class itop_PersonTest extends MockedListeOptions {
 				'name' => 'NOM2' ) );
 	
 		$this ->expectException(Exception::class);
-        $this->expectExceptionMessage( '(TESTS itop_Person) Il faut un ID a cette Person' );
+        $this->expectExceptionMessage( '(TESTS Person) Il faut un ID a cette Person' );
 		$this->object ->creer_lnkContactToFunctionalCI ( "FRIENDLYNAME", 15 );
 	}
 	
 	/**
-	 * @covers itop_Person::creer_lnkContactToFunctionalCI
+	 * @covers Zorille\itop\Person::creer_lnkContactToFunctionalCI
 	 */
 	public function testcreer_lnkContactToFunctionalCI() {
 		$this->object ->setId ( 10 )

@@ -1,4 +1,6 @@
 <?php
+namespace Zorille\framework;
+use \Exception as Exception;
 
 /**
  * @author dvargas
@@ -24,7 +26,7 @@ class pingdom_datasTest extends MockedListeOptions {
 	protected function setUp() {
 		ob_start ();
 		
-		$utilisateurs = $this ->createMock ( "utilisateurs" );
+		$utilisateurs = $this ->createMock('Zorille\framework\utilisateurs' );
 		$utilisateurs ->expects ( $this ->any () ) 
 			->method ( 'retrouve_utilisateurs_array' ) 
 			->will ( $this ->returnValue ( $utilisateurs ) );
@@ -49,7 +51,7 @@ class pingdom_datasTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers pingdom_datas::retrouve_pingdom_param
+	 * @covers Zorille\framework\pingdom_datas::retrouve_pingdom_param
 	 */
 	public function testRetrouve_pingdom_param_exception() {
 		$this->object ->getListeOptions () 
@@ -63,7 +65,7 @@ class pingdom_datasTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers pingdom_datas::retrouve_pingdom_param
+	 * @covers Zorille\framework\pingdom_datas::retrouve_pingdom_param
 	 */
 	public function testRetrouve_pingdom_param() {
 		$this->object ->getListeOptions () 
@@ -80,7 +82,7 @@ class pingdom_datasTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers pingdom_datas::valide_presence_pingdom_data
+	 * @covers Zorille\framework\pingdom_datas::valide_presence_pingdom_data
 	 */
 	public function testvalide_presence_pingdom_data() {
 		$this->object ->setServeurData ( array ( 

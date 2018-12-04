@@ -1,4 +1,6 @@
 <?php
+namespace Zorille\framework;
+use \Exception as Exception;
 
 /**
  * @author dvargas
@@ -24,7 +26,7 @@ class ucmdb_datasTest extends MockedListeOptions {
 	protected function setUp() {
 		ob_start ();
 		
-		$utilisateurs = $this ->createMock ( "utilisateurs" );
+		$utilisateurs = $this ->createMock('Zorille\framework\utilisateurs' );
 		$utilisateurs ->expects ( $this ->any () ) 
 			->method ( 'retrouve_utilisateurs_array' ) 
 			->will ( $this ->returnValue ( $utilisateurs ) );
@@ -49,7 +51,7 @@ class ucmdb_datasTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers ucmdb_datas::retrouve_ucmdb_param
+	 * @covers Zorille\framework\ucmdb_datas::retrouve_ucmdb_param
 	 */
 	public function testRetrouve_ucmdb_param_exception1() {
 		$this->object ->getListeOptions () 
@@ -68,7 +70,7 @@ class ucmdb_datasTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers ucmdb_datas::retrouve_ucmdb_param
+	 * @covers Zorille\framework\ucmdb_datas::retrouve_ucmdb_param
 	 */
 	public function testRetrouve_ucmdb_param_exception2() {
 		$this->object ->getListeOptions () 
@@ -87,7 +89,7 @@ class ucmdb_datasTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers ucmdb_datas::retrouve_ucmdb_param
+	 * @covers Zorille\framework\ucmdb_datas::retrouve_ucmdb_param
 	 */
 	public function testRetrouve_ucmdb_param_valide() {
 		$this->object ->getListeOptions () 
@@ -100,11 +102,11 @@ class ucmdb_datasTest extends MockedListeOptions {
 				"#comment" => "et voila un commentaire", 
 				"nom" => "SIS_TEST" ) ) );
 		
-		$this ->assertInstanceOf ( 'ucmdb_datas', $this->object ->retrouve_ucmdb_param () );
+		$this ->assertInstanceOf ( 'Zorille\framework\ucmdb_datas', $this->object ->retrouve_ucmdb_param () );
 	}
 
 	/**
-	 * @covers ucmdb_datas::valide_presence_ucmdb_data
+	 * @covers Zorille\framework\ucmdb_datas::valide_presence_ucmdb_data
 	 */
 	public function testvalide_presence_ucmdb_data() {
 		$this->object ->setServeurData ( array ( 
@@ -124,7 +126,7 @@ class ucmdb_datasTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers ucmdb_datas::retrouve_wsdl
+	 * @covers Zorille\framework\ucmdb_datas::retrouve_wsdl
 	 */
 	public function testRetrouve_wsdl_exception() {
 		$this->object ->setWsdlData ( array ( 
@@ -138,7 +140,7 @@ class ucmdb_datasTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers ucmdb_datas::retrouve_wsdl
+	 * @covers Zorille\framework\ucmdb_datas::retrouve_wsdl
 	 */
 	public function testRetrouve_wsdl_valide() {
 		$this->object ->setWsdlData ( array ( 
@@ -151,7 +153,7 @@ class ucmdb_datasTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers ucmdb_datas::recupere_donnees_ucmdb_serveur
+	 * @covers Zorille\framework\ucmdb_datas::recupere_donnees_ucmdb_serveur
 	 */
 	public function testRecupere_donnees_ucmdb_serveur_exception1() {
 		$this->object ->setServeurData ( array ( 
@@ -166,7 +168,7 @@ class ucmdb_datasTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers ucmdb_datas::recupere_donnees_ucmdb_serveur
+	 * @covers Zorille\framework\ucmdb_datas::recupere_donnees_ucmdb_serveur
 	 */
 	public function testRecupere_donnees_ucmdb_serveur_exception2() {
 		$this->object ->setServeurData ( array ( 
@@ -181,7 +183,7 @@ class ucmdb_datasTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers ucmdb_datas::recupere_donnees_ucmdb_serveur
+	 * @covers Zorille\framework\ucmdb_datas::recupere_donnees_ucmdb_serveur
 	 */
 	public function testRecupere_donnees_ucmdb_serveur_false() {
 		$this->object ->setServeurData ( array ( 
@@ -194,7 +196,7 @@ class ucmdb_datasTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers ucmdb_datas::recupere_donnees_ucmdb_serveur
+	 * @covers Zorille\framework\ucmdb_datas::recupere_donnees_ucmdb_serveur
 	 */
 	public function testRecupere_donnees_ucmdb_serveur_valide() {
 		$this->object ->setServeurData ( array ( 

@@ -1,4 +1,6 @@
 <?php
+namespace Zorille\framework;
+use \Exception as Exception;
 if (! defined ( '__DOCUMENT_ROOT__' )) {
 	require_once $_SERVER ["PWD"] . '/prepare.php';
 }
@@ -19,14 +21,14 @@ class solarwinds_wsclient_restTest extends MockedListeOptions {
 	protected function setUp() {
 		ob_start ();
 		
-		$utilisateurs = $this ->createMock ( "utilisateurs" );
+		$utilisateurs = $this ->createMock('Zorille\framework\utilisateurs' );
 		$utilisateurs ->expects ( $this ->any () ) 
 			->method ( 'setUsername' ) 
 			->will ( $this ->returnSelf () );
 		$utilisateurs ->expects ( $this ->any () ) 
 			->method ( 'setPassword' ) 
 			->will ( $this ->returnSelf () );
-		$gestion_connexion_url = $this ->createMock ( "gestion_connexion_url" );
+		$gestion_connexion_url = $this ->createMock('Zorille\framework\gestion_connexion_url' );
 		$gestion_connexion_url ->expects ( $this ->any () ) 
 			->method ( 'getObjetUtilisateurs' ) 
 			->will ( $this ->returnValue ( $utilisateurs ) );
@@ -36,9 +38,11 @@ class solarwinds_wsclient_restTest extends MockedListeOptions {
 		$gestion_connexion_url ->expects ( $this ->any () ) 
 			->method ( 'getPrependUrl' ) 
 			->will ( $this ->returnValue ( "http://localhost:80" ) );
-		$solarwinds_datas = $this ->createMock ( "solarwinds_datas" );
-		$curl = $this ->createMock ( "curl" );
-		
+		$solarwinds_datas = $this ->createMock('Zorille\framework\solarwinds_datas' );
+		$curl = $this ->createMock('Zorille\framework\curl' );
+		$curl ->expects ( $this ->any () )
+		->method ( 'setUserPasswd', 'setHttpHAuth' )
+		->will ( $this ->returnSelf () );
 		$this->object = new solarwinds_wsclient_rest ( false, "solarwinds_wsclient_rest" );
 		$this->object ->setListeOptions ( $this ->getListeOption () ) 
 			->setGestionConnexionUrl ( $gestion_connexion_url ) 
@@ -54,7 +58,7 @@ class solarwinds_wsclient_restTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers solarwinds_wsclient_rest::prepare_connexion
+	 * @covers Zorille\framework\solarwinds_wsclient_rest::prepare_connexion
 	 */
 	public function testPrepare_connexion_exception1() {
 		$this->object ->getObjetSolarwindsDatas () 
@@ -67,7 +71,7 @@ class solarwinds_wsclient_restTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers solarwinds_wsclient_rest::prepare_connexion
+	 * @covers Zorille\framework\solarwinds_wsclient_rest::prepare_connexion
 	 */
 	public function testPrepare_connexion_exception2() {
 		$this->object ->getObjetSolarwindsDatas () 
@@ -80,7 +84,7 @@ class solarwinds_wsclient_restTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers solarwinds_wsclient_rest::prepare_connexion
+	 * @covers Zorille\framework\solarwinds_wsclient_rest::prepare_connexion
 	 */
 	public function testPrepare_connexion_exception3() {
 		$this->object ->getObjetSolarwindsDatas () 
@@ -94,7 +98,7 @@ class solarwinds_wsclient_restTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers solarwinds_wsclient_rest::prepare_connexion
+	 * @covers Zorille\framework\solarwinds_wsclient_rest::prepare_connexion
 	 */
 	public function testPrepare_connexion_exception4() {
 		$this->object ->getObjetSolarwindsDatas () 
@@ -109,7 +113,7 @@ class solarwinds_wsclient_restTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers solarwinds_wsclient_rest::prepare_connexion
+	 * @covers Zorille\framework\solarwinds_wsclient_rest::prepare_connexion
 	 */
 	public function testPrepare_connexion_valide() {
 		$this->object ->getObjetSolarwindsDatas () 
@@ -124,7 +128,7 @@ class solarwinds_wsclient_restTest extends MockedListeOptions {
 	
 
 	/**
-	 * @covers solarwinds_wsclient_rest::prepare_requete_json
+	 * @covers Zorille\framework\solarwinds_wsclient_rest::prepare_requete_json
 	 */
 	public function testprepare_requete_json_exception() {
 		$this->object ->getObjetCurl ()
@@ -137,7 +141,7 @@ class solarwinds_wsclient_restTest extends MockedListeOptions {
 	}
 	
 	/**
-	 * @covers solarwinds_wsclient_rest::prepare_requete_json
+	 * @covers Zorille\framework\solarwinds_wsclient_rest::prepare_requete_json
 	 */
 	public function testprepare_requete_json_dry_run() {
 		$this->object ->getListeOptions()
@@ -147,14 +151,14 @@ class solarwinds_wsclient_restTest extends MockedListeOptions {
 	}
 	
 	/**
-	 * @covers solarwinds_wsclient_rest::prepare_requete_json
+	 * @covers Zorille\framework\solarwinds_wsclient_rest::prepare_requete_json
 	 */
 	public function testprepare_requete_json_valide1() {
 		$this ->assertSame ( array(), $this->object ->prepare_requete_json ( "Read" ) );
 	}
 	
 	/**
-	 * @covers solarwinds_wsclient_rest::prepare_requete_json
+	 * @covers Zorille\framework\solarwinds_wsclient_rest::prepare_requete_json
 	 */
 	public function testprepare_requete_json_valide2() {
 		$retour_json = '{"response":"TEST2","traitement":"T2"}{"message":"","success":true,"return_code":0}';
@@ -170,7 +174,7 @@ class solarwinds_wsclient_restTest extends MockedListeOptions {
 	}
 	
 	/**
-	 * @covers solarwinds_wsclient_rest::gestion_retour
+	 * @covers Zorille\framework\solarwinds_wsclient_rest::gestion_retour
 	 */
 	public function testgestion_retour_exception() {
 		$retour=array("Message"=>"ALERT", "FullException"=>"STACK TRACE");
@@ -180,7 +184,7 @@ class solarwinds_wsclient_restTest extends MockedListeOptions {
 	}
 	
 	/**
-	 * @covers solarwinds_wsclient_rest::gestion_retour
+	 * @covers Zorille\framework\solarwinds_wsclient_rest::gestion_retour
 	 */
 	public function testgestion_retour_valide1() {
 		$retour="PAS DE DONNEES";
@@ -189,7 +193,7 @@ class solarwinds_wsclient_restTest extends MockedListeOptions {
 	}
 	
 	/**
-	 * @covers solarwinds_wsclient_rest::gestion_retour
+	 * @covers Zorille\framework\solarwinds_wsclient_rest::gestion_retour
 	 */
 	public function testgestion_retour_valide2() {
 		$retour=array("DONNEES1");

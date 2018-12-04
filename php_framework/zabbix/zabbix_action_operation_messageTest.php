@@ -1,4 +1,6 @@
 <?php
+namespace Zorille\framework;
+use \Exception as Exception;
 if (! defined ( '__DOCUMENT_ROOT__' )) {
 	require_once $_SERVER ["PWD"] . '/prepare.php';
 }
@@ -18,8 +20,8 @@ class zabbix_action_operation_messageTest extends MockedListeOptions {
      */
 	protected function setUp() {
 		ob_start ();
-		$zabbix_wsclient = $this ->createMock ( "zabbix_wsclient" );
-		$zabbix_mediatype = $this ->createMock ( "zabbix_mediatype" );
+		$zabbix_wsclient = $this ->createMock('Zorille\framework\zabbix_wsclient' );
+		$zabbix_mediatype = $this ->createMock('Zorille\framework\zabbix_mediatype' );
 		
 		$this->object = new zabbix_action_operation_message ( false, "zabbix_action_operation_message" );
 		$this->object ->setObjetZabbixWsclient ( $zabbix_wsclient ) 
@@ -35,7 +37,7 @@ class zabbix_action_operation_messageTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_action_operation_message::retrouve_zabbix_param
+     * @covers Zorille\framework\zabbix_action_operation_message::retrouve_zabbix_param
      */
 	public function testRetrouve_zabbix_param() {
 		$this ->getListeOption () 
@@ -62,7 +64,7 @@ class zabbix_action_operation_messageTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_action_operation_message::retrouve_zabbix_param
+	 * @covers Zorille\framework\zabbix_action_operation_message::retrouve_zabbix_param
 	 */
 	public function testRetrouve_zabbix_param_1() {
 		$this ->getListeOption () 
@@ -93,7 +95,7 @@ class zabbix_action_operation_messageTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_action_operation_message::retrouve_mediaTypeId
+	 * @covers Zorille\framework\zabbix_action_operation_message::retrouve_mediaTypeId
 	 */
 	public function testRetrouve_mediaTypeId() {
 		$this->object ->getObjetMediatype () 
@@ -120,7 +122,7 @@ class zabbix_action_operation_messageTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_action_operation_message::retrouve_mediaTypeId
+	 * @covers Zorille\framework\zabbix_action_operation_message::retrouve_mediaTypeId
 	 */
 	public function testRetrouve_mediaTypeId_valide() {
 		$this->object ->getObjetMediatype () 
@@ -145,7 +147,7 @@ class zabbix_action_operation_messageTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_action_operation_message::creer_definition_zabbix_operation_message_ws
+     * @covers Zorille\framework\zabbix_action_operation_message::creer_definition_zabbix_operation_message_ws
      */
 	public function testCreer_definition_zabbix_operation_message_ws_exception() {
 		$this->object ->setDefaultMsg ( "operation" );
@@ -155,7 +157,7 @@ class zabbix_action_operation_messageTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_action_operation_message::creer_definition_zabbix_operation_message_ws
+	 * @covers Zorille\framework\zabbix_action_operation_message::creer_definition_zabbix_operation_message_ws
 	 */
 	public function testCreer_definition_zabbix_operation_message_ws_valide() {
 		$this ->assertEquals ( array (), $this->object ->creer_definition_zabbix_operation_message_ws () );
@@ -172,7 +174,7 @@ class zabbix_action_operation_messageTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_action_operation_message::retrouve_defaultMsg
+     * @covers Zorille\framework\zabbix_action_operation_message::retrouve_defaultMsg
      */
 	public function testRetrouve_defaultMsg() {
 		$this ->assertEquals ( 0, $this->object ->retrouve_defaultMsg ( "" ) );

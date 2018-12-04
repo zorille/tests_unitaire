@@ -1,4 +1,6 @@
 <?php
+namespace Zorille\framework;
+use \Exception as Exception;
 if (! defined ( '__DOCUMENT_ROOT__' )) {
 	require_once $_SERVER ["PWD"] . '/prepare.php';
 }
@@ -32,10 +34,10 @@ class soapTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers soap::valide_presence_variables
+	 * @covers Zorille\framework\soap::valide_presence_variables
 	 */
 	public function testValide_presence_variables_host_Exception() {
-		$gestion_connexion_url = $this ->createMock ( "gestion_connexion_url" );
+		$gestion_connexion_url = $this ->createMock('Zorille\framework\gestion_connexion_url' );
 		$gestion_connexion_url ->expects ( $this ->at ( 0 ) ) 
 			->method ( 'getHost' ) 
 			->will ( $this ->returnValue ( "" ) );
@@ -46,10 +48,10 @@ class soapTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers soap::valide_presence_variables
+	 * @covers Zorille\framework\soap::valide_presence_variables
 	 */
 	public function testValide_presence_variables_port_Exception() {
-		$gestion_connexion_url = $this ->createMock ( "gestion_connexion_url" );
+		$gestion_connexion_url = $this ->createMock('Zorille\framework\gestion_connexion_url' );
 		$gestion_connexion_url ->expects ( $this ->any () ) 
 			->method ( 'getHost' ) 
 			->will ( $this ->returnValue ( "TEST_HOST" ) );
@@ -63,10 +65,10 @@ class soapTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers soap::valide_presence_variables
+	 * @covers Zorille\framework\soap::valide_presence_variables
 	 */
 	public function testValide_presence_variables_url_Exception() {
-		$gestion_connexion_url = $this ->createMock ( "gestion_connexion_url" );
+		$gestion_connexion_url = $this ->createMock('Zorille\framework\gestion_connexion_url' );
 		$gestion_connexion_url ->expects ( $this ->any () ) 
 			->method ( 'getHost' ) 
 			->will ( $this ->returnValue ( "TEST_HOST" ) );
@@ -80,10 +82,10 @@ class soapTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers soap::valide_presence_variables
+	 * @covers Zorille\framework\soap::valide_presence_variables
 	 */
 	public function testValide_presence_variables_wsdl_Exception() {
-		$gestion_connexion_url = $this ->createMock ( "gestion_connexion_url" );
+		$gestion_connexion_url = $this ->createMock('Zorille\framework\gestion_connexion_url' );
 		$gestion_connexion_url ->expects ( $this ->any () ) 
 			->method ( 'getHost' ) 
 			->will ( $this ->returnValue ( "TEST_HOST" ) );
@@ -99,10 +101,10 @@ class soapTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers soap::valide_presence_variables
+	 * @covers Zorille\framework\soap::valide_presence_variables
 	 */
 	public function testValide_presence_variables_ConnexionTimeout_Exception() {
-		$gestion_connexion_url = $this ->createMock ( "gestion_connexion_url" );
+		$gestion_connexion_url = $this ->createMock('Zorille\framework\gestion_connexion_url' );
 		$gestion_connexion_url ->expects ( $this ->any () ) 
 			->method ( 'getHost' ) 
 			->will ( $this ->returnValue ( "TEST_HOST" ) );
@@ -120,10 +122,10 @@ class soapTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers soap::valide_presence_variables
+     * @covers Zorille\framework\soap::valide_presence_variables
      */
 	public function testValide_presence_variables() {
-		$gestion_connexion_url = $this ->createMock ( "gestion_connexion_url" );
+		$gestion_connexion_url = $this ->createMock('Zorille\framework\gestion_connexion_url' );
 		$gestion_connexion_url ->expects ( $this ->any () ) 
 			->method ( 'getHost' ) 
 			->will ( $this ->returnValue ( "TEST_HOST" ) );
@@ -137,10 +139,10 @@ class soapTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers soap::retrouve_variables_tableau
+	 * @covers Zorille\framework\soap::retrouve_variables_tableau
 	 */
 	public function testRetrouve_variables_tableau_Exception() {
-		$gestion_connexion_url = $this ->createMock ( "gestion_connexion_url" );
+		$gestion_connexion_url = $this ->createMock('Zorille\framework\gestion_connexion_url' );
 		$gestion_connexion_url ->expects ( $this ->any () ) 
 			->method ( 'reset_datas', 'retrouve_connexion_params' ) 
 			->will ( $this ->returnSelf () );
@@ -152,10 +154,10 @@ class soapTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers soap::retrouve_variables_tableau
+	 * @covers Zorille\framework\soap::retrouve_variables_tableau
 	 */
 	public function testRetrouve_variables_tableau_url_Exception() {
-		$gestion_connexion_url = $this ->createMock ( "gestion_connexion_url" );
+		$gestion_connexion_url = $this ->createMock('Zorille\framework\gestion_connexion_url' );
 		$gestion_connexion_url ->expects ( $this ->any () ) 
 			->method ( 'reset_datas', 'retrouve_connexion_params' ) 
 			->will ( $this ->returnSelf () );
@@ -168,10 +170,10 @@ class soapTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers soap::retrouve_variables_tableau
+	 * @covers Zorille\framework\soap::retrouve_variables_tableau
 	 */
 	public function testRetrouve_variables_tableau_wsdl_Exception() {
-		$gestion_connexion_url = $this ->createMock ( "gestion_connexion_url" );
+		$gestion_connexion_url = $this ->createMock('Zorille\framework\gestion_connexion_url' );
 		$gestion_connexion_url ->expects ( $this ->any () ) 
 			->method ( 'reset_datas', 'retrouve_connexion_params' ) 
 			->will ( $this ->returnSelf () );
@@ -185,10 +187,10 @@ class soapTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers soap::retrouve_variables_tableau
+	 * @covers Zorille\framework\soap::retrouve_variables_tableau
 	 */
 	public function testRetrouve_variables_tableau_methode_Exception() {
-		$gestion_connexion_url = $this ->createMock ( "gestion_connexion_url" );
+		$gestion_connexion_url = $this ->createMock('Zorille\framework\gestion_connexion_url' );
 		$gestion_connexion_url ->expects ( $this ->any () ) 
 			->method ( 'reset_datas', 'retrouve_connexion_params' ) 
 			->will ( $this ->returnSelf () );
@@ -203,10 +205,10 @@ class soapTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers soap::retrouve_variables_tableau
+	 * @covers Zorille\framework\soap::retrouve_variables_tableau
 	 */
 	public function testRetrouve_variables_tableau_username_Exception() {
-		$gestion_connexion_url = $this ->createMock ( "gestion_connexion_url" );
+		$gestion_connexion_url = $this ->createMock('Zorille\framework\gestion_connexion_url' );
 		$gestion_connexion_url ->expects ( $this ->any () ) 
 			->method ( 'reset_datas', 'retrouve_connexion_params' ) 
 			->will ( $this ->returnSelf () );
@@ -222,10 +224,10 @@ class soapTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers soap::retrouve_variables_tableau
+	 * @covers Zorille\framework\soap::retrouve_variables_tableau
 	 */
 	public function testRetrouve_variables_tableau_password_Exception() {
-		$gestion_connexion_url = $this ->createMock ( "gestion_connexion_url" );
+		$gestion_connexion_url = $this ->createMock('Zorille\framework\gestion_connexion_url' );
 		$gestion_connexion_url ->expects ( $this ->any () ) 
 			->method ( 'reset_datas', 'retrouve_connexion_params' ) 
 			->will ( $this ->returnSelf () );
@@ -242,10 +244,10 @@ class soapTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers soap::retrouve_variables_tableau
+	 * @covers Zorille\framework\soap::retrouve_variables_tableau
 	 */
 	public function testRetrouve_variables_tableau_RequestTimeout_Exception() {
-		$gestion_connexion_url = $this ->createMock ( "gestion_connexion_url" );
+		$gestion_connexion_url = $this ->createMock('Zorille\framework\gestion_connexion_url' );
 		$gestion_connexion_url ->expects ( $this ->any () ) 
 			->method ( 'reset_datas', 'retrouve_connexion_params' ) 
 			->will ( $this ->returnSelf () );
@@ -263,10 +265,10 @@ class soapTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers soap::retrouve_variables_tableau
+     * @covers Zorille\framework\soap::retrouve_variables_tableau
      */
 	public function testRetrouve_variables_tableau() {
-		$gestion_connexion_url = $this ->createMock ( "gestion_connexion_url" );
+		$gestion_connexion_url = $this ->createMock('Zorille\framework\gestion_connexion_url' );
 		$gestion_connexion_url ->expects ( $this ->any () ) 
 			->method ( 'reset_datas', 'retrouve_connexion_params' ) 
 			->will ( $this ->returnSelf () );
@@ -285,10 +287,10 @@ class soapTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers soap::retrouve_variables_liste_options
+     * @covers Zorille\framework\soap::retrouve_variables_liste_options
      */
 	public function testRetrouve_variables_liste_options() {
-		$gestion_connexion_url = $this ->createMock ( "gestion_connexion_url" );
+		$gestion_connexion_url = $this ->createMock('Zorille\framework\gestion_connexion_url' );
 		$gestion_connexion_url ->expects ( $this ->any () ) 
 			->method ( 'reset_datas', 'retrouve_connexion_params' ) 
 			->will ( $this ->returnSelf () );
@@ -322,10 +324,10 @@ class soapTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers soap::prepare_donnees_connexion
+     * @covers Zorille\framework\soap::prepare_donnees_connexion
      */
 	public function testPrepare_donnees_connexion() {
-		$gestion_connexion_url = $this ->createMock ( "gestion_connexion_url" );
+		$gestion_connexion_url = $this ->createMock('Zorille\framework\gestion_connexion_url' );
 		$gestion_connexion_url ->expects ( $this ->any () ) 
 			->method ( 'utilise_proxy' ) 
 			->will ( $this ->returnValue ( array () ) );
@@ -344,13 +346,13 @@ class soapTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers soap::connect
+	 * @covers Zorille\framework\soap::connect
 	 */
 	public function testConnect_variables_Exception() {
 		$this->object ->setUrl ( "TEST_URI" );
 		$this->object ->setWsdl ( "TEST_WSDL" );
 		
-		$gestion_connexion_url = $this ->createMock ( "gestion_connexion_url" );
+		$gestion_connexion_url = $this ->createMock('Zorille\framework\gestion_connexion_url' );
 		$gestion_connexion_url ->expects ( $this ->any () ) 
 			->method ( 'prepare_prepend_url' ) 
 			->will ( $this ->returnValue ( "http://TEST/" ) );
@@ -378,13 +380,13 @@ class soapTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers soap::connect
+	 * @covers Zorille\framework\soap::connect
 	 */
 	public function testConnect_Exception() {
 		$this->object ->setUrl ( "TEST_URI" );
 		$this->object ->setWsdl ( "TEST_WSDL" );
 		
-		$gestion_connexion_url = $this ->createMock ( "gestion_connexion_url" );
+		$gestion_connexion_url = $this ->createMock('Zorille\framework\gestion_connexion_url' );
 		$gestion_connexion_url ->expects ( $this ->any () ) 
 			->method ( 'prepare_prepend_url' ) 
 			->will ( $this ->returnValue ( "http://TEST/" ) );
@@ -412,13 +414,13 @@ class soapTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers soap::connect
+     * @covers Zorille\framework\soap::connect
      */
 	public function testConnect_soap_option() {
 		$this->object ->setUrl ( "TEST_URI" );
 		$this->object ->setWsdl ( "TEST_WSDL" );
 		
-		$gestion_connexion_url = $this ->createMock ( "gestion_connexion_url" );
+		$gestion_connexion_url = $this ->createMock('Zorille\framework\gestion_connexion_url' );
 		$gestion_connexion_url ->expects ( $this ->any () ) 
 			->method ( 'prepare_prepend_url' ) 
 			->will ( $this ->returnValue ( "http://TEST/" ) );
@@ -443,7 +445,7 @@ class soapTest extends MockedListeOptions {
         $this->expectExceptionMessage( '(TEST soap) SoapClient::SoapClient(): \'uri\' option is required in nonWSDL mode' );
 		$this->object ->connect ();
 		
-		$curl = $this ->createMock ( "curl" );
+		$curl = $this ->createMock('Zorille\framework\curl' );
 		$curl ->expects ( $this ->any () ) 
 			->method ( 'setSslVerifyPeerAndHost', 'setReturnTransfert', 'setUserPasswd', "setHttpHAuth", "setTimeout" ) 
 			->will ( $this ->returnValue ( "http://TEST/" ) );
@@ -454,13 +456,13 @@ class soapTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers soap::connect
+	 * @covers Zorille\framework\soap::connect
 	 */
 	public function testConnect_curl_option() {
 		$this->object ->setUrl ( "TEST_URI" );
 		$this->object ->setWsdl ( "TEST_WSDL" );
 		
-		$gestion_connexion_url = $this ->createMock ( "gestion_connexion_url" );
+		$gestion_connexion_url = $this ->createMock('Zorille\framework\gestion_connexion_url' );
 		$gestion_connexion_url ->expects ( $this ->any () ) 
 			->method ( 'prepare_prepend_url' ) 
 			->will ( $this ->returnValue ( "http://TEST/" ) );
@@ -481,7 +483,7 @@ class soapTest extends MockedListeOptions {
 		$this->object ->setGestionConnexionUrl ( $gestion_connexion_url );
 		$this->object ->setConnexionTimeout ( 120 );
 		
-		$curl = $this ->createMock ( "curl" );
+		$curl = $this ->createMock('Zorille\framework\curl' );
 		$curl ->expects ( $this ->any () ) 
 			->method ( 'setSslVerifyPeerAndHost', 'setReturnTransfert', 'setUserPasswd', "setHttpHAuth", "setTimeout" ) 
 			->will ( $this ->returnValue ( "http://TEST/" ) );
@@ -492,10 +494,10 @@ class soapTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers soap::connect_curl
+     * @covers Zorille\framework\soap::connect_curl
      */
 	public function testConnect_curl() {
-		$gestion_connexion_url = $this ->createMock ( "gestion_connexion_url" );
+		$gestion_connexion_url = $this ->createMock('Zorille\framework\gestion_connexion_url' );
 		$gestion_connexion_url ->expects ( $this ->any () ) 
 			->method ( 'getPrependUrl' ) 
 			->will ( $this ->returnValue ( "http://TEST/" ) );
@@ -508,7 +510,7 @@ class soapTest extends MockedListeOptions {
 				"proxy_password" => "PASS", 
 				"proxy_type" => "5" ) ) );
 		$this->object ->setGestionConnexionUrl ( $gestion_connexion_url );
-		$curl = $this ->createMock ( "curl" );
+		$curl = $this ->createMock('Zorille\framework\curl' );
 		$curl ->expects ( $this ->any () ) 
 			->method ( 'setSslVerifyPeerAndHost', 'setReturnTransfert', 'setUserPasswd', "setHttpHAuth", "setTimeout" ) 
 			->will ( $this ->returnValue ( "http://TEST/" ) );
@@ -518,15 +520,15 @@ class soapTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers soap::send_curl_soap_requete
+     * @covers Zorille\framework\soap::send_curl_soap_requete
      */
 	public function testSend_curl_soap_requete() {
-		$gestion_connexion_url = $this ->createMock ( "gestion_connexion_url" );
+		$gestion_connexion_url = $this ->createMock('Zorille\framework\gestion_connexion_url' );
 		$gestion_connexion_url ->expects ( $this ->any () ) 
 			->method ( 'getPrependUrl' ) 
 			->will ( $this ->returnValue ( "http://TEST/" ) );
 		$this->object ->setGestionConnexionUrl ( $gestion_connexion_url );
-		$curl = $this ->createMock ( "curl" );
+		$curl = $this ->createMock('Zorille\framework\curl' );
 		$curl ->expects ( $this ->any () ) 
 			->method ( 'send_curl' ) 
 			->will ( $this ->returnValue ( "http://TEST/" ) );

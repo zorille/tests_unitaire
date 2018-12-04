@@ -1,4 +1,6 @@
 <?php
+namespace Zorille\framework;
+use \Exception as Exception;
 if (! defined ( '__DOCUMENT_ROOT__' )) {
 	require_once $_SERVER ["PWD"] . '/prepare.php';
 }
@@ -19,10 +21,10 @@ class zabbix_hostTest extends MockedListeOptions {
 	protected function setUp() {
 		ob_start ();
 		
-		$HostInterfaces = $this ->createMock ( "zabbix_host_interfaces" );
-		$HostTemplates = $this ->createMock ( "zabbix_templates" );
-		$HostGroups = $this ->createMock ( "zabbix_hostgroups" );
-		$zabbix_wsclient = $this ->createMock ( "zabbix_wsclient" );
+		$HostInterfaces = $this ->createMock('Zorille\framework\zabbix_host_interfaces' );
+		$HostTemplates = $this ->createMock('Zorille\framework\zabbix_templates' );
+		$HostGroups = $this ->createMock('Zorille\framework\zabbix_hostgroups' );
+		$zabbix_wsclient = $this ->createMock('Zorille\framework\zabbix_wsclient' );
 		
 		$this->object = new zabbix_host ( false, "TESTS zabbix HOST" );
 		$this->object ->setListeOptions ( $this ->getListeOption () ) 
@@ -41,7 +43,7 @@ class zabbix_hostTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_host::retrouve_zabbix_param
+	 * @covers Zorille\framework\zabbix_host::retrouve_zabbix_param
 	 */
 	public function testRetrouve_zabbix_param_Exception() {
 		$this ->getListeOption () 
@@ -57,7 +59,7 @@ class zabbix_hostTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_host::retrouve_zabbix_param
+	 * @covers Zorille\framework\zabbix_host::retrouve_zabbix_param
 	 */
 	public function testRetrouve_zabbix_param() {
 		$this ->getListeOption () 
@@ -75,7 +77,7 @@ class zabbix_hostTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_host::creer_definition_host_ws
+     * @covers Zorille\framework\zabbix_host::creer_definition_host_ws
      */
 	public function testCreer_definition_host_ws() {
 		$this->object ->setHost ( "CI1" );
@@ -125,7 +127,7 @@ class zabbix_hostTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_host::creer_host
+	 * @covers Zorille\framework\zabbix_host::creer_host
 	 */
 	public function testCreer_host() {
 		$this->object ->getObjetZabbixWsclient () 
@@ -161,7 +163,7 @@ class zabbix_hostTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_host::compare_host
+	 * @covers Zorille\framework\zabbix_host::compare_host
 	 */
 	public function testCompare_host() {
 		$this->object ->setHost ( "NAME1" );
@@ -177,7 +179,7 @@ class zabbix_hostTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_host::creer_definition_host_delete_ws
+	 * @covers Zorille\framework\zabbix_host::creer_definition_host_delete_ws
 	 */
 	public function testCreer_definition_host_delete_ws() {
 		$this ->assertEquals ( array (), $this->object ->creer_definition_host_delete_ws () );
@@ -187,7 +189,7 @@ class zabbix_hostTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_host::supprime_host
+	 * @covers Zorille\framework\zabbix_host::supprime_host
 	 */
 	public function testSupprime_host() {
 		$this->object ->getObjetZabbixWsclient () 
@@ -205,7 +207,7 @@ class zabbix_hostTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_host::creer_definition_hostByName_get_ws
+	 * @covers Zorille\framework\zabbix_host::creer_definition_hostByName_get_ws
 	 */
 	public function testCreer_definition_hostByName_get_ws() {
 		$this->object ->setHost ( "TEST" );
@@ -216,7 +218,7 @@ class zabbix_hostTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_host::recherche_hostid_by_Name
+	 * @covers Zorille\framework\zabbix_host::recherche_hostid_by_Name
 	 */
 	public function testRecherche_hostid_by_Name() {
 		$this->object ->setHost ( "TEST" );
@@ -230,7 +232,7 @@ class zabbix_hostTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_host::creer_definition_hostNameByHostId_get_ws
+	 * @covers Zorille\framework\zabbix_host::creer_definition_hostNameByHostId_get_ws
 	 */
 	public function testcreer_definition_hostNameByHostId_get_ws() {
 		$this->object ->setHostId ( 1000 );
@@ -243,7 +245,7 @@ class zabbix_hostTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_host::recherche_Name_by_hostid
+	 * @covers Zorille\framework\zabbix_host::recherche_Name_by_hostid
 	 */
 	public function testrecherche_Name_by_hostid() {
 		$this->object ->setHostId ( 1001 );
@@ -258,7 +260,7 @@ class zabbix_hostTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_host::valide_hostid_present
+	 * @covers Zorille\framework\zabbix_host::valide_hostid_present
 	 */
 	public function testvalide_hostid_present_exception() {
 		$this->object ->setHost ( "MACHINE1" ) 
@@ -269,7 +271,7 @@ class zabbix_hostTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_host::valide_hostid_present
+	 * @covers Zorille\framework\zabbix_host::valide_hostid_present
 	 */
 	public function testvalide_hostid_present_valide() {
 		$this->object ->setHostId ( 1001 );
@@ -279,7 +281,7 @@ class zabbix_hostTest extends MockedListeOptions {
 
 	/********************** GESTION DES HOSTGROUPS ***********************/
 	/**
-	 * @covers zabbix_host::creer_definition_hostListeGroups_ws
+	 * @covers Zorille\framework\zabbix_host::creer_definition_hostListeGroups_ws
 	 */
 	public function testcreer_definition_hostListeGroups_ws() {
 		$this->object ->setHost ( "MACHINE1" ) 
@@ -294,7 +296,7 @@ class zabbix_hostTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_host::retrouve_liste_groups_par_host
+	 * @covers Zorille\framework\zabbix_host::retrouve_liste_groups_par_host
 	 */
 	public function testretrouve_liste_groups_par_host() {
 		$this->object ->setHost ( "MACHINE1" ) 
@@ -312,7 +314,7 @@ class zabbix_hostTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_host::ajouter_groups_au_host
+	 * @covers Zorille\framework\zabbix_host::ajouter_groups_au_host
 	 */
 	public function testajouter_groups_au_host() {
 		$this->object ->setHostId ( "10" );
@@ -342,7 +344,7 @@ class zabbix_hostTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_host::supprimer_groups_au_host
+	 * @covers Zorille\framework\zabbix_host::supprimer_groups_au_host
 	 */
 	public function testsupprimer_groups_au_host() {
 		$this->object ->setHostId ( "10" );
@@ -372,7 +374,7 @@ class zabbix_hostTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_host::creer_definition_hostUpdate_manageGroups_ws
+	 * @covers Zorille\framework\zabbix_host::creer_definition_hostUpdate_manageGroups_ws
 	 */
 	public function testcreer_definition_hostUpdate_manageGroups_ws() {
 		$this->object ->setHost ( "MACHINE1" ) 
@@ -395,7 +397,7 @@ class zabbix_hostTest extends MockedListeOptions {
 	/********************** GESTION DES TEMPLATES ***********************/
 	
 	/**
-	 * @covers zabbix_host::creer_definition_hostListeTemplates_ws
+	 * @covers Zorille\framework\zabbix_host::creer_definition_hostListeTemplates_ws
 	 */
 	public function testCreer_definition_hostListeTemplates_ws() {
 		$this->object ->setHostId ( "10" );
@@ -408,7 +410,7 @@ class zabbix_hostTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_host::retrouve_liste_template_par_host
+	 * @covers Zorille\framework\zabbix_host::retrouve_liste_template_par_host
 	 */
 	public function testRetrouve_liste_template_par_host() {
 		$this->object ->setHostId ( "10" );
@@ -425,7 +427,7 @@ class zabbix_hostTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_host::ajouter_templates_au_host
+	 * @covers Zorille\framework\zabbix_host::ajouter_templates_au_host
 	 */
 	public function testAjouter_templates_au_host() {
 		$this->object ->setHostId ( "10" );
@@ -454,7 +456,7 @@ class zabbix_hostTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_host::supprimer_templates_au_host
+	 * @covers Zorille\framework\zabbix_host::supprimer_templates_au_host
 	 */
 	public function testSupprimer_templates_au_host() {
 		$this->object ->setHostId ( "10" );
@@ -478,7 +480,7 @@ class zabbix_hostTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_host::creer_definition_hostUpdate_addTemplate_ws
+	 * @covers Zorille\framework\zabbix_host::creer_definition_hostUpdate_addTemplate_ws
 	 */
 	public function testCreer_definition_hostUpdate_addTemplate_ws_exception() {
 		$this->object ->setHost ( "MACHINE1" );
@@ -488,7 +490,7 @@ class zabbix_hostTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_host::creer_definition_hostUpdate_addTemplate_ws
+	 * @covers Zorille\framework\zabbix_host::creer_definition_hostUpdate_addTemplate_ws
 	 */
 	public function testCreer_definition_hostUpdate_addTemplate_ws() {
 		$this->object ->setHostId ( "10" );
@@ -507,7 +509,7 @@ class zabbix_hostTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_host::creer_definition_hostUpdate_clearTemplate_ws
+	 * @covers Zorille\framework\zabbix_host::creer_definition_hostUpdate_clearTemplate_ws
 	 */
 	public function testCreer_definition_hostUpdate_clearTemplate_ws_exception() {
 		$this->object ->setHost ( "MACHINE1" );
@@ -517,7 +519,7 @@ class zabbix_hostTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_host::creer_definition_hostUpdate_clearTemplate_ws
+	 * @covers Zorille\framework\zabbix_host::creer_definition_hostUpdate_clearTemplate_ws
 	 */
 	public function testCreer_definition_hostUpdate_clearTemplate_ws() {
 		$this->object ->setHostId ( "10" );
@@ -545,7 +547,7 @@ class zabbix_hostTest extends MockedListeOptions {
 	/********************** GESTION DES INTERFACES **********************/
 	
 	/**
-	 * @covers zabbix_host::creer_definition_hostListeInterfaces_ws
+	 * @covers Zorille\framework\zabbix_host::creer_definition_hostListeInterfaces_ws
 	 */
 	public function testCreer_definition_hostListeInterfaces_ws() {
 		$this->object ->setHostId ( "10" );
@@ -565,7 +567,7 @@ class zabbix_hostTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_host::retrouve_liste_interfaces_par_host
+	 * @covers Zorille\framework\zabbix_host::retrouve_liste_interfaces_par_host
 	 */
 	public function testRetrouve_liste_interfaces_par_host() {
 		$this->object ->setHostId ( "10" );
@@ -582,7 +584,7 @@ class zabbix_hostTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_host::ajouter_interfaces_au_host
+	 * @covers Zorille\framework\zabbix_host::ajouter_interfaces_au_host
 	 */
 	public function testAjouter_interfaces_au_host() {
 		$this->object ->setHostId ( "10" );
@@ -607,7 +609,7 @@ class zabbix_hostTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_host::supprimer_interfaces_au_host
+	 * @covers Zorille\framework\zabbix_host::supprimer_interfaces_au_host
 	 */
 	public function testSupprimer_interfaces_au_host() {
 		$this->object ->setHostId ( "10" );
@@ -641,7 +643,7 @@ class zabbix_hostTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_host::creer_definition_hostUpdate_addInterface_ws
+	 * @covers Zorille\framework\zabbix_host::creer_definition_hostUpdate_addInterface_ws
 	 */
 	public function testCreer_definition_hostUpdate_addInterface_ws() {
 		$this->object ->setHostId ( "10" );
@@ -663,7 +665,7 @@ class zabbix_hostTest extends MockedListeOptions {
 	
 	/********************** GESTION DES INVENTORY ***********************/
 	/**
-	 * @covers zabbix_host::creer_definition_inventory_ws
+	 * @covers Zorille\framework\zabbix_host::creer_definition_inventory_ws
 	 */
 	public function testCreer_definition_inventory_ws() {
 		$this ->assertEquals ( array (), $this->object ->creer_definition_inventory_ws () );
@@ -672,7 +674,7 @@ class zabbix_hostTest extends MockedListeOptions {
 	/********************** GESTION DES INVENTORY ***********************/
 	
 	/**
-	 * @covers zabbix_host::retrouve_Status
+	 * @covers Zorille\framework\zabbix_host::retrouve_Status
 	 */
 	public function testRetrouve_Status() {
 		$this ->assertEquals ( 0, $this->object ->retrouve_Status ( "" ) );

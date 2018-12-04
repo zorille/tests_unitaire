@@ -1,5 +1,6 @@
 <?php
-
+namespace Zorille\framework;
+use \Exception as Exception;
 /**
  * @author dvargas
  * @package Lib
@@ -24,7 +25,7 @@ class cacti_datasTest extends MockedListeOptions {
 	protected function setUp() {
 		ob_start ();
 		
-		$utilisateurs = $this ->createMock ( "utilisateurs" );
+		$utilisateurs = $this ->createMock('Zorille\framework\utilisateurs' );
 		$utilisateurs ->expects ( $this ->any () ) 
 			->method ( 'retrouve_utilisateurs_array' ) 
 			->will ( $this ->returnValue ( $utilisateurs ) );
@@ -49,7 +50,7 @@ class cacti_datasTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers cacti_datas::retrouve_cacti_param
+	 * @covers Zorille\framework\cacti_datas::retrouve_cacti_param
 	 */
 	public function testRetrouve_cacti_param_exception() {
 		$this->object ->getListeOptions () 
@@ -63,7 +64,7 @@ class cacti_datasTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers cacti_datas::retrouve_cacti_param
+	 * @covers Zorille\framework\cacti_datas::retrouve_cacti_param
 	 */
 	public function testRetrouve_cacti_param_valide() {
 		$this->object ->getListeOptions () 
@@ -84,7 +85,7 @@ class cacti_datasTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers cacti_datas::valide_presence_cacti_data
+	 * @covers Zorille\framework\cacti_datas::valide_presence_cacti_data
 	 */
 	public function testvalide_presence_cacti_data() {
 		$this->object ->setServeurData ( array ( 
@@ -104,7 +105,7 @@ class cacti_datasTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers cacti_datas::prepare_nom_ci_version_cacti
+     * @covers Zorille\framework\cacti_datas::prepare_nom_ci_version_cacti
      */
 	public function testprepare_nom_ci_version_cacti() {
 		$this ->assertEquals ( 'test/NOMMACHINE', $this->object ->prepare_nom_ci_version_cacti ( "test", "NOMMACHINE" ) );

@@ -1,4 +1,6 @@
 <?php
+namespace Zorille\framework;
+use \Exception as Exception;
 if (! defined ( '__DOCUMENT_ROOT__' )) {
 	require_once $_SERVER ["PWD"] . '/prepare.php';
 }
@@ -18,7 +20,7 @@ class zabbix_hostgroupTest extends MockedListeOptions {
      */
 	protected function setUp() {
 		ob_start ();
-		$zabbix_wsclient = $this->createMock ( "zabbix_wsclient" );
+		$zabbix_wsclient = $this->createMock('Zorille\framework\zabbix_wsclient' );
 		
 		$this->object = new zabbix_hostgroup ( false, "zabbix_hostgroup" );
 		$this->object->setObjetZabbixWsclient ( $zabbix_wsclient );
@@ -33,7 +35,7 @@ class zabbix_hostgroupTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_hostgroup::retrouve_zabbix_param
+     * @covers Zorille\framework\zabbix_hostgroup::retrouve_zabbix_param
      */
 	public function testRetrouve_zabbix_param_Exception() {
 		$this->getListeOption ()
@@ -48,7 +50,7 @@ class zabbix_hostgroupTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_hostgroup::retrouve_zabbix_param
+	 * @covers Zorille\framework\zabbix_hostgroup::retrouve_zabbix_param
 	 */
 	public function testRetrouve_zabbix_param() {
 		$this->getListeOption ()
@@ -66,7 +68,7 @@ class zabbix_hostgroupTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_hostgroup::creer_definition_hostGroup_create_ws
+     * @covers Zorille\framework\zabbix_hostgroup::creer_definition_hostGroup_create_ws
      */
 	public function testCreer_definition_hostGroup_create_ws() {
 		$this->object->setName ( "DESC" );
@@ -76,7 +78,7 @@ class zabbix_hostgroupTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_hostgroup::creer_hostGroup
+     * @covers Zorille\framework\zabbix_hostgroup::creer_hostGroup
      */
 	public function testCreer_hostGroup() {
 		$this->object->setName ( "DESC" );

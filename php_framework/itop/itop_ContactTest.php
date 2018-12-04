@@ -1,4 +1,7 @@
 <?php
+namespace Zorille\itop;
+use Zorille\framework as Core;
+use \Exception as Exception;
 /**
  * @author dvargas
  * @package Lib
@@ -7,9 +10,9 @@
 if (! defined ( '__DOCUMENT_ROOT__' )) {
 	require_once $_SERVER ["PWD"] . '/prepare.php';
 }
-class itop_ContactTest extends MockedListeOptions {
+class ContactTest extends Core\MockedListeOptions {
 	/**
-	 * @var itop_Contact
+	 * @var Contact
 	 */
 	protected $object;
 
@@ -20,10 +23,10 @@ class itop_ContactTest extends MockedListeOptions {
 	protected function setUp() {
 		ob_start ();
 		
-		$itop_wsclient_rest = $this ->createMock ( "itop_wsclient_rest" );
-		$itop_Organization = $this ->createMock ( "itop_Organization" );
+		$itop_wsclient_rest = $this ->createMock('Zorille\itop\wsclient_rest' );
+		$itop_Organization = $this ->createMock('Zorille\itop\Organization' );
 		
-		$this->object = new itop_Contact ( false, "TESTS itop_Contact" );
+		$this->object = new Contact ( false, "TESTS Contact" );
 		$this->object ->setListeOptions ( $this ->getListeOption () ) 
 			->setObjetItopWsclientRest ( $itop_wsclient_rest ) 
 			->setObjetItopOrganization ( $itop_Organization );
@@ -44,7 +47,7 @@ class itop_ContactTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers itop_Contact::retrouve_Contact
+	 * @covers Zorille\itop\Contact::retrouve_Contact
 	 */
 	public function testretrouve_Contact() {
 		$this->object ->getObjetItopWsclientRest () 
@@ -62,7 +65,7 @@ class itop_ContactTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers itop_Contact::creer_oql
+	 * @covers Zorille\itop\Contact::creer_oql
 	 */
 	public function testcreer_oql() {
 		$this ->assertSame ( $this->object, $this->object ->creer_oql ( 'NAME1', 'EMAIL1' ) );
@@ -71,7 +74,7 @@ class itop_ContactTest extends MockedListeOptions {
 	
 
 	/**
-	 * @covers itop_Contact::creer_lnkContactToFunctionalCI
+	 * @covers Zorille\itop\Contact::creer_lnkContactToFunctionalCI
 	 */
 	public function testcreer_lnkContactToFunctionalCI_exception() {
 		$this->object ->setFormat ( "Contact" )
@@ -79,12 +82,12 @@ class itop_ContactTest extends MockedListeOptions {
 				'name' => 'NOM2' ) );
 	
 		$this ->expectException(Exception::class);
-        $this->expectExceptionMessage( '(TESTS itop_Contact) Il faut un ID a cette Contact' );
+        $this->expectExceptionMessage( '(TESTS Contact) Il faut un ID a cette Contact' );
 		$this->object ->creer_lnkContactToFunctionalCI ( "FRIENDLYNAME", 15 );
 	}
 	
 	/**
-	 * @covers itop_Contact::creer_lnkContactToFunctionalCI
+	 * @covers Zorille\itop\Contact::creer_lnkContactToFunctionalCI
 	 */
 	public function testcreer_lnkContactToFunctionalCI() {
 		$this->object ->setId ( 10 )

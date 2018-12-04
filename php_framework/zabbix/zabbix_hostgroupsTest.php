@@ -1,4 +1,6 @@
 <?php
+namespace Zorille\framework;
+use \Exception as Exception;
 if (! defined ( '__DOCUMENT_ROOT__' )) {
 	require_once $_SERVER ["PWD"] . '/prepare.php';
 }
@@ -19,8 +21,8 @@ class zabbix_hostgroupsTest extends MockedListeOptions {
 	protected function setUp() {
 		ob_start ();
 		
-		$zabbix_wsclient = $this ->createMock ( "zabbix_wsclient" );
-		$zabbix_hostgroup_reference = $this ->createMock ( "zabbix_hostgroup" );
+		$zabbix_wsclient = $this ->createMock('Zorille\framework\zabbix_wsclient' );
+		$zabbix_hostgroup_reference = $this ->createMock('Zorille\framework\zabbix_hostgroup' );
 		
 		$this->object = new zabbix_hostgroups ( false, "TESTS zabbix_hostgroups" );
 		$this->object ->setListeOptions ( $this ->getListeOption () );
@@ -37,7 +39,7 @@ class zabbix_hostgroupsTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_hostgroups::retrouve_zabbix_param
+	 * @covers Zorille\framework\zabbix_hostgroups::retrouve_zabbix_param
 	 */
 	public function testRetrouve_zabbix_param_Exception() {
 		$this ->getListeOption () 
@@ -53,7 +55,7 @@ class zabbix_hostgroupsTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_hostgroups::retrouve_zabbix_param
+	 * @covers Zorille\framework\zabbix_hostgroups::retrouve_zabbix_param
 	 */
 	public function testRetrouve_zabbix_param() {
 		$this ->getListeOption () 
@@ -72,7 +74,7 @@ class zabbix_hostgroupsTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_hostgroups::ajoute_groupe_a_partir_cli
+	 * @covers Zorille\framework\zabbix_hostgroups::ajoute_groupe_a_partir_cli
 	 */
 	public function testAjoute_groupe_a_partir_cli() {
 		$liste_groupes_cli = array ( 
@@ -103,7 +105,7 @@ class zabbix_hostgroupsTest extends MockedListeOptions {
 	}
 
 	/**
-		 * @covers zabbix_hostgroups::retire_groupe_a_partir_cli
+		 * @covers Zorille\framework\zabbix_hostgroups::retire_groupe_a_partir_cli
 		 */
 	public function testRetire_groupe_a_partir_cli() {
 		$liste_groupes_cli = array ( 
@@ -133,7 +135,7 @@ class zabbix_hostgroupsTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_hostgroups::RemplaceValeurListeGroups
+	 * @covers Zorille\framework\zabbix_hostgroups::RemplaceValeurListeGroups
 	 */
 	public function testRemplaceValeurListeGroups_exception() {
 		$liste_groups = array ( 
@@ -162,7 +164,7 @@ class zabbix_hostgroupsTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_hostgroups::RemplaceValeurListeGroups
+	 * @covers Zorille\framework\zabbix_hostgroups::RemplaceValeurListeGroups
 	 */
 	public function testRemplaceValeurListeGroups_valide() {
 		$liste_groups = array ( 
@@ -198,7 +200,7 @@ class zabbix_hostgroupsTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_hostgroups::creer_liste_groups
+	 * @covers Zorille\framework\zabbix_hostgroups::creer_liste_groups
 	 */
 	public function testCreer_liste_groups() {
 		$liste_groups = array ( 
@@ -243,7 +245,7 @@ class zabbix_hostgroupsTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_hostgroups::recherche_liste_groups
+	 * @covers Zorille\framework\zabbix_hostgroups::recherche_liste_groups
 	 */
 	public function testRecherche_liste_groups() {
 		$liste_groups = array ( 
@@ -270,7 +272,7 @@ class zabbix_hostgroupsTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_hostgroups::valide_liste_groups
+     * @covers Zorille\framework\zabbix_hostgroups::valide_liste_groups
      */
 	public function testValide_liste_groups() {
 		$liste_groups = array ( 
@@ -289,7 +291,7 @@ class zabbix_hostgroupsTest extends MockedListeOptions {
 	}
 	
 	/**
-	 * @covers zabbix_hostgroups::ajoute_liste_groupes_a_partir_de_tableau
+	 * @covers Zorille\framework\zabbix_hostgroups::ajoute_liste_groupes_a_partir_de_tableau
 	 */
 	public function testAjoute_liste_groupes_a_partir_de_tableau() {
 		$liste_groupes = array (
@@ -320,7 +322,7 @@ class zabbix_hostgroupsTest extends MockedListeOptions {
 	}
 	
 	/**
-	 * @covers zabbix_hostgroups::valide_liste_groupes_a_partir_de_tableau
+	 * @covers Zorille\framework\zabbix_hostgroups::valide_liste_groupes_a_partir_de_tableau
 	 */
 	public function testValide_liste_groupes_a_partir_de_tableau() {
 		$liste_groupes = array (
@@ -351,7 +353,7 @@ class zabbix_hostgroupsTest extends MockedListeOptions {
 	}
 	
 	/**
-	 * @covers zabbix_hostgroups::invalide_liste_groupes_a_partir_de_tableau
+	 * @covers Zorille\framework\zabbix_hostgroups::invalide_liste_groupes_a_partir_de_tableau
 	 */
 	public function testInvalide_liste_groupes_a_partir_de_tableau() {
 		$liste_groupes = array (
@@ -392,7 +394,7 @@ class zabbix_hostgroupsTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_hostgroups::creer_definition_groupsids_ws
+	 * @covers Zorille\framework\zabbix_hostgroups::creer_definition_groupsids_ws
 	 */
 	public function testcreer_definition_groupsids_ws() {
 		$liste_groups = array ( 
@@ -416,7 +418,7 @@ class zabbix_hostgroupsTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_hostgroups::creer_definition_groupsids_sans_champ_groupid_ws
+	 * @covers Zorille\framework\zabbix_hostgroups::creer_definition_groupsids_sans_champ_groupid_ws
 	 */
 	public function testcreer_definition_groupsids_sans_champ_groupid_ws() {
 		$liste_groups = array ( 
@@ -438,7 +440,7 @@ class zabbix_hostgroupsTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_hostgroups::retrouve_hostgroupId
+	 * @covers Zorille\framework\zabbix_hostgroups::retrouve_hostgroupId
 	 */
 	public function testRetrouve_hostgroupId() {
 		$liste_groups = array ( 

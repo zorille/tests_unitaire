@@ -1,4 +1,6 @@
 <?php
+namespace Zorille\itop;
+use Zorille\framework as Core;
 /**
  * @author dvargas
  * @package Lib
@@ -7,9 +9,9 @@
 if (! defined ( '__DOCUMENT_ROOT__' )) {
 	require_once $_SERVER ["PWD"] . '/prepare.php';
 }
-class itop_NetworkSocketTest extends MockedListeOptions {
+class NetworkSocketTest extends Core\MockedListeOptions {
 	/**
-	 * @var itop_NetworkSocket
+	 * @var NetworkSocket
 	 */
 	protected $object;
 
@@ -20,9 +22,9 @@ class itop_NetworkSocketTest extends MockedListeOptions {
 	protected function setUp() {
 		ob_start ();
 		
-		$itop_wsclient_rest = $this ->createMock ( "itop_wsclient_rest" );
+		$itop_wsclient_rest = $this ->createMock('Zorille\itop\wsclient_rest' );
 		
-		$this->object = new itop_NetworkSocket ( false, "TESTS itop_NetworkSocket" );
+		$this->object = new NetworkSocket ( false, "TESTS NetworkSocket" );
 		$this->object ->setListeOptions ( $this ->getListeOption () ) 
 			->setObjetItopWsclientRest ( $itop_wsclient_rest );
 		
@@ -38,7 +40,7 @@ class itop_NetworkSocketTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers itop_NetworkSocket::retrouve_NetworkSocket
+	 * @covers Zorille\itop\NetworkSocket::retrouve_NetworkSocket
 	 */
 	public function testretrouve_NetworkSocket() {
 		$this->object ->getObjetItopWsclientRest () 
@@ -56,7 +58,7 @@ class itop_NetworkSocketTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers itop_NetworkSocket::creer_oql
+	 * @covers Zorille\itop\NetworkSocket::creer_oql
 	 */
 	public function testcreer_oql() {
 		$this ->assertSame ( $this->object, $this->object ->creer_oql ( 'NAME1' ) );
@@ -64,7 +66,7 @@ class itop_NetworkSocketTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers itop_NetworkSocket::gestion_NetworkSocket
+	 * @covers Zorille\itop\NetworkSocket::gestion_NetworkSocket
 	 */
 	public function testgestion_NetworkSocket() {
 		$this->object ->getObjetItopWsclientRest () 

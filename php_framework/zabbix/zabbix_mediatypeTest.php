@@ -1,4 +1,6 @@
 <?php
+namespace Zorille\framework;
+use \Exception as Exception;
 if (! defined ( '__DOCUMENT_ROOT__' )) {
 	require_once $_SERVER ["PWD"] . '/prepare.php';
 }
@@ -18,7 +20,7 @@ class zabbix_mediatypeTest extends MockedListeOptions {
      */
 	protected function setUp() {
 		ob_start ();
-		$zabbix_wsclient = $this->createMock ( "zabbix_wsclient" );
+		$zabbix_wsclient = $this->createMock('Zorille\framework\zabbix_wsclient' );
 		
 		$this->object = new zabbix_mediatype ( false, "zabbix_mediatype" );
 		$this->object->setObjetZabbixWsclient ( $zabbix_wsclient );
@@ -33,7 +35,7 @@ class zabbix_mediatypeTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_mediatype::retrouve_zabbix_param
+     * @covers Zorille\framework\zabbix_mediatype::retrouve_zabbix_param
      */
 	public function testRetrouve_zabbix_param_Exception1() {
 			
@@ -51,7 +53,7 @@ class zabbix_mediatypeTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_mediatype::retrouve_zabbix_param
+	 * @covers Zorille\framework\zabbix_mediatype::retrouve_zabbix_param
 	 */
 	public function testRetrouve_zabbix_param_Exception2() {
 			
@@ -72,7 +74,7 @@ class zabbix_mediatypeTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_mediatype::retrouve_zabbix_param
+	 * @covers Zorille\framework\zabbix_mediatype::retrouve_zabbix_param
 	 */
 	public function testRetrouve_zabbix_param_0() {
 		$this->getListeOption ()
@@ -90,7 +92,7 @@ class zabbix_mediatypeTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_mediatype::retrouve_zabbix_param
+	 * @covers Zorille\framework\zabbix_mediatype::retrouve_zabbix_param
 	 */
 	public function testRetrouve_zabbix_param_1() {
 		$this->getListeOption ()
@@ -108,7 +110,7 @@ class zabbix_mediatypeTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_mediatype::retrouve_zabbix_param
+	 * @covers Zorille\framework\zabbix_mediatype::retrouve_zabbix_param
 	 */
 	public function testRetrouve_zabbix_param_2() {
 		$this->getListeOption ()
@@ -126,7 +128,7 @@ class zabbix_mediatypeTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_mediatype::retrouve_zabbix_param
+	 * @covers Zorille\framework\zabbix_mediatype::retrouve_zabbix_param
 	 */
 	public function testRetrouve_zabbix_param_3() {
 		$this->getListeOption ()
@@ -144,7 +146,7 @@ class zabbix_mediatypeTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_mediatype::retrouve_zabbix_param
+	 * @covers Zorille\framework\zabbix_mediatype::retrouve_zabbix_param
 	 */
 	public function testRetrouve_zabbix_param_100() {
 		$this->getListeOption ()
@@ -162,7 +164,7 @@ class zabbix_mediatypeTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_mediatype::creer_definition_mediatype_ws
+	 * @covers Zorille\framework\zabbix_mediatype::creer_definition_mediatype_ws
 	 */
 	public function testCreer_definition_mediatype_ws_exception() {
 			$this->object->setType ( 1001 );
@@ -174,7 +176,7 @@ class zabbix_mediatypeTest extends MockedListeOptions {
 	}
 	
 	/**
-     * @covers zabbix_mediatype::creer_definition_mediatype_ws
+     * @covers Zorille\framework\zabbix_mediatype::creer_definition_mediatype_ws
      */
 	public function testCreer_definition_mediatype_ws_valide() {
 		$this->object->setDescription ( "DESC" );
@@ -238,7 +240,7 @@ class zabbix_mediatypeTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_mediatype::creer_mediatype
+     * @covers Zorille\framework\zabbix_mediatype::creer_mediatype
      */
 	public function testCreer_mediatype() {
 		$this->object->setDescription ( "DESC" );
@@ -265,7 +267,7 @@ class zabbix_mediatypeTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_mediatype::creer_definition_mediatype_delete_ws
+     * @covers Zorille\framework\zabbix_mediatype::creer_definition_mediatype_delete_ws
      */
 	public function testCreer_definition_mediatype_delete_ws() {
 		$this->assertEquals ( array (), $this->object->creer_definition_mediatype_delete_ws () );
@@ -276,7 +278,7 @@ class zabbix_mediatypeTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_mediatype::supprime_mediatype
+     * @covers Zorille\framework\zabbix_mediatype::supprime_mediatype
      */
 	public function testSupprime_mediatype() {
 		$this->object->getObjetZabbixWsclient ()
@@ -305,7 +307,7 @@ class zabbix_mediatypeTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_mediatype::creer_definition_mediatype_get_ws
+     * @covers Zorille\framework\zabbix_mediatype::creer_definition_mediatype_get_ws
      */
 	public function testCreer_definition_mediatype_get_ws() {
 		$this->object->setDescription ( "TEST" );
@@ -318,7 +320,7 @@ class zabbix_mediatypeTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_mediatype::recherche_mediatype
+     * @covers Zorille\framework\zabbix_mediatype::recherche_mediatype
      */
 	public function testRecherche_mediatype() {
 		$this->object->getObjetZabbixWsclient ()
@@ -338,7 +340,7 @@ class zabbix_mediatypeTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_mediatype::recherche_mediatypeid_by_Name
+     * @covers Zorille\framework\zabbix_mediatype::recherche_mediatypeid_by_Name
      */
 	public function testRecherche_mediatypeid_by_Name() {
 		$this->object->setDescription ( "All" );
@@ -361,7 +363,7 @@ class zabbix_mediatypeTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_mediatype::retrouve_Type
+     * @covers Zorille\framework\zabbix_mediatype::retrouve_Type
      */
 	public function testRetrouve_Type() {
 		$this->assertEquals ( 0, $this->object->retrouve_Type ( "" ) );
@@ -374,7 +376,7 @@ class zabbix_mediatypeTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_mediatype::retrouve_Status
+     * @covers Zorille\framework\zabbix_mediatype::retrouve_Status
      */
 	public function testRetrouve_Status() {
 		$this->assertEquals ( 0, $this->object->retrouve_Status ( "" ) );
@@ -384,7 +386,7 @@ class zabbix_mediatypeTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_mediatype::retrouve_ExecPath
+     * @covers Zorille\framework\zabbix_mediatype::retrouve_ExecPath
      */
 	public function testRetrouve_ExecPath() {
 		$this->object->setType ( 1001 );

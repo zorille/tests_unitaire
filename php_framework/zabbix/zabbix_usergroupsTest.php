@@ -1,4 +1,6 @@
 <?php
+namespace Zorille\framework;
+use \Exception as Exception;
 if (! defined ( '__DOCUMENT_ROOT__' )) {
 	require_once $_SERVER ["PWD"] . '/prepare.php';
 }
@@ -18,8 +20,8 @@ class zabbix_usergroupsTest extends MockedListeOptions {
      */
 	protected function setUp() {
 		ob_start ();
-		$zabbix_wsclient = $this ->createMock ( "zabbix_wsclient" );
-		$zabbix_group_reference = $this ->createMock ( "zabbix_usergroup" );
+		$zabbix_wsclient = $this ->createMock('Zorille\framework\zabbix_wsclient' );
+		$zabbix_group_reference = $this ->createMock('Zorille\framework\zabbix_usergroup' );
 		
 		$this->object = new zabbix_usergroups ( false, "TESTS zabbix_usergroups" );
 		$this->object ->setObjetZabbixWsclient ( $zabbix_wsclient ) 
@@ -35,7 +37,7 @@ class zabbix_usergroupsTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_usergroups::retrouve_zabbix_param
+     * @covers Zorille\framework\zabbix_usergroups::retrouve_zabbix_param
      */
 	public function testRetrouve_zabbix_param_Exception() {
 		$this ->getListeOption () 
@@ -52,7 +54,7 @@ class zabbix_usergroupsTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_usergroups::retrouve_zabbix_param
+	 * @covers Zorille\framework\zabbix_usergroups::retrouve_zabbix_param
 	 */
 	public function testRetrouve_zabbix_param() {
 		$this ->getListeOption () 
@@ -71,7 +73,7 @@ class zabbix_usergroupsTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_usergroups::recherche_liste_groups
+     * @covers Zorille\framework\zabbix_usergroups::recherche_liste_groups
      */
 	public function testRecherche_liste_groups() {
 		$this->object ->getObjetUserGroupRef () 
@@ -105,7 +107,7 @@ class zabbix_usergroupsTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_usergroups::valide_liste_groups
+     * @covers Zorille\framework\zabbix_usergroups::valide_liste_groups
      */
 	public function testValide_liste_groups() {
 		$liste_group_cli = array ( 
@@ -164,7 +166,7 @@ class zabbix_usergroupsTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_usergroups::creer_usergroup
+     * @covers Zorille\framework\zabbix_usergroups::creer_usergroup
      */
 	public function testCreer_usergroup() {
 		$this->object ->getObjetUserGroupRef () 
@@ -193,7 +195,7 @@ class zabbix_usergroupsTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_usergroups::ajoute_groups
+     * @covers Zorille\framework\zabbix_usergroups::ajoute_groups
      */
 	public function testAjoute_groups() {
 		$liste_group = array ( 
@@ -247,7 +249,7 @@ class zabbix_usergroupsTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_usergroups::supprime_groups
+     * @covers Zorille\framework\zabbix_usergroups::supprime_groups
      */
 	public function testSupprime_groups() {
 		$liste_group = array ( 
@@ -299,7 +301,7 @@ class zabbix_usergroupsTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_usergroups::creer_definition_usergroups_ws
+     * @covers Zorille\framework\zabbix_usergroups::creer_definition_usergroups_ws
      */
 	public function testCreer_definition_usergroups_ws() {
 		$this->object ->getObjetUserGroupRef () 
@@ -316,7 +318,7 @@ class zabbix_usergroupsTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_usergroups::creer_definition_usergroupsids_ws
+     * @covers Zorille\framework\zabbix_usergroups::creer_definition_usergroupsids_ws
      */
 	public function testCreer_definition_usergroupsids_ws() {
 		$this->object ->getObjetUserGroupRef () 

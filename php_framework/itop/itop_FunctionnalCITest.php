@@ -1,4 +1,6 @@
 <?php
+namespace Zorille\itop;
+use Zorille\framework as Core;
 /**
  * @author dvargas
  * @package Lib
@@ -7,9 +9,9 @@
 if (! defined ( '__DOCUMENT_ROOT__' )) {
 	require_once $_SERVER ["PWD"] . '/prepare.php';
 }
-class itop_FunctionalCITest extends MockedListeOptions {
+class FunctionalCITest extends Core\MockedListeOptions {
 	/**
-	 * @var itop_FunctionalCI
+	 * @var FunctionalCI
 	 */
 	protected $object;
 
@@ -20,9 +22,9 @@ class itop_FunctionalCITest extends MockedListeOptions {
 	protected function setUp() {
 		ob_start ();
 		
-		$itop_wsclient_rest = $this ->createMock ( "itop_wsclient_rest" );
+		$itop_wsclient_rest = $this ->createMock('Zorille\itop\wsclient_rest' );
 		
-		$this->object = new itop_FunctionalCI ( false, "TESTS itop_FunctionalCI" );
+		$this->object = new FunctionalCI ( false, "TESTS FunctionalCI" );
 		$this->object ->setListeOptions ( $this ->getListeOption () ) 
 			->setObjetItopWsclientRest ( $itop_wsclient_rest );
 	}
@@ -36,7 +38,7 @@ class itop_FunctionalCITest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers itop_FunctionalCI::creer_lnkApplicationSolutionToFunctionalCI
+	 * @covers Zorille\itop\FunctionalCI::creer_lnkApplicationSolutionToFunctionalCI
 	 */
 	public function testcreer_lnkApplicationSolutionToFunctionalCI() {
 		$this->object ->setId ( 10 ) 
@@ -53,7 +55,7 @@ class itop_FunctionalCITest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers itop_FunctionalCI::creer_lnkContactToFunctionalCI
+	 * @covers Zorille\itop\FunctionalCI::creer_lnkContactToFunctionalCI
 	 */
 	public function testcreer_lnkContactToFunctionalCI() {
 		$this->object ->setId ( 10 ) 
@@ -69,7 +71,7 @@ class itop_FunctionalCITest extends MockedListeOptions {
 	}
 	
 	/**
-	 * @covers itop_FunctionalCI::creer_lnkToFunctionalCI
+	 * @covers Zorille\itop\FunctionalCI::creer_lnkToFunctionalCI
 	 */
 	public function testcreer_lnkToFunctionalCI() {
 		$this->object ->setId ( 11 )

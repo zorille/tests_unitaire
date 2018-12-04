@@ -1,4 +1,6 @@
 <?php
+namespace Zorille\itop;
+use Zorille\framework as Core;
 /**
  * @author dvargas
  * @package Lib
@@ -7,9 +9,9 @@
 if (! defined ( '__DOCUMENT_ROOT__' )) {
 	require_once $_SERVER ["PWD"] . '/prepare.php';
 }
-class itop_OrganizationTest extends MockedListeOptions {
+class OrganizationTest extends Core\MockedListeOptions {
 	/**
-	 * @var itop_Organization
+	 * @var Organization
 	 */
 	protected $object;
 
@@ -20,9 +22,9 @@ class itop_OrganizationTest extends MockedListeOptions {
 	protected function setUp() {
 		ob_start ();
 		
-		$itop_wsclient_rest = $this ->createMock ( "itop_wsclient_rest" );
+		$itop_wsclient_rest = $this ->createMock('Zorille\itop\wsclient_rest' );
 		
-		$this->object = new itop_Organization ( false, "TESTS itop_Organization" );
+		$this->object = new Organization ( false, "TESTS Organization" );
 		$this->object ->setListeOptions ( $this ->getListeOption () ) 
 			->setObjetItopWsclientRest ( $itop_wsclient_rest );
 		
@@ -38,7 +40,7 @@ class itop_OrganizationTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers itop_Organization::retrouve_Organization
+	 * @covers Zorille\itop\Organization::retrouve_Organization
 	 */
 	public function testretrouve_Organization() {
 		$this->object ->getObjetItopWsclientRest () 
@@ -56,7 +58,7 @@ class itop_OrganizationTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers itop_Organization::creer_oql
+	 * @covers Zorille\itop\Organization::creer_oql
 	 */
 	public function testcreer_oql() {
 		$this ->assertSame ( $this->object, $this->object ->creer_oql ( 'NAME1' ) );
@@ -64,7 +66,7 @@ class itop_OrganizationTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers itop_Organization::gestion_Organization
+	 * @covers Zorille\itop\Organization::gestion_Organization
 	 */
 	public function testgestion_Organization() {
 		$this->object ->getObjetItopWsclientRest () 

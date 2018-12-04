@@ -1,4 +1,6 @@
 <?php
+namespace Zorille\framework;
+use \Exception as Exception;
 /**
  * @ignore
  */
@@ -54,7 +56,7 @@ class fonctions_standards_fluxTest extends MockedListeOptions
     public function testCreer_connexion_ssh_Exception()
     {
         $this->expectException(Exception::class);
-        $this->expectExceptionMessage('(ssh_z) Erreur durant la connexion vers localhost Host : ');
+        $this->expectExceptionMessage('(Zorille\framework\ssh_z) Erreur durant la connexion vers localhost Host : ');
         $this->object->creer_connexion_ssh("localhost", 0);
     }
 
@@ -63,7 +65,7 @@ class fonctions_standards_fluxTest extends MockedListeOptions
      */
     public function testCreer_connexion_ssh()
     {
-        $ssh_z = $this->createMock('ssh_z');
+        $ssh_z = $this->createMock('Zorille\framework\ssh_z');
         $this->object->setConnexion($ssh_z);
         // Tout est OK
         $this->object->getListeOptions()
@@ -125,7 +127,7 @@ class fonctions_standards_fluxTest extends MockedListeOptions
             ->method('prepare_variable_standard')
             ->will($this->returnValue(true));
         $this->expectException(Exception::class);
-        $this->expectExceptionMessage('(ftp) Erreur durant la creation de la connexion');
+        $this->expectExceptionMessage('(Zorille\framework\ftp) Erreur durant la creation de la connexion');
         $this->object->creer_connexion_ftp($this->getListeOption(), 'compte', true, false, 0);
     }
 

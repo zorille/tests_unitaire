@@ -1,4 +1,6 @@
 <?php
+namespace Zorille\itop;
+use Zorille\framework as Core;
 /**
  * @author dvargas
  * @package Lib
@@ -7,9 +9,9 @@
 if (! defined ( '__DOCUMENT_ROOT__' )) {
 	require_once $_SERVER ["PWD"] . '/prepare.php';
 }
-class itop_DBServerTest extends MockedListeOptions {
+class DBServerTest extends Core\MockedListeOptions {
 	/**
-	 * @var itop_DBServer
+	 * @var DBServer
 	 */
 	protected $object;
 
@@ -20,11 +22,11 @@ class itop_DBServerTest extends MockedListeOptions {
 	protected function setUp() {
 		ob_start ();
 		
-		$itop_wsclient_rest = $this ->createMock ( "itop_wsclient_rest" );
-		$itop_Organization = $this ->createMock ( "itop_Organization" );
-		$itop_Software = $this ->createMock ( "itop_Software" );
+		$itop_wsclient_rest = $this ->createMock('Zorille\itop\wsclient_rest' );
+		$itop_Organization = $this ->createMock('Zorille\itop\Organization' );
+		$itop_Software = $this ->createMock('Zorille\itop\Software' );
 		
-		$this->object = new itop_DBServer ( false, "TESTS itop_DBServer" );
+		$this->object = new DBServer ( false, "TESTS DBServer" );
 		$this->object ->setListeOptions ( $this ->getListeOption () ) 
 			->setObjetItopWsclientRest ( $itop_wsclient_rest ) 
 			->setObjetItopOrganization ( $itop_Organization ) 
@@ -50,7 +52,7 @@ class itop_DBServerTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers itop_DBServer::retrouve_DBServer
+	 * @covers Zorille\itop\DBServer::retrouve_DBServer
 	 */
 	public function testretrouve_DBServer() {
 		$this->object ->getObjetItopWsclientRest () 
@@ -68,7 +70,7 @@ class itop_DBServerTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers itop_DBServer::creer_oql
+	 * @covers Zorille\itop\DBServer::creer_oql
 	 */
 	public function testcreer_oql() {
 		$this ->assertSame ( $this->object, $this->object ->creer_oql ( 'NAME1','server_name' ) );
@@ -76,7 +78,7 @@ class itop_DBServerTest extends MockedListeOptions {
 	}
 	
 	/**
-	 * @covers itop_DBServer::creer_oql
+	 * @covers Zorille\itop\DBServer::creer_oql
 	 */
 	public function testcreer_oql_sans_servername() {
 		$this ->assertSame ( $this->object, $this->object ->creer_oql ( 'NAME2 server_name' ) );
@@ -84,7 +86,7 @@ class itop_DBServerTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers itop_DBServer::gestion_DBServer
+	 * @covers Zorille\itop\DBServer::gestion_DBServer
 	 */
 	public function testgestion_DBServer() {
 		$this->object ->getObjetItopWsclientRest () 

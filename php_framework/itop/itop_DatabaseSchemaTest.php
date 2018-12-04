@@ -1,4 +1,6 @@
 <?php
+namespace Zorille\itop;
+use Zorille\framework as Core;
 /**
  * @author dvargas
  * @package Lib
@@ -7,9 +9,9 @@
 if (! defined ( '__DOCUMENT_ROOT__' )) {
 	require_once $_SERVER ["PWD"] . '/prepare.php';
 }
-class itop_DatabaseSchemaTest extends MockedListeOptions {
+class DatabaseSchemaTest extends Core\MockedListeOptions {
 	/**
-	 * @var itop_DatabaseSchema
+	 * @var DatabaseSchema
 	 */
 	protected $object;
 
@@ -20,11 +22,11 @@ class itop_DatabaseSchemaTest extends MockedListeOptions {
 	protected function setUp() {
 		ob_start ();
 		
-		$itop_wsclient_rest = $this ->createMock ( "itop_wsclient_rest" );
-		$itop_Organization = $this ->createMock ( "itop_Organization" );
-		$itop_Server = $this ->createMock ( "itop_Server" );
+		$itop_wsclient_rest = $this ->createMock('Zorille\itop\wsclient_rest' );
+		$itop_Organization = $this ->createMock('Zorille\itop\Organization' );
+		$itop_Server = $this ->createMock('Zorille\itop\Server' );
 		
-		$this->object = new itop_DatabaseSchema ( false, "TESTS itop_DatabaseSchema" );
+		$this->object = new DatabaseSchema ( false, "TESTS DatabaseSchema" );
 		$this->object ->setListeOptions ( $this ->getListeOption () ) 
 			->setObjetItopWsclientRest ( $itop_wsclient_rest ) 
 			->setObjetItopOrganization ( $itop_Organization ) 
@@ -50,7 +52,7 @@ class itop_DatabaseSchemaTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers itop_DatabaseSchema::retrouve_DatabaseSchema
+	 * @covers Zorille\itop\DatabaseSchema::retrouve_DatabaseSchema
 	 */
 	public function testretrouve_DatabaseSchema() {
 		$this->object ->getObjetItopWsclientRest () 
@@ -68,7 +70,7 @@ class itop_DatabaseSchemaTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers itop_DatabaseSchema::creer_oql
+	 * @covers Zorille\itop\DatabaseSchema::creer_oql
 	 */
 	public function testcreer_oql() {
 		$this ->assertSame ( $this->object, $this->object ->creer_oql ( 'NAME1' ) );
@@ -76,7 +78,7 @@ class itop_DatabaseSchemaTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers itop_DatabaseSchema::gestion_DatabaseSchema
+	 * @covers Zorille\itop\DatabaseSchema::gestion_DatabaseSchema
 	 */
 	public function testgestion_DatabaseSchema() {
 		$this->object ->getObjetItopWsclientRest () 

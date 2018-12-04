@@ -1,4 +1,6 @@
 <?php
+namespace Zorille\framework;
+use \Exception as Exception;
 if (! defined ( '__DOCUMENT_ROOT__' )) {
 	require_once $_SERVER ["PWD"] . '/prepare.php';
 }
@@ -18,7 +20,7 @@ class zabbix_mappingsTest extends MockedListeOptions {
      */
 	protected function setUp() {
 		ob_start ();
-		$zabbix_wsclient = $this ->createMock ( "zabbix_wsclient" );
+		$zabbix_wsclient = $this ->createMock('Zorille\framework\zabbix_wsclient' );
 		
 		$this->object = new zabbix_mappings ( false, "zabbix_mappings" );
 		$this->object ->setObjetZabbixWsclient ( $zabbix_wsclient );
@@ -33,7 +35,7 @@ class zabbix_mappingsTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_mappings::retrouve_zabbix_param
+     * @covers Zorille\framework\zabbix_mappings::retrouve_zabbix_param
      */
 	public function testRetrouve_zabbix_param_Exception() {
 		$this ->getListeOption () 
@@ -50,7 +52,7 @@ class zabbix_mappingsTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_mappings::retrouve_zabbix_param
+	 * @covers Zorille\framework\zabbix_mappings::retrouve_zabbix_param
 	 */
 	public function testRetrouve_zabbix_param() {
 		$this ->getListeOption () 
@@ -71,7 +73,7 @@ class zabbix_mappingsTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_mappings::retrouve_mappings
+	 * @covers Zorille\framework\zabbix_mappings::retrouve_mappings
 	 */
 	public function testRetrouve_mappings_exception1() {
 		$this ->expectException(Exception::class);
@@ -81,7 +83,7 @@ class zabbix_mappingsTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_mappings::retrouve_mappings
+	 * @covers Zorille\framework\zabbix_mappings::retrouve_mappings
 	 */
 	public function testRetrouve_mappings_exception2() {
 		$this ->expectException(Exception::class);
@@ -91,7 +93,7 @@ class zabbix_mappingsTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_mappings::retrouve_mappings
+	 * @covers Zorille\framework\zabbix_mappings::retrouve_mappings
 	 */
 	public function testRetrouve_mappings_valide() {
 		$this ->assertSame ( $this->object, $this->object ->retrouve_mappings ( array ( 
@@ -103,7 +105,7 @@ class zabbix_mappingsTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_mappings::creer_definition_mappings_create_ws
+     * @covers Zorille\framework\zabbix_mappings::creer_definition_mappings_create_ws
      */
 	public function testCreer_definition_mappings_create_ws() {
 		$this ->assertEquals ( array (), $this->object ->creer_definition_mappings_create_ws () );

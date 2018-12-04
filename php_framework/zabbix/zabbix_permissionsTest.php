@@ -1,4 +1,6 @@
 <?php
+namespace Zorille\framework;
+use \Exception as Exception;
 if (! defined ( '__DOCUMENT_ROOT__' )) {
 	require_once $_SERVER ["PWD"] . '/prepare.php';
 }
@@ -31,7 +33,7 @@ class zabbix_permissionsTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_permissions::decoupe_permission
+     * @covers Zorille\framework\zabbix_permissions::decoupe_permission
      */
 	public function testDecoupe_permission_exception() {
 		$this ->expectException(Exception::class);
@@ -40,14 +42,14 @@ class zabbix_permissionsTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_permissions::decoupe_permission
+	 * @covers Zorille\framework\zabbix_permissions::decoupe_permission
 	 */
 	public function testDecoupe_permission_valide() {
 		$this ->assertSame ( $this->object, $this->object ->decoupe_permission ( "champ1|champ2" ) );
 	}
 
 	/**
-     * @covers zabbix_permissions::retrouve_zabbix_param
+     * @covers Zorille\framework\zabbix_permissions::retrouve_zabbix_param
      */
 	public function testRetrouve_zabbix_param_Exception() {
 		$this ->getListeOption () 
@@ -66,7 +68,7 @@ class zabbix_permissionsTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_permissions::retrouve_zabbix_param
+	 * @covers Zorille\framework\zabbix_permissions::retrouve_zabbix_param
 	 */
 	public function testRetrouve_zabbix_param_vide() {
 		$this ->getListeOption () 
@@ -84,7 +86,7 @@ class zabbix_permissionsTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_permissions::retrouve_zabbix_param
+	 * @covers Zorille\framework\zabbix_permissions::retrouve_zabbix_param
 	 */
 	public function testRetrouve_zabbix_param() {
 		$this ->getListeOption () 
@@ -107,10 +109,10 @@ class zabbix_permissionsTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_permissions::retrouve_hostgroupsIds
+	 * @covers Zorille\framework\zabbix_permissions::retrouve_hostgroupsIds
 	 */
 	public function testRetrouve_hostgroupsIds() {
-		$zabbix_hostgroups = $this ->createMock ( "zabbix_hostgroups" );
+		$zabbix_hostgroups = $this ->createMock('Zorille\framework\zabbix_hostgroups' );
 		$zabbix_hostgroups ->expects ( $this ->any () ) 
 			->method ( 'recherche_liste_groups' ) 
 			->will ( $this ->returnValue ( true ) );
@@ -138,7 +140,7 @@ class zabbix_permissionsTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_permissions::creer_definition_permissions_create_ws
+	 * @covers Zorille\framework\zabbix_permissions::creer_definition_permissions_create_ws
 	 */
 	public function testCreer_definition_permissions_create_ws() {
 		$this ->assertEquals ( array (), $this->object ->creer_definition_permissions_create_ws () );
@@ -165,7 +167,7 @@ class zabbix_permissionsTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_permissions::retrouve_Permission
+     * @covers Zorille\framework\zabbix_permissions::retrouve_Permission
      */
 	public function testRetrouve_Permission() {
 		$this ->assertEquals ( 0, $this->object ->retrouve_Permission ( "" ) );

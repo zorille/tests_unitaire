@@ -1,4 +1,6 @@
 <?php
+namespace Zorille\framework;
+use \Exception as Exception;
 
 /**
  * @author dvargas
@@ -24,7 +26,7 @@ class vmwareDatasTest extends MockedListeOptions {
 	protected function setUp() {
 		ob_start ();
 		
-		$utilisateurs = $this ->createMock ( "utilisateurs" );
+		$utilisateurs = $this ->createMock('Zorille\framework\utilisateurs' );
 		$utilisateurs ->expects ( $this ->any () ) 
 			->method ( 'retrouve_utilisateurs_array' ) 
 			->will ( $this ->returnValue ( $utilisateurs ) );
@@ -49,7 +51,7 @@ class vmwareDatasTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers vmwareDatas::retrouve_vmware_param
+	 * @covers Zorille\framework\vmwareDatas::retrouve_vmware_param
 	 */
 	public function testRetrouve_vmware_param_exception1() {
 		$this->object ->getListeOptions () 
@@ -68,7 +70,7 @@ class vmwareDatasTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers vmwareDatas::retrouve_vmware_param
+	 * @covers Zorille\framework\vmwareDatas::retrouve_vmware_param
 	 */
 	public function testRetrouve_vmware_param_exception2() {
 		$this->object ->getListeOptions () 
@@ -87,7 +89,7 @@ class vmwareDatasTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers vmwareDatas::retrouve_vmware_param
+	 * @covers Zorille\framework\vmwareDatas::retrouve_vmware_param
 	 */
 	public function testRetrouve_vmware_param_valide() {
 		$this->object ->getListeOptions () 
@@ -101,11 +103,11 @@ class vmwareDatasTest extends MockedListeOptions {
 				"nom" => "VMW_TEST" ) ) );
 		
 		$this ->assertSame ( $this->object, $this->object ->retrouve_vmware_param () );
-		//$this->assertInstanceOf ( 'vmwareDatas', $this->object->retrouve_vmware_param () );
+		//$this->assertInstanceOf ( 'Zorille\framework\vmwareDatas', $this->object->retrouve_vmware_param () );
 	}
 
 	/**
-	 * @covers vmwareDatas::valide_presence_vmware_data
+	 * @covers Zorille\framework\vmwareDatas::valide_presence_vmware_data
 	 */
 	public function testvalide_presence_vmware_data() {
 		$this->object ->setServeurData ( array ( 
@@ -125,7 +127,7 @@ class vmwareDatasTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers vmwareDatas::retrouve_wsdl
+	 * @covers Zorille\framework\vmwareDatas::retrouve_wsdl
 	 */
 	public function testRetrouve_wsdl_exception() {
 		$this->object ->setWsdlData ( array ( 
@@ -139,7 +141,7 @@ class vmwareDatasTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers vmwareDatas::retrouve_wsdl
+	 * @covers Zorille\framework\vmwareDatas::retrouve_wsdl
 	 */
 	public function testRetrouve_wsdl_valide() {
 		$this->object ->setWsdlData ( array ( 
@@ -152,7 +154,7 @@ class vmwareDatasTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers vmwareDatas::recupere_donnees_vmware_serveur
+	 * @covers Zorille\framework\vmwareDatas::recupere_donnees_vmware_serveur
 	 */
 	public function testRecupere_donnees_vmware_serveur_exception1() {
 		$this->object ->setServeurData ( array ( 
@@ -167,7 +169,7 @@ class vmwareDatasTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers vmwareDatas::recupere_donnees_vmware_serveur
+	 * @covers Zorille\framework\vmwareDatas::recupere_donnees_vmware_serveur
 	 */
 	public function testRecupere_donnees_vmware_serveur_exception2() {
 		$this->object ->setServeurData ( array ( 
@@ -182,7 +184,7 @@ class vmwareDatasTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers vmwareDatas::recupere_donnees_vmware_serveur
+	 * @covers Zorille\framework\vmwareDatas::recupere_donnees_vmware_serveur
 	 */
 	public function testRecupere_donnees_vmware_serveur_false() {
 		$this->object ->setServeurData ( array ( 
@@ -195,7 +197,7 @@ class vmwareDatasTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers vmwareDatas::recupere_donnees_vmware_serveur
+	 * @covers Zorille\framework\vmwareDatas::recupere_donnees_vmware_serveur
 	 */
 	public function testRecupere_donnees_vmware_serveur_valide() {
 		$this->object ->setServeurData ( array ( 

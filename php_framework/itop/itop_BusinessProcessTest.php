@@ -1,4 +1,7 @@
 <?php
+namespace Zorille\itop;
+use Zorille\framework as Core;
+use \Exception as Exception;
 /**
  * @author dvargas
  * @package Lib
@@ -7,9 +10,9 @@
 if (! defined ( '__DOCUMENT_ROOT__' )) {
 	require_once $_SERVER ["PWD"] . '/prepare.php';
 }
-class itop_BusinessProcessTest extends MockedListeOptions {
+class BusinessProcessTest extends Core\MockedListeOptions {
 	/**
-	 * @var itop_BusinessProcess
+	 * @var BusinessProcess
 	 */
 	protected $object;
 
@@ -20,10 +23,10 @@ class itop_BusinessProcessTest extends MockedListeOptions {
 	protected function setUp() {
 		ob_start ();
 		
-		$itop_wsclient_rest = $this ->createMock ( "itop_wsclient_rest" );
-		$itop_Organization = $this ->createMock ( "itop_Organization" );
+		$itop_wsclient_rest = $this ->createMock('Zorille\itop\wsclient_rest' );
+		$itop_Organization = $this ->createMock('Zorille\itop\Organization' );
 		
-		$this->object = new itop_BusinessProcess ( false, "TESTS itop_BusinessProcess" );
+		$this->object = new BusinessProcess ( false, "TESTS BusinessProcess" );
 		$this->object ->setListeOptions ( $this ->getListeOption () ) 
 			->setObjetItopWsclientRest ( $itop_wsclient_rest ) 
 			->setObjetItopOrganization ( $itop_Organization );
@@ -44,7 +47,7 @@ class itop_BusinessProcessTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers itop_BusinessProcess::retrouve_BusinessProcess
+	 * @covers Zorille\itop\BusinessProcess::retrouve_BusinessProcess
 	 */
 	public function testretrouve_BusinessProcess() {
 		$this->object ->getObjetItopWsclientRest () 
@@ -62,7 +65,7 @@ class itop_BusinessProcessTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers itop_BusinessProcess::creer_oql
+	 * @covers Zorille\itop\BusinessProcess::creer_oql
 	 */
 	public function testcreer_oql() {
 		$this ->assertSame ( $this->object, $this->object ->creer_oql ( 'NAME1' ) );
@@ -70,7 +73,7 @@ class itop_BusinessProcessTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers itop_BusinessProcess::gestion_BusinessProcess
+	 * @covers Zorille\itop\BusinessProcess::gestion_BusinessProcess
 	 */
 	public function testgestion_BusinessProcess() {
 		$this->object ->getObjetItopWsclientRest () 
@@ -95,7 +98,7 @@ class itop_BusinessProcessTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers itop_BusinessProcess::creer_lnkApplicationSolutionToBusinessProcess
+	 * @covers Zorille\itop\BusinessProcess::creer_lnkApplicationSolutionToBusinessProcess
 	 */
 	public function testcreer_lnkApplicationSolutionToBusinessProcess_exception() {
 		$this->object ->setFormat ( "BusinessProcess" )
@@ -103,12 +106,12 @@ class itop_BusinessProcessTest extends MockedListeOptions {
 				'name' => 'NOM2' ) );
 	
 		$this ->expectException(Exception::class);
-        $this->expectExceptionMessage( '(TESTS itop_BusinessProcess) Il faut un ID a ce BusinessProcess' );
+        $this->expectExceptionMessage( '(TESTS BusinessProcess) Il faut un ID a ce BusinessProcess' );
 		$this->object ->creer_lnkApplicationSolutionToBusinessProcess ( "FRIENDLYNAME", 15 );
 	}
 	
 	/**
-	 * @covers itop_BusinessProcess::creer_lnkApplicationSolutionToBusinessProcess
+	 * @covers Zorille\itop\BusinessProcess::creer_lnkApplicationSolutionToBusinessProcess
 	 */
 	public function testcreer_lnkApplicationSolutionToBusinessProcess() {
 		$this->object ->setId ( 10 ) 

@@ -1,11 +1,11 @@
 <?php
-
-use PHPUnit\Framework\TestCase;
+namespace Zorille\framework;
+use PHPUnit\Framework\TestCase as TestCase;
 
 /**
  * @ignore
  */
-abstract class MockedListeOptions extends PHPUnit\Framework\TestCase {
+abstract class MockedListeOptions extends TestCase {
 	public $liste_options;
 
 	public function __construct() {
@@ -14,7 +14,7 @@ abstract class MockedListeOptions extends PHPUnit\Framework\TestCase {
 	}
 
 	public function creer_liste_option() {
-		$this->liste_options = $this->createMock ('options');
+		$this->liste_options = $this->createMock ('Zorille\framework\options');
 	}
 
 	/**

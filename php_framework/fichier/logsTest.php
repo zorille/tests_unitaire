@@ -1,4 +1,5 @@
 <?php
+namespace Zorille\framework;
 /**
  * @ignore
  */
@@ -139,7 +140,7 @@ class logsTest extends MockedListeOptions {
 	 * Implement testprepare_affichage().
 	 */
 	public function testprepare_affichage_objet() {
-		$this->assertEquals ( "testZ Object\n(\n    [var] => TEST\n)\n\n", $this->object->prepare_affichage ( new testZ() ) );
+		$this->assertEquals ( 'Zorille\framework\testZ '."Object\n(\n    [var] => TEST\n)\n\n", $this->object->prepare_affichage ( new testZ() ) );
 	}
 	
 	/**

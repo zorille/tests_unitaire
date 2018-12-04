@@ -1,4 +1,6 @@
 <?php
+namespace Zorille\itop;
+use Zorille\framework as Core;
 /**
  * @author dvargas
  * @package Lib
@@ -7,9 +9,9 @@
 if (! defined ( '__DOCUMENT_ROOT__' )) {
 	require_once $_SERVER ["PWD"] . '/prepare.php';
 }
-class itop_ServerTest extends MockedListeOptions {
+class ServerTest extends Core\MockedListeOptions {
 	/**
-	 * @var itop_Server
+	 * @var Server
 	 */
 	protected $object;
 
@@ -20,12 +22,12 @@ class itop_ServerTest extends MockedListeOptions {
 	protected function setUp() {
 		ob_start ();
 		
-		$itop_wsclient_rest = $this ->createMock ( "itop_wsclient_rest" );
-		$itop_Organization = $this ->createMock ( "itop_Organization" );
-		$itop_OSFamily = $this ->createMock ( "itop_OSFamily" );
-		$itop_OSVersion = $this ->createMock ( "itop_OSVersion" );
+		$itop_wsclient_rest = $this ->createMock('Zorille\itop\wsclient_rest' );
+		$itop_Organization = $this ->createMock('Zorille\itop\Organization' );
+		$itop_OSFamily = $this ->createMock('Zorille\itop\OSFamily' );
+		$itop_OSVersion = $this ->createMock('Zorille\itop\OSVersion' );
 		
-		$this->object = new itop_Server ( false, "TESTS itop_Server" );
+		$this->object = new Server ( false, "TESTS Server" );
 		$this->object ->setListeOptions ( $this ->getListeOption () ) 
 			->setObjetItopWsclientRest ( $itop_wsclient_rest ) 
 			->setObjetItopOrganization ( $itop_Organization ) 
@@ -58,7 +60,7 @@ class itop_ServerTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers itop_Server::retrouve_Server
+	 * @covers Zorille\itop\Server::retrouve_Server
 	 */
 	public function testretrouve_Server() {
 		$this->object ->getObjetItopWsclientRest () 
@@ -76,7 +78,7 @@ class itop_ServerTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers itop_Server::creer_oql
+	 * @covers Zorille\itop\Server::creer_oql
 	 */
 	public function testcreer_oql() {
 		$this ->assertSame ( $this->object, $this->object ->creer_oql ( 'NAME1' ) );
@@ -84,7 +86,7 @@ class itop_ServerTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers itop_Server::gestion_Server
+	 * @covers Zorille\itop\Server::gestion_Server
 	 */
 	public function testgestion_Server() {
 		$this->object ->getObjetItopWsclientRest () 

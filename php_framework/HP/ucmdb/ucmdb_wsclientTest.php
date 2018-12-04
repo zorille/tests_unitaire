@@ -1,4 +1,6 @@
 <?php
+namespace Zorille\framework;
+use \Exception as Exception;
 if (! defined ( '__DOCUMENT_ROOT__' )) {
 	require_once $_SERVER ["PWD"] . '/prepare.php';
 }
@@ -19,9 +21,9 @@ class ucmdb_wsclientTest extends MockedListeOptions {
 	protected function setUp() {
 		ob_start ();
 		
-		$gestion_connexion_url = $this ->createMock ( "gestion_connexion_url" );
-		$ucmdb_datas = $this ->createMock ( "ucmdb_datas" );
-		$soap = $this ->createMock ( "soap" );
+		$gestion_connexion_url = $this ->createMock('Zorille\framework\gestion_connexion_url' );
+		$ucmdb_datas = $this ->createMock('Zorille\framework\ucmdb_datas' );
+		$soap = $this ->createMock('Zorille\framework\soap' );
 		
 		$this->object = new ucmdb_wsclient ( false, "TESTS ucmdb_wsclient" );
 		$this->object ->setListeOptions ( $this ->getListeOption () ) 
@@ -37,7 +39,7 @@ class ucmdb_wsclientTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers ucmdb_wsclient::prepare_connexion
+	 * @covers Zorille\framework\ucmdb_wsclient::prepare_connexion
 	 */
 	public function testPrepare_connexion_exception1() {
 		$this->object ->getListeOptions () 
@@ -70,7 +72,7 @@ class ucmdb_wsclientTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers ucmdb_wsclient::prepare_connexion
+	 * @covers Zorille\framework\ucmdb_wsclient::prepare_connexion
 	 */
 	public function testPrepare_connexion_exception2() {
 		$this->object ->getListeOptions () 
@@ -103,7 +105,7 @@ class ucmdb_wsclientTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers ucmdb_wsclient::prepare_connexion
+	 * @covers Zorille\framework\ucmdb_wsclient::prepare_connexion
 	 */
 	public function testPrepare_connexion_exception3() {
 		$this->object ->getListeOptions () 
@@ -137,7 +139,7 @@ class ucmdb_wsclientTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers ucmdb_wsclient::prepare_connexion
+	 * @covers Zorille\framework\ucmdb_wsclient::prepare_connexion
 	 */
 	public function testPrepare_connexion_exception4() {
 		$this->object ->getListeOptions () 
@@ -172,7 +174,7 @@ class ucmdb_wsclientTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers ucmdb_wsclient::prepare_connexion
+	 * @covers Zorille\framework\ucmdb_wsclient::prepare_connexion
 	 */
 	public function testPrepare_connexion_valide() {
 		$this->object ->getListeOptions () 

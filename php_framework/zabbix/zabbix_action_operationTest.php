@@ -1,4 +1,6 @@
 <?php
+namespace Zorille\framework;
+use \Exception as Exception;
 if (! defined ( '__DOCUMENT_ROOT__' )) {
 	require_once $_SERVER ["PWD"] . '/prepare.php';
 }
@@ -18,12 +20,12 @@ class zabbix_action_operationTest extends MockedListeOptions {
      */
 	protected function setUp() {
 		ob_start ();
-		$zabbix_wsclient = $this ->createMock ( "zabbix_wsclient" );
-		$zabbix_action_operation_command = $this ->createMock ( "zabbix_action_operation_command" );
-		$zabbix_action_operation_condition = $this ->createMock ( "zabbix_action_operation_condition" );
-		$zabbix_action_operation_message = $this ->createMock ( "zabbix_action_operation_message" );
-		$zabbix_host = $this ->createMock ( "zabbix_host" );
-		$zabbix_hostgroup = $this ->createMock ( "zabbix_hostgroup" );
+		$zabbix_wsclient = $this ->createMock('Zorille\framework\zabbix_wsclient' );
+		$zabbix_action_operation_command = $this ->createMock('Zorille\framework\zabbix_action_operation_command' );
+		$zabbix_action_operation_condition = $this ->createMock('Zorille\framework\zabbix_action_operation_condition' );
+		$zabbix_action_operation_message = $this ->createMock('Zorille\framework\zabbix_action_operation_message' );
+		$zabbix_host = $this ->createMock('Zorille\framework\zabbix_host' );
+		$zabbix_hostgroup = $this ->createMock('Zorille\framework\zabbix_hostgroup' );
 		
 		$this->object = new zabbix_action_operation ( false, "zabbix_action_operation" );
 		$this->object ->setObjetZabbixWsclient ( $zabbix_wsclient ) 
@@ -43,7 +45,7 @@ class zabbix_action_operationTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_action_operation::retrouve_zabbix_param
+	 * @covers Zorille\framework\zabbix_action_operation::retrouve_zabbix_param
 	 */
 	public function testRetrouve_zabbix_param_Exception() {
 		$this ->getListeOption () 
@@ -58,10 +60,10 @@ class zabbix_action_operationTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_action_operation::retrouve_zabbix_param
+	 * @covers Zorille\framework\zabbix_action_operation::retrouve_zabbix_param
 	 */
 	public function testRetrouve_zabbix_param_0() {
-		$opcondition_ref = $this ->createMock ( "zabbix_action_operation_condition" );
+		$opcondition_ref = $this ->createMock('Zorille\framework\zabbix_action_operation_condition' );
 		$opcondition_ref ->expects ( $this ->any () ) 
 			->method ( 'retrouve_zabbix_param' ) 
 			->will ( $this ->returnValue ( true ) );
@@ -82,10 +84,10 @@ class zabbix_action_operationTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_action_operation::retrouve_zabbix_param
+	 * @covers Zorille\framework\zabbix_action_operation::retrouve_zabbix_param
 	 */
 	public function testRetrouve_zabbix_param_1() {
-		$opcondition_ref = $this ->createMock ( "zabbix_action_operation_condition" );
+		$opcondition_ref = $this ->createMock('Zorille\framework\zabbix_action_operation_condition' );
 		$opcondition_ref ->expects ( $this ->any () ) 
 			->method ( 'retrouve_zabbix_param' ) 
 			->will ( $this ->returnValue ( true ) );
@@ -106,10 +108,10 @@ class zabbix_action_operationTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_action_operation::retrouve_opconditions
+	 * @covers Zorille\framework\zabbix_action_operation::retrouve_opconditions
 	 */
 	public function testRetrouve_opconditions_valide() {
-		$opcondition_ref = $this ->createMock ( "zabbix_action_operation_condition" );
+		$opcondition_ref = $this ->createMock('Zorille\framework\zabbix_action_operation_condition' );
 		$opcondition_ref ->expects ( $this ->any () ) 
 			->method ( 'retrouve_zabbix_param' ) 
 			->will ( $this ->returnValue ( true ) );
@@ -128,10 +130,10 @@ class zabbix_action_operationTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_action_operation::creer_definition_action_operation_ws
+     * @covers Zorille\framework\zabbix_action_operation::creer_definition_action_operation_ws
      */
 	public function testCreer_definition_action_operation_ws() {
-		$opcondition_ref = $this ->createMock ( "zabbix_action_operation_condition" );
+		$opcondition_ref = $this ->createMock('Zorille\framework\zabbix_action_operation_condition' );
 		$opcondition_ref ->expects ( $this ->any () ) 
 			->method ( 'creer_definition_zabbix_operation_condition_ws' ) 
 			->will ( $this ->returnValue ( array ( 
@@ -143,12 +145,12 @@ class zabbix_action_operationTest extends MockedListeOptions {
 				$opcondition_ref, 
 				$opcondition_ref );
 		$this->object ->setOpConditions ( $opconditions );
-		$operation_command = $this ->createMock ( "zabbix_action_operation_command" );
+		$operation_command = $this ->createMock('Zorille\framework\zabbix_action_operation_command' );
 		$operation_command ->expects ( $this ->any () ) 
 			->method ( 'creer_definition_zabbix_operation_command_ws' ) 
 			->will ( $this ->returnValue ( array () ) );
 		$this->object ->setObjetOpCommand ( $operation_command );
-		$operation_message = $this ->createMock ( "zabbix_action_operation_message" );
+		$operation_message = $this ->createMock('Zorille\framework\zabbix_action_operation_message' );
 		$operation_message ->expects ( $this ->any () ) 
 			->method ( 'creer_definition_zabbix_operation_message_ws' ) 
 			->will ( $this ->returnValue ( array () ) );
@@ -181,10 +183,10 @@ class zabbix_action_operationTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_action_operation::creer_definition_action_operation_conditions_ws
+     * @covers Zorille\framework\zabbix_action_operation::creer_definition_action_operation_conditions_ws
      */
 	public function testCreer_definition_action_operation_conditions_ws() {
-		$opcondition_ref = $this ->createMock ( "zabbix_action_operation_condition" );
+		$opcondition_ref = $this ->createMock('Zorille\framework\zabbix_action_operation_condition' );
 		$opcondition_ref ->expects ( $this ->any () ) 
 			->method ( 'creer_definition_zabbix_operation_condition_ws' ) 
 			->will ( $this ->returnValue ( array ( 
@@ -210,10 +212,10 @@ class zabbix_action_operationTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_action_operation::creer_definition_action_operation_command_ws
+     * @covers Zorille\framework\zabbix_action_operation::creer_definition_action_operation_command_ws
      */
 	public function testCreer_definition_action_operation_command_ws_exception() {
-		$operation_command = $this ->createMock ( "zabbix_action_operation_command" );
+		$operation_command = $this ->createMock('Zorille\framework\zabbix_action_operation_command' );
 		$operation_command ->expects ( $this ->any () ) 
 			->method ( 'creer_definition_zabbix_operation_command_ws' ) 
 			->will ( $this ->returnValue ( array ( 
@@ -227,10 +229,10 @@ class zabbix_action_operationTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_action_operation::creer_definition_action_operation_command_ws
+	 * @covers Zorille\framework\zabbix_action_operation::creer_definition_action_operation_command_ws
 	 */
 	public function testCreer_definition_action_operation_command_ws_valide() {
-		$operation_command = $this ->createMock ( "zabbix_action_operation_command" );
+		$operation_command = $this ->createMock('Zorille\framework\zabbix_action_operation_command' );
 		$operation_command ->expects ( $this ->any () ) 
 			->method ( 'creer_definition_zabbix_operation_command_ws' ) 
 			->will ( $this ->returnValue ( array ( 
@@ -259,10 +261,10 @@ class zabbix_action_operationTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_action_operation::creer_definition_action_operation_message_ws
+     * @covers Zorille\framework\zabbix_action_operation::creer_definition_action_operation_message_ws
      */
 	public function testCreer_definition_action_operation_message_ws_exception() {
-		$operation_message = $this ->createMock ( "zabbix_action_operation_message" );
+		$operation_message = $this ->createMock('Zorille\framework\zabbix_action_operation_message' );
 		$operation_message ->expects ( $this ->any () ) 
 			->method ( 'creer_definition_zabbix_operation_message_ws' ) 
 			->will ( $this ->returnValue ( array ( 
@@ -270,7 +272,7 @@ class zabbix_action_operationTest extends MockedListeOptions {
 				"mediatypeid" => 1, 
 				"message" => "message", 
 				"subject" => "subject" ) ) );
-		$zabbix_user = $this ->createMock ( "zabbix_user" );
+		$zabbix_user = $this ->createMock('Zorille\framework\zabbix_user' );
 		$zabbix_user ->expects ( $this ->any () ) 
 			->method ( 'setAlias' ) 
 			->will ( $this ->returnSelf () );
@@ -278,7 +280,7 @@ class zabbix_action_operationTest extends MockedListeOptions {
 			->method ( 'recherche_userid_by_Alias' ) 
 			->will ( $this ->returnSelf () );
 		
-		$zabbix_usergroup = $this ->createMock ( "zabbix_usergroup" );
+		$zabbix_usergroup = $this ->createMock('Zorille\framework\zabbix_usergroup' );
 		$zabbix_usergroup ->expects ( $this ->any () ) 
 			->method ( 'setName' ) 
 			->will ( $this ->returnSelf () );
@@ -296,10 +298,10 @@ class zabbix_action_operationTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_action_operation::creer_definition_action_operation_message_ws
+	 * @covers Zorille\framework\zabbix_action_operation::creer_definition_action_operation_message_ws
 	 */
 	public function testCreer_definition_action_operation_message_ws_valide() {
-		$operation_message = $this ->createMock ( "zabbix_action_operation_message" );
+		$operation_message = $this ->createMock('Zorille\framework\zabbix_action_operation_message' );
 		$operation_message ->expects ( $this ->any () ) 
 			->method ( 'creer_definition_zabbix_operation_message_ws' ) 
 			->will ( $this ->returnValue ( array ( 
@@ -307,7 +309,7 @@ class zabbix_action_operationTest extends MockedListeOptions {
 				"mediatypeid" => 1, 
 				"message" => "message", 
 				"subject" => "subject" ) ) );
-		$zabbix_user = $this ->createMock ( "zabbix_user" );
+		$zabbix_user = $this ->createMock('Zorille\framework\zabbix_user' );
 		$zabbix_user ->expects ( $this ->any () ) 
 			->method ( 'setAlias' ) 
 			->will ( $this ->returnSelf () );
@@ -315,7 +317,7 @@ class zabbix_action_operationTest extends MockedListeOptions {
 			->method ( 'recherche_userid_by_Alias' ) 
 			->will ( $this ->returnSelf () );
 		
-		$zabbix_usergroup = $this ->createMock ( "zabbix_usergroup" );
+		$zabbix_usergroup = $this ->createMock('Zorille\framework\zabbix_usergroup' );
 		$zabbix_usergroup ->expects ( $this ->any () ) 
 			->method ( 'setName' ) 
 			->will ( $this ->returnSelf () );
@@ -370,10 +372,10 @@ class zabbix_action_operationTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_action_operation::retrouve_userId
+	 * @covers Zorille\framework\zabbix_action_operation::retrouve_userId
 	 */
 	public function testRetrouve_userId_exception() {
-		$zabbix_user = $this ->createMock ( "zabbix_user" );
+		$zabbix_user = $this ->createMock('Zorille\framework\zabbix_user' );
 		$zabbix_user ->expects ( $this ->any () ) 
 			->method ( 'setAlias' ) 
 			->will ( $this ->returnSelf () );
@@ -398,10 +400,10 @@ class zabbix_action_operationTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_action_operation::retrouve_userId
+	 * @covers Zorille\framework\zabbix_action_operation::retrouve_userId
 	 */
 	public function testRetrouve_userId_valide() {
-		$zabbix_user = $this ->createMock ( "zabbix_user" );
+		$zabbix_user = $this ->createMock('Zorille\framework\zabbix_user' );
 		$zabbix_user ->expects ( $this ->any () ) 
 			->method ( 'setAlias' ) 
 			->will ( $this ->returnSelf () );
@@ -427,10 +429,10 @@ class zabbix_action_operationTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_action_operation::retrouve_usrgrpId
+	 * @covers Zorille\framework\zabbix_action_operation::retrouve_usrgrpId
 	 */
 	public function testRetrouve_usrgrpId_exception() {
-		$zabbix_usergroup = $this ->createMock ( "zabbix_usergroup" );
+		$zabbix_usergroup = $this ->createMock('Zorille\framework\zabbix_usergroup' );
 		$zabbix_usergroup ->expects ( $this ->any () ) 
 			->method ( 'setName' ) 
 			->will ( $this ->returnSelf () );
@@ -454,10 +456,10 @@ class zabbix_action_operationTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_action_operation::retrouve_usrgrpId
+	 * @covers Zorille\framework\zabbix_action_operation::retrouve_usrgrpId
 	 */
 	public function testRetrouve_usrgrpId_valide() {
-		$zabbix_usergroup = $this ->createMock ( "zabbix_usergroup" );
+		$zabbix_usergroup = $this ->createMock('Zorille\framework\zabbix_usergroup' );
 		$zabbix_usergroup ->expects ( $this ->any () ) 
 			->method ( 'setName' ) 
 			->will ( $this ->returnSelf () );
@@ -483,7 +485,7 @@ class zabbix_action_operationTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_action_operation::retrouve_OperationType
+     * @covers Zorille\framework\zabbix_action_operation::retrouve_OperationType
      */
 	public function testRetrouve_OperationType() {
 		$this ->assertEquals ( 0, $this->object ->retrouve_OperationType ( "" ) );
@@ -501,7 +503,7 @@ class zabbix_action_operationTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_action_operation::retrouve_EvalType
+     * @covers Zorille\framework\zabbix_action_operation::retrouve_EvalType
      */
 	public function testRetrouve_EvalType() {
 		$this ->assertEquals ( 0, $this->object ->retrouve_EvalType ( "" ) );

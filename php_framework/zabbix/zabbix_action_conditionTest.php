@@ -1,4 +1,6 @@
 <?php
+namespace Zorille\framework;
+use \Exception as Exception;
 if (! defined ( '__DOCUMENT_ROOT__' )) {
 	require_once $_SERVER ["PWD"] . '/prepare.php';
 }
@@ -30,7 +32,7 @@ class zabbix_action_conditionTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_action_condition::retrouve_zabbix_param
+     * @covers Zorille\framework\zabbix_action_condition::retrouve_zabbix_param
      */
 	public function testRetrouve_zabbix_param_Exception() {
 		$this ->getListeOption () 
@@ -44,7 +46,7 @@ class zabbix_action_conditionTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_action_condition::retrouve_zabbix_param
+	 * @covers Zorille\framework\zabbix_action_condition::retrouve_zabbix_param
 	 */
 	public function testRetrouve_zabbix_param_ExceptionParam() {
 		$this ->expectException(Exception::class);
@@ -53,7 +55,7 @@ class zabbix_action_conditionTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_action_condition::retrouve_zabbix_param
+	 * @covers Zorille\framework\zabbix_action_condition::retrouve_zabbix_param
 	 */
 	public function testRetrouve_zabbix_param() {
 		$this ->getListeOption () 
@@ -76,7 +78,7 @@ class zabbix_action_conditionTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_action_condition::creer_definition_action_condition_ws
+     * @covers Zorille\framework\zabbix_action_condition::creer_definition_action_condition_ws
      */
 	public function testCreer_definition_action_condition_ws() {
 		$this->object ->setConditionType ( "host", 0 );
@@ -99,7 +101,7 @@ class zabbix_action_conditionTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_action_condition::retrouve_ConditionOperator
+     * @covers Zorille\framework\zabbix_action_condition::retrouve_ConditionOperator
      */
 	public function testRetrouve_ConditionOperator() {
 		$this ->assertEquals ( 0, $this->object ->retrouve_ConditionOperator ( "" ) );
@@ -115,7 +117,7 @@ class zabbix_action_conditionTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_action_condition::retrouve_ConditionType
+     * @covers Zorille\framework\zabbix_action_condition::retrouve_ConditionType
      */
 	public function testRetrouve_ConditionType() {
 		$this ->assertEquals ( 0, $this->object ->retrouve_ConditionType ( "", 6 ) );
@@ -184,7 +186,7 @@ class zabbix_action_conditionTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_action_condition::retrouve_Value
+	 * @covers Zorille\framework\zabbix_action_condition::retrouve_Value
 	 */
 	public function testRetrouve_Value() {
 		$this->object ->setConditionType ( "trigger name", 0 );

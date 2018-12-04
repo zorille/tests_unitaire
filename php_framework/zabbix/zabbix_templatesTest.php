@@ -1,4 +1,6 @@
 <?php
+namespace Zorille\framework;
+use \Exception as Exception;
 if (! defined ( '__DOCUMENT_ROOT__' )) {
 	require_once $_SERVER ["PWD"] . '/prepare.php';
 }
@@ -19,8 +21,8 @@ class zabbix_templatesTest extends MockedListeOptions {
 	protected function setUp() {
 		ob_start ();
 		
-		$zabbix_wsclient = $this ->createMock ( "zabbix_wsclient" );
-		$zabbix_template_reference = $this ->createMock ( "zabbix_template" );
+		$zabbix_wsclient = $this ->createMock('Zorille\framework\zabbix_wsclient' );
+		$zabbix_template_reference = $this ->createMock('Zorille\framework\zabbix_template' );
 		
 		$this->object = new zabbix_templates ( false, "TESTS zabbix HOST" );
 		$this->object ->setListeOptions ( $this ->getListeOption () ) 
@@ -37,7 +39,7 @@ class zabbix_templatesTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_templates::retrouve_zabbix_param
+	 * @covers Zorille\framework\zabbix_templates::retrouve_zabbix_param
 	 */
 	public function testRetrouve_zabbix_param_Exception() {
 		$this ->getListeOption () 
@@ -53,7 +55,7 @@ class zabbix_templatesTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_templates::retrouve_zabbix_param
+	 * @covers Zorille\framework\zabbix_templates::retrouve_zabbix_param
 	 */
 	public function testRetrouve_zabbix_param() {
 		$this ->getListeOption () 
@@ -81,7 +83,7 @@ class zabbix_templatesTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_templates::ajoute_template_a_partir_cli
+	 * @covers Zorille\framework\zabbix_templates::ajoute_template_a_partir_cli
 	 */
 	public function testAjoute_template_a_partir_cli() {
 		$liste_templates_cli = array ( 
@@ -112,7 +114,7 @@ class zabbix_templatesTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_templates::retire_template_a_partir_cli
+	 * @covers Zorille\framework\zabbix_templates::retire_template_a_partir_cli
 	 */
 	public function testRetire_template_a_partir_cli() {
 		$liste_templates_cli = array ( 
@@ -142,7 +144,7 @@ class zabbix_templatesTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_templates::RemplaceValeurListeTemplates
+	 * @covers Zorille\framework\zabbix_templates::RemplaceValeurListeTemplates
 	 */
 	public function testRemplaceValeurListeTemplates_exception() {
 		$liste_groups = array ( 
@@ -172,7 +174,7 @@ class zabbix_templatesTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_templates::RemplaceValeurListeTemplates
+	 * @covers Zorille\framework\zabbix_templates::RemplaceValeurListeTemplates
 	 */
 	public function testRemplaceValeurListeTemplates_valide() {
 		$liste_groups = array ( 
@@ -208,7 +210,7 @@ class zabbix_templatesTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_templates::creer_liste_templates
+	 * @covers Zorille\framework\zabbix_templates::creer_liste_templates
 	 */
 	public function testCreer_liste_templates() {
 		$liste_templates = array ( 
@@ -253,7 +255,7 @@ class zabbix_templatesTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_templates::recherche_liste_templates
+	 * @covers Zorille\framework\zabbix_templates::recherche_liste_templates
 	 */
 	public function testRecherche_liste_templates() {
 		$liste_templates = array ( 
@@ -280,7 +282,7 @@ class zabbix_templatesTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_templates::valide_liste_templates
+	 * @covers Zorille\framework\zabbix_templates::valide_liste_templates
 	 */
 	public function testValide_liste_templates() {
 		$liste_templates = array ( 
@@ -299,7 +301,7 @@ class zabbix_templatesTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_templates::ajoute_liste_templates_a_partir_de_tableau
+	 * @covers Zorille\framework\zabbix_templates::ajoute_liste_templates_a_partir_de_tableau
 	 */
 	public function testAjoute_liste_templates_a_partir_de_tableau() {
 		$liste_templates = array ( 
@@ -330,7 +332,7 @@ class zabbix_templatesTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_templates::valide_liste_templates_a_partir_de_tableau
+	 * @covers Zorille\framework\zabbix_templates::valide_liste_templates_a_partir_de_tableau
 	 */
 	public function testValide_liste_templates_a_partir_de_tableau() {
 		$liste_templates = array ( 
@@ -361,7 +363,7 @@ class zabbix_templatesTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_templates::invalide_liste_templates_a_partir_de_tableau
+	 * @covers Zorille\framework\zabbix_templates::invalide_liste_templates_a_partir_de_tableau
 	 */
 	public function testInvalide_liste_templates_a_partir_de_tableau() {
 		$liste_templates = array ( 
@@ -402,7 +404,7 @@ class zabbix_templatesTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_templates::creer_definition_templatesids_ws
+	 * @covers Zorille\framework\zabbix_templates::creer_definition_templatesids_ws
 	 */
 	public function testcreer_definition_templatesids_ws() {
 		$liste_templates = array ( 
@@ -426,7 +428,7 @@ class zabbix_templatesTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_templates::creer_definition_templatesids_sans_champ_templateid_ws
+	 * @covers Zorille\framework\zabbix_templates::creer_definition_templatesids_sans_champ_templateid_ws
 	 */
 	public function testcreer_definition_templatesids_sans_champ_templateid_ws() {
 		$liste_templates = array ( 

@@ -1,4 +1,6 @@
 <?php
+namespace Zorille\framework;
+use \Exception as Exception;
 /**
  * @ignore
  */
@@ -43,16 +45,16 @@ class datesTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers dates::Parse_date
+	 * @covers Zorille\framework\dates::Parse_date
 	 */
 	public function testParse_date_exception() {
 		$this ->expectException(Exception::class);
-        $this->expectExceptionMessage( '(dates) la date n\'est pas au bon format' );
+        $this->expectExceptionMessage( '(Zorille\framework\dates) la date n\'est pas au bon format' );
 		$this->object ->parse_date ( $this->month . "3" );
 	}
 
 	/**
-	 * @covers dates::Parse_date
+	 * @covers Zorille\framework\dates::Parse_date
 	 */
 	public function testParse_date_valide() {
 		$this ->assertEquals ( array ( 
@@ -62,14 +64,14 @@ class datesTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers dates::Extraire_date
+	 * @covers Zorille\framework\dates::Extraire_date
 	 */
 	public function testExtraire_date_false() {
 		$this ->assertFalse ( $this->object ->extraire_date ( false ) );
 	}
 
 	/**
-	 * @covers dates::Extraire_date
+	 * @covers Zorille\framework\dates::Extraire_date
 	 */
 	public function testExtraire_date_valide() {
 		$this ->assertEquals ( $this->date_debut, $this->object ->extraire_date ( $this->date_debut ) );
@@ -77,21 +79,21 @@ class datesTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers dates::extraire_date_timestamp
+	 * @covers Zorille\framework\dates::extraire_date_timestamp
 	 */
 	public function testExtraire_date_timestamp_false() {
 		$this ->assertFalse ( $this->object ->extraire_date_timestamp ( "1409194800" ) );
 	}
 
 	/**
-	 * @covers dates::extraire_date_timestamp
+	 * @covers Zorille\framework\dates::extraire_date_timestamp
 	 */
 	public function testExtraire_date_timestamp_valide() {
 		$this ->assertEquals ( "20140828", $this->object ->extraire_date_timestamp ( 1409194800 ) );
 	}
 
 	/**
-	 * @covers dates::extraire_timestamp
+	 * @covers Zorille\framework\dates::extraire_timestamp
 	 */
 	public function testExtraire_timestamp_exception1() {
 		$this ->expectException(Exception::class);
@@ -100,14 +102,14 @@ class datesTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers dates::extraire_timestamp
+	 * @covers Zorille\framework\dates::extraire_timestamp
 	 */
 	public function testExtraire_timestamp_false() {
 		$this ->assertFalse ( $this->object ->extraire_timestamp ( "20140828", "05:00" ) );
 	}
 
 	/**
-	 * @covers dates::extraire_timestamp
+	 * @covers Zorille\framework\dates::extraire_timestamp
 	 */
 	public function testExtraire_timestamp_valide() {
 		$this ->assertEquals ( "1409176800", $this->object ->extraire_timestamp ( "20140828" ) );
@@ -115,14 +117,14 @@ class datesTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers dates::extraire_date_mysql_timestamp
+	 * @covers Zorille\framework\dates::extraire_date_mysql_timestamp
 	 */
 	public function testExtraire_date_mysql_timestamp_false() {
 		$this ->assertFalse ( $this->object ->extraire_date_mysql_timestamp ( "a1409194800" ) );
 	}
 
 	/**
-	 * @covers dates::extraire_date_mysql_timestamp
+	 * @covers Zorille\framework\dates::extraire_date_mysql_timestamp
 	 */
 	public function testExtraire_date_mysql_timestamp_valide() {
 		$this ->assertEquals ( "2014-08-28 05:00:00", $this->object ->extraire_date_mysql_timestamp ( 1409194800 ) );
@@ -130,23 +132,23 @@ class datesTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers dates::extraire_date_mysql_standard
+	 * @covers Zorille\framework\dates::extraire_date_mysql_standard
 	 */
 	public function testExtraire_date_mysql_standard_exception1() {
 		$this ->expectException(Exception::class);
-        $this->expectExceptionMessage( '(dates) la date n\'est pas au bon format' );
+        $this->expectExceptionMessage( '(Zorille\framework\dates) la date n\'est pas au bon format' );
 		$this->object ->extraire_date_mysql_standard ( "1409194800" );
 	}
 
 	/**
-	 * @covers dates::extraire_date_mysql_standard
+	 * @covers Zorille\framework\dates::extraire_date_mysql_standard
 	 */
 	public function testExtraire_date_mysql_standard_false() {
 		$this ->assertFalse ( $this->object ->extraire_date_mysql_standard ( "20140828", "05:00" ) );
 	}
 
 	/**
-	 * @covers dates::extraire_date_mysql_standard
+	 * @covers Zorille\framework\dates::extraire_date_mysql_standard
 	 */
 	public function testExtraire_date_mysql_standard_valide() {
 		$this ->assertEquals ( "2014-08-28 00:00:00", $this->object ->extraire_date_mysql_standard ( "20140828" ) );
@@ -154,7 +156,7 @@ class datesTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers dates::prepare_date_mysql
+	 * @covers Zorille\framework\dates::prepare_date_mysql
 	 */
 	public function testPrepare_date_mysql() {
 		$this ->assertEquals ( 
@@ -176,7 +178,7 @@ class datesTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers dates::timestamp_mysql_date
+	 * @covers Zorille\framework\dates::timestamp_mysql_date
 	 */
 	public function testTimestamp_mysql_date() {
 		$this ->assertEquals ( "1409194800", $this->object ->timestamp_mysql_date ( "2014-08-28 05:00:00" ) );
@@ -184,52 +186,52 @@ class datesTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers dates::creer_date
+	 * @covers Zorille\framework\dates::creer_date
 	 */
 	public function testCreer_date() {
 		$this ->assertTrue ( $this->object ->creer_date ( $this->date_debut ) );
 		$this ->expectException(Exception::class);
-        $this->expectExceptionMessage( '(dates) la date n\'est pas au bon format' );
+        $this->expectExceptionMessage( '(Zorille\framework\dates) la date n\'est pas au bon format' );
 		$this->object ->creer_date ( false );
 	}
 
 	/**
-	 * @covers dates::creer_liste_dates
+	 * @covers Zorille\framework\dates::creer_liste_dates
 	 */
 	public function testCreer_liste_dates_exception1() {
 		$this ->expectException(Exception::class);
-        $this->expectExceptionMessage( '(dates) la date n\'est pas au bon format' );
+        $this->expectExceptionMessage( '(Zorille\framework\dates) la date n\'est pas au bon format' );
 		$this->object ->creer_liste_dates ( $this->date_debut, false );
 	}
 
 	/**
-	 * @covers dates::creer_liste_dates
+	 * @covers Zorille\framework\dates::creer_liste_dates
 	 */
 	public function testCreer_liste_dates_false() {
 		$this ->assertFalse ( $this->object ->creer_liste_dates ( "20243020", $this->date_fin ) );
 	}
 
 	/**
-	 * @covers dates::creer_liste_dates
+	 * @covers Zorille\framework\dates::creer_liste_dates
 	 */
 	public function testCreer_liste_dates_valide() {
 		$this ->assertTrue ( $this->object ->creer_liste_dates ( $this->date_debut, $this->date_fin ) );
 	}
 
 	/**
-	 * @covers dates::week_day
+	 * @covers Zorille\framework\dates::week_day
 	 */
 	public function testWeek_day_exception() {
 		$this->object ->setListeDates ( array ( 
 				"202430201" ) );
 		
 		$this ->expectException(Exception::class);
-        $this->expectExceptionMessage( '(dates) la date n\'est pas au bon format' );
+        $this->expectExceptionMessage( '(Zorille\framework\dates) la date n\'est pas au bon format' );
 		$this->object ->week_day ();
 	}
 
 	/**
-	 * @covers dates::week_day
+	 * @covers Zorille\framework\dates::week_day
 	 */
 	public function testWeek_day_valide() {
 		$this ->assertTrue ( $this->object ->week_day () );
@@ -237,18 +239,18 @@ class datesTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers dates::month_day
+	 * @covers Zorille\framework\dates::month_day
 	 */
 	public function testMonth_day_exception() {
 		$this->object ->setListeDates ( array ( 
 				"202430201" ) );
 		$this ->expectException(Exception::class);
-        $this->expectExceptionMessage( '(dates) la date n\'est pas au bon format' );
+        $this->expectExceptionMessage( '(Zorille\framework\dates) la date n\'est pas au bon format' );
 		$this->object ->month_day ();
 	}
 
 	/**
-	 * @covers dates::month_day
+	 * @covers Zorille\framework\dates::month_day
 	 */
 	public function testMonth_day_valide() {
 		$this ->assertTrue ( $this->object ->month_day () );
@@ -256,7 +258,7 @@ class datesTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers dates::getListeDates
+	 * @covers Zorille\framework\dates::getListeDates
 	 */
 	public function testgetListeDates() {
 		$this ->assertArrayHasKey ( 0, $this->object ->getListeDates () );
@@ -265,14 +267,14 @@ class datesTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers dates::recupere_date
+	 * @covers Zorille\framework\dates::recupere_date
 	 */
 	public function testRecupere_date_false() {
 		$this ->assertFalse ( $this->object ->recupere_date ( 40 ) );
 	}
 
 	/**
-	 * @covers dates::recupere_date
+	 * @covers Zorille\framework\dates::recupere_date
 	 */
 	public function testRecupere_date_valide() {
 		$this ->assertEquals ( "20100801", $this->object ->recupere_date ( 0 ) );
@@ -282,14 +284,14 @@ class datesTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers dates::recupere_premier_jour
+	 * @covers Zorille\framework\dates::recupere_premier_jour
 	 */
 	public function testRecupere_premier_jour() {
 		$this ->assertEquals ( "20100801", $this->object ->recupere_premier_jour () );
 	}
 
 	/**
-	 * @covers dates::recupere_dernier_jour
+	 * @covers Zorille\framework\dates::recupere_dernier_jour
 	 */
 	public function testRecupere_dernier_jour() {
 		$this ->assertEquals ( "20100810", $this->object ->recupere_dernier_jour () );
@@ -298,7 +300,7 @@ class datesTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers dates::getListeWeek
+	 * @covers Zorille\framework\dates::getListeWeek
 	 */
 	public function testgetListeWeek() {
 		$this ->assertArrayHasKey ( 0, $this->object ->getListeWeek () );
@@ -307,7 +309,7 @@ class datesTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers dates::getListeMonth
+	 * @covers Zorille\framework\dates::getListeMonth
 	 */
 	public function testgetListeMonth() {
 		$this ->assertArrayHasKey ( 0, $this->object ->getListeMonth () );
@@ -316,16 +318,16 @@ class datesTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers dates::ajout_date
+	 * @covers Zorille\framework\dates::ajout_date
 	 */
 	public function testAjout_date_exception() {
 		$this ->expectException(Exception::class);
-        $this->expectExceptionMessage( '(dates) la date n\'est pas au bon format' );
+        $this->expectExceptionMessage( '(Zorille\framework\dates) la date n\'est pas au bon format' );
 		$this->object ->ajout_date ( "20008090257" );
 	}
 
 	/**
-	 * @covers dates::ajout_date
+	 * @covers Zorille\framework\dates::ajout_date
 	 */
 	public function testAjout_date_valide() {
 		$this ->assertTrue ( $this->object ->ajout_date ( "20100811" ) );
@@ -335,7 +337,7 @@ class datesTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers dates::date_existe_dans_liste_day
+	 * @covers Zorille\framework\dates::date_existe_dans_liste_day
 	 */
 	public function testDate_existe_dans_liste_day() {
 		$this ->assertTrue ( $this->object ->date_existe_dans_liste_day ( "20100805" ) );
@@ -343,16 +345,16 @@ class datesTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers dates::retrouve_jour
+	 * @covers Zorille\framework\dates::retrouve_jour
 	 */
 	public function testRetrouve_jour_exception() {
 		$this ->expectException(Exception::class);
-        $this->expectExceptionMessage( '(dates) la date n\'est pas au bon format' );
+        $this->expectExceptionMessage( '(Zorille\framework\dates) la date n\'est pas au bon format' );
 		$this->object ->retrouve_jour ( "20008090257", 5 );
 	}
 
 	/**
-	 * @covers dates::retrouve_jour
+	 * @covers Zorille\framework\dates::retrouve_jour
 	 */
 	public function testRetrouve_jour_valide() {
 		$this ->assertEquals ( "20100811", $this->object ->retrouve_jour ( $this->date_debut, 10 ) );
@@ -360,32 +362,32 @@ class datesTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers dates::retrouve_nom_jour_semaine
+	 * @covers Zorille\framework\dates::retrouve_nom_jour_semaine
 	 */
 	public function testRetrouve_nom_jour_semaine_exception() {
 		$this ->expectException(Exception::class);
-        $this->expectExceptionMessage( '(dates) la date n\'est pas au bon format' );
+        $this->expectExceptionMessage( '(Zorille\framework\dates) la date n\'est pas au bon format' );
 		$this->object ->retrouve_nom_jour_semaine ( "20008090257", 5 );
 	}
 
 	/**
-	 * @covers dates::retrouve_nom_jour_semaine
+	 * @covers Zorille\framework\dates::retrouve_nom_jour_semaine
 	 */
 	public function testRetrouve_nom_jour_semaine_valide() {
 		$this ->assertEquals ( "Sunday", $this->object ->retrouve_nom_jour_semaine ( $this->date_debut ) );
 	}
 
 	/**
-	 * @covers dates::retrouve_week
+	 * @covers Zorille\framework\dates::retrouve_week
 	 */
 	public function testRetrouve_week_exception() {
 		$this ->expectException(Exception::class);
-        $this->expectExceptionMessage( '(dates) la date n\'est pas au bon format' );
+        $this->expectExceptionMessage( '(Zorille\framework\dates) la date n\'est pas au bon format' );
 		$this->object ->retrouve_week ( "20008090257", 5 );
 	}
 
 	/**
-	 * @covers dates::retrouve_week
+	 * @covers Zorille\framework\dates::retrouve_week
 	 */
 	public function testRetrouve_week_valide() {
 		$this ->assertEquals ( "20101011", $this->object ->retrouve_week ( $this->date_debut, 10 ) );
@@ -393,16 +395,16 @@ class datesTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers dates::retrouve_month
+	 * @covers Zorille\framework\dates::retrouve_month
 	 */
 	public function testRetrouve_month_exception() {
 		$this ->expectException(Exception::class);
-        $this->expectExceptionMessage( '(dates) la date n\'est pas au bon format' );
+        $this->expectExceptionMessage( '(Zorille\framework\dates) la date n\'est pas au bon format' );
 		$this->object ->retrouve_month ( "20008090257", 5 );
 	}
 
 	/**
-	 * @covers dates::retrouve_month
+	 * @covers Zorille\framework\dates::retrouve_month
 	 */
 	public function testRetrouve_month_valide() {
 		$this ->assertEquals ( "20100901", $this->object ->retrouve_month ( $this->date_debut, 1 ) );
@@ -410,23 +412,23 @@ class datesTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers dates::retrouve_month
+	 * @covers Zorille\framework\dates::retrouve_month
 	 */
 	public function testRetrouve_trimestre_false() {
 		$this ->assertFalse ( $this->object ->retrouve_trimestre ( "20101315" ) );
 	}
 
 	/**
-	 * @covers dates::retrouve_month
+	 * @covers Zorille\framework\dates::retrouve_month
 	 */
 	public function testRetrouve_trimestre_exception1() {
 		$this ->expectException(Exception::class);
-        $this->expectExceptionMessage( '(dates) la date n\'est pas au bon format' );
+        $this->expectExceptionMessage( '(Zorille\framework\dates) la date n\'est pas au bon format' );
 		$this->object ->retrouve_trimestre ( "20008090257" );
 	}
 
 	/**
-	 * @covers dates::retrouve_month
+	 * @covers Zorille\framework\dates::retrouve_month
 	 */
 	public function testRetrouve_trimestre_valide() {
 		$this ->assertEquals ( "20100101", $this->object ->retrouve_trimestre ( "20100301" ) );
@@ -436,92 +438,92 @@ class datesTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers dates::compare_dates
+	 * @covers Zorille\framework\dates::compare_dates
 	 */
 	public function testCompare_dates_false() {
 		$this ->assertFalse ( $this->object ->compare_dates ( $this->date_fin, $this->date_fin ) );
 	}
 
 	/**
-	 * @covers dates::compare_dates
+	 * @covers Zorille\framework\dates::compare_dates
 	 */
 	public function testCompare_dates_false2() {
 		$this ->assertFalse ( $this->object ->compare_dates ( $this->date_fin, $this->date_debut ) );
 	}
 
 	/**
-	 * @covers dates::compare_dates
+	 * @covers Zorille\framework\dates::compare_dates
 	 */
 	public function testCompare_dates_true() {
 		$this ->assertTrue ( $this->object ->compare_dates ( $this->date_debut, $this->date_fin ) );
 	}
 
 	/**
-	 * @covers dates::retrouve_lundi_precedent
+	 * @covers Zorille\framework\dates::retrouve_lundi_precedent
 	 */
 	public function testRetrouve_lundi_precedent_exception() {
 		$this ->expectException(Exception::class);
-        $this->expectExceptionMessage( '(dates) la date n\'est pas au bon format' );
+        $this->expectExceptionMessage( '(Zorille\framework\dates) la date n\'est pas au bon format' );
 		$this->object ->retrouve_lundi_precedent ( "20008090257" );
 	}
 
 	/**
-	 * @covers dates::retrouve_lundi_precedent
+	 * @covers Zorille\framework\dates::retrouve_lundi_precedent
 	 */
 	public function testRetrouve_lundi_precedent_valide() {
 		$this ->assertEquals ( "20100809", $this->object ->retrouve_lundi_precedent ( $this->date_fin ) );
 	}
 
 	/**
-	 * @covers dates::retrouve_dimanche_suivant
+	 * @covers Zorille\framework\dates::retrouve_dimanche_suivant
 	 */
 	public function testRetrouve_dimanche_suivant_exception() {
 		$this ->expectException(Exception::class);
-        $this->expectExceptionMessage( '(dates) la date n\'est pas au bon format' );
+        $this->expectExceptionMessage( '(Zorille\framework\dates) la date n\'est pas au bon format' );
 		$this->object ->retrouve_dimanche_suivant ( "20008090257" );
 	}
 
 	/**
-	 * @covers dates::retrouve_dimanche_suivant
+	 * @covers Zorille\framework\dates::retrouve_dimanche_suivant
 	 */
 	public function testRetrouve_dimanche_suivant_valide() {
 		$this ->assertEquals ( "20100815", $this->object ->retrouve_dimanche_suivant ( $this->date_fin ) );
 	}
 
 	/**
-	 * @covers dates::retrouve_dernier_du_mois
+	 * @covers Zorille\framework\dates::retrouve_dernier_du_mois
 	 */
 	public function testRetrouve_dernier_du_mois_exception() {
 		$this ->expectException(Exception::class);
-        $this->expectExceptionMessage( '(dates) la date n\'est pas au bon format' );
+        $this->expectExceptionMessage( '(Zorille\framework\dates) la date n\'est pas au bon format' );
 		$this->object ->retrouve_dernier_du_mois ( "20008090257" );
 	}
 
 	/**
-	 * @covers dates::retrouve_dernier_du_mois
+	 * @covers Zorille\framework\dates::retrouve_dernier_du_mois
 	 */
 	public function testRetrouve_dernier_du_mois_valide() {
 		$this ->assertEquals ( "20100831", $this->object ->retrouve_dernier_du_mois ( $this->date_debut ) );
 	}
 
 	/**
-	 * @covers dates::retrouve_mois_str_fr
+	 * @covers Zorille\framework\dates::retrouve_mois_str_fr
 	 */
 	public function testRetrouve_mois_str_fr_exception1() {
 		$this ->expectException(Exception::class);
-        $this->expectExceptionMessage( '(dates) la date n\'est pas au bon format' );
+        $this->expectExceptionMessage( '(Zorille\framework\dates) la date n\'est pas au bon format' );
 		$this->object ->retrouve_mois_str_fr ( "200001090257" );
 	}
 
 	/**
-	 * @covers dates::retrouve_mois_str_fr
+	 * @covers Zorille\framework\dates::retrouve_mois_str_fr
 	 */
 	public function testRetrouve_mois_str_fr_false() {
 		$this ->assertFalse ( $this->object ->retrouve_mois_str_fr ( "20101309" ) );
 	}
 
 	/**
-	 * @covers dates::retrouve_mois_str_fr
+	 * @covers Zorille\framework\dates::retrouve_mois_str_fr
 	 */
 	public function testRetrouve_mois_str_fr_valide() {
 		$this ->assertEquals ( "Janvier", $this->object ->retrouve_mois_str_fr ( "20100101" ) );
@@ -539,25 +541,25 @@ class datesTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers dates::est_feries
+	 * @covers Zorille\framework\dates::est_feries
 	 */
 	public function testEst_feries_exception1() {
 		$this ->expectException(Exception::class);
-        $this->expectExceptionMessage( '(dates) la date n\'est pas au bon format' );
+        $this->expectExceptionMessage( '(Zorille\framework\dates) la date n\'est pas au bon format' );
 		$this->object ->est_feries ( "20008090257" );
 	}
 
 	/**
-	 * @covers dates::est_feries
+	 * @covers Zorille\framework\dates::est_feries
 	 */
 	public function testEst_feries_exception2() {
 		$this ->expectException(Exception::class);
-        $this->expectExceptionMessage( '(dates) la date n\'est pas dans la bonne annee' );
+        $this->expectExceptionMessage( '(Zorille\framework\dates) la date n\'est pas dans la bonne annee' );
 		$this->object ->est_feries ( "20110815" );
 	}
 
 	/**
-	 * @covers dates::est_feries
+	 * @covers Zorille\framework\dates::est_feries
 	 */
 	public function testEst_feries_valide() {
 		$this ->assertEquals ( 1, $this->object ->est_feries ( "20100101" ) );
@@ -567,7 +569,7 @@ class datesTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers dates::creer_jours_feries
+	 * @covers Zorille\framework\dates::creer_jours_feries
 	 */
 	public function testCreer_jours_feries() {
 		$this ->assertTrue ( $this->object ->creer_jours_feries () );
@@ -591,14 +593,14 @@ class datesTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers dates::renvoi_timestamp
+	 * @covers Zorille\framework\dates::renvoi_timestamp
 	 */
 	public function testrenvoi_timestamp_false() {
 		$this ->assertFalse ( $this->object ->renvoi_timestamp ( "20100811", "13:32:54:00" ) );
 	}
 
 	/**
-	 * @covers dates::renvoi_timestamp
+	 * @covers Zorille\framework\dates::renvoi_timestamp
 	 */
 	public function testrenvoi_timestamp_valide() {
 		$this ->assertEquals ( 1281477600, $this->object ->renvoi_timestamp ( "20100811" ) );

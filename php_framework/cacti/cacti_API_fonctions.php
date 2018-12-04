@@ -1,4 +1,5 @@
 <?php
+namespace Zorille\framework;
 //Necessite les APIs Cacti lib/api_automation_tools.php
 function getHosts() {
 	return array (

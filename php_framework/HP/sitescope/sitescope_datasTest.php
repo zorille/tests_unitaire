@@ -1,4 +1,7 @@
 <?php
+namespace Zorille\framework;
+use \Exception as Exception;
+use \SoapClient as SoapClient;
 if (! defined ( '__DOCUMENT_ROOT__' )) {
 	require_once $_SERVER ["PWD"] . '/prepare.php';
 }
@@ -19,7 +22,7 @@ class sitescope_datasTest extends MockedListeOptions {
 	protected function setUp() {
 		ob_start ();
 		
-		$utilisateurs = $this ->createMock ( "utilisateurs" );
+		$utilisateurs = $this ->createMock('Zorille\framework\utilisateurs' );
 		$utilisateurs ->expects ( $this ->any () ) 
 			->method ( 'retrouve_utilisateurs_array' ) 
 			->will ( $this ->returnValue ( $utilisateurs ) );
@@ -29,7 +32,7 @@ class sitescope_datasTest extends MockedListeOptions {
 		$utilisateurs ->expects ( $this ->any () ) 
 			->method ( 'getPassword' ) 
 			->will ( $this ->returnValue ( 'PASS1' ) );
-		$soap = $this ->createMock ( "soap" );
+		$soap = $this ->createMock('Zorille\framework\soap' );
 		
 		$this->object = new sitescope_datas ( false, "TESTS sitescope_datas" );
 		$this->object ->setSoapConnection ( $soap ) 
@@ -46,7 +49,7 @@ class sitescope_datasTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers sitescope_datas::retrouve_sitescope_param
+	 * @covers Zorille\framework\sitescope_datas::retrouve_sitescope_param
 	 */
 	public function testRetrouve_sitescope_param_Exception() {
 		$this->object ->getListeOptions () 
@@ -60,7 +63,7 @@ class sitescope_datasTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers sitescope_datas::retrouve_sitescope_param
+	 * @covers Zorille\framework\sitescope_datas::retrouve_sitescope_param
 	 */
 	public function testRetrouve_sitescope_param_Exception2() {
 		$this->object ->getListeOptions () 
@@ -84,7 +87,7 @@ class sitescope_datasTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers sitescope_datas::retrouve_sitescope_param
+     * @covers Zorille\framework\sitescope_datas::retrouve_sitescope_param
      */
 	public function testRetrouve_sitescope_param() {
 		$this->object ->getListeOptions () 
@@ -101,11 +104,11 @@ class sitescope_datasTest extends MockedListeOptions {
 			->expects ( $this ->at ( 2 ) ) 
 			->method ( 'verifie_variable_standard' ) 
 			->will ( $this ->returnValue ( true ) );
-		$this ->assertInstanceOf ( 'sitescope_datas', $this->object ->retrouve_sitescope_param () );
+		$this ->assertInstanceOf ( 'Zorille\framework\sitescope_datas', $this->object ->retrouve_sitescope_param () );
 	}
 
 	/**
-     * @covers sitescope_datas::valide_presence_sitescope_data
+     * @covers Zorille\framework\sitescope_datas::valide_presence_sitescope_data
      */
 	public function testValide_presence_sitescope_data() {
 		$this->object ->setServeurData ( array ( 
@@ -120,7 +123,7 @@ class sitescope_datasTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers sitescope_datas::connexion
+	 * @covers Zorille\framework\sitescope_datas::connexion
 	 */
 	public function testConnexion_Exception() {
 		$this->object ->setServeurData ( array ( 
@@ -133,7 +136,7 @@ class sitescope_datasTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers sitescope_datas::connexion
+	 * @covers Zorille\framework\sitescope_datas::connexion
 	 */
 	public function testConnexion_Exception2() {
 		$this->object ->setServeurData ( array ( 
@@ -146,7 +149,7 @@ class sitescope_datasTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers sitescope_datas::connexion
+	 * @covers Zorille\framework\sitescope_datas::connexion
 	 */
 	public function testConnexion_Exception3() {
 		$this->object ->setServeurData ( array ( 
@@ -159,7 +162,7 @@ class sitescope_datasTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers sitescope_datas::connexion
+	 * @covers Zorille\framework\sitescope_datas::connexion
 	 */
 	public function testConnexion_False() {
 		$this->object ->getSoapConnection () 
@@ -179,7 +182,7 @@ class sitescope_datasTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers sitescope_datas::connexion
+	 * @covers Zorille\framework\sitescope_datas::connexion
 	 */
 	public function testConnexion() {
 		$this->object ->setServeurData ( array ( 
@@ -208,11 +211,11 @@ class sitescope_datasTest extends MockedListeOptions {
 	 * _prepareSoapRequest
 	 */
 	private function _prepareSoapRequest($call_return) {
-	    $SoapClient = $this ->createMock ( 'SoapClient' );
+	    $SoapClient = $this ->createMock('SoapClient' );
 		$SoapClient ->expects ( $this ->any () ) 
 			->method ( '__call' ) 
 			->will ( $call_return );
-		$soap = $this ->createMock ( "soap" );
+		$soap = $this ->createMock('Zorille\framework\soap' );
 		$soap ->expects ( $this ->any () ) 
 			->method ( 'getSoapClient' ) 
 			->will ( $this ->returnValue ( $SoapClient ) );
@@ -229,7 +232,7 @@ class sitescope_datasTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers sitescope_datas::applique_requete_soap
+	 * @covers Zorille\framework\sitescope_datas::applique_requete_soap
 	 */
 	public function testApplique_requete_soap_False() {
 		$this->object ->getListeOptions () 
@@ -240,7 +243,7 @@ class sitescope_datasTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers sitescope_datas::applique_requete_soap
+	 * @covers Zorille\framework\sitescope_datas::applique_requete_soap
 	 */
 	public function testApplique_requete_soap_applique_requete_soap() {
 		$this->object ->getListeOptions () 
@@ -254,7 +257,7 @@ class sitescope_datasTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers sitescope_datas::applique_requete_soap
+	 * @covers Zorille\framework\sitescope_datas::applique_requete_soap
 	 */
 	public function testApplique_requete_soap_Exception() {
 		$this->object ->getListeOptions () 

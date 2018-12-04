@@ -1,4 +1,5 @@
 <?php
+namespace Zorille\framework;
 if (! defined ( '__DOCUMENT_ROOT__' )) {
 	require_once $_SERVER ["PWD"] . '/prepare.php';
 }
@@ -32,7 +33,7 @@ class zabbix_proxy_interfaceTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_proxy_interface::retrouve_zabbix_param
+	 * @covers Zorille\framework\zabbix_proxy_interface::retrouve_zabbix_param
 	 */
 	public function testRetrouve_zabbix_param() {
 		$this ->getListeOption () 
@@ -50,7 +51,7 @@ class zabbix_proxy_interfaceTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_proxy_interface::creer_definition_proxy_interface_ws
+     * @covers Zorille\framework\zabbix_proxy_interface::creer_definition_proxy_interface_ws
      */
 	public function testCreer_definition_proxy_interface_ws() {
 		$this->object ->setUseIp ( "oui" );

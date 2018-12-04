@@ -1,4 +1,6 @@
 <?php
+namespace Zorille\framework;
+use \Exception as Exception;
 
 /**
  * @author dvargas
@@ -24,7 +26,7 @@ class bladelogic_datasTest extends MockedListeOptions {
 	protected function setUp() {
 		ob_start ();
 		
-		$utilisateurs = $this ->createMock ( "utilisateurs" );
+		$utilisateurs = $this ->createMock('Zorille\framework\utilisateurs' );
 		$utilisateurs ->expects ( $this ->any () ) 
 			->method ( 'retrouve_utilisateurs_array' ) 
 			->will ( $this ->returnValue ( $utilisateurs ) );
@@ -49,7 +51,7 @@ class bladelogic_datasTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers bladelogic_datas::retrouve_bladelogic_param
+	 * @covers Zorille\framework\bladelogic_datas::retrouve_bladelogic_param
 	 */
 	public function testRetrouve_bladelogic_param_exception1() {
 		$this->object ->getListeOptions () 
@@ -68,7 +70,7 @@ class bladelogic_datasTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers bladelogic_datas::retrouve_bladelogic_param
+	 * @covers Zorille\framework\bladelogic_datas::retrouve_bladelogic_param
 	 */
 	public function testRetrouve_bladelogic_param_exception2() {
 		$this->object ->getListeOptions () 
@@ -87,7 +89,7 @@ class bladelogic_datasTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers bladelogic_datas::retrouve_bladelogic_param
+	 * @covers Zorille\framework\bladelogic_datas::retrouve_bladelogic_param
 	 */
 	public function testRetrouve_bladelogic_param_valide() {
 		$this->object ->getListeOptions () 
@@ -104,7 +106,7 @@ class bladelogic_datasTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers bladelogic_datas::valide_presence_bladelogic_data
+	 * @covers Zorille\framework\bladelogic_datas::valide_presence_bladelogic_data
 	 */
 	public function testvalide_presence_bladelogic_data() {
 		$this->object ->setServeurData ( array ( 
@@ -124,7 +126,7 @@ class bladelogic_datasTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers bladelogic_datas::retrouve_wsdl
+	 * @covers Zorille\framework\bladelogic_datas::retrouve_wsdl
 	 */
 	public function testRetrouve_wsdl_exception() {
 		$this->object ->setWsdlData ( array ( 
@@ -138,7 +140,7 @@ class bladelogic_datasTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers bladelogic_datas::retrouve_wsdl
+	 * @covers Zorille\framework\bladelogic_datas::retrouve_wsdl
 	 */
 	public function testRetrouve_wsdl_valide() {
 		$this->object ->setWsdlData ( array ( 
@@ -151,7 +153,7 @@ class bladelogic_datasTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers bladelogic_datas::recupere_donnees_bladelogic_serveur
+	 * @covers Zorille\framework\bladelogic_datas::recupere_donnees_bladelogic_serveur
 	 */
 	public function testRecupere_donnees_bladelogic_serveur_exception1() {
 		$this->object ->setServeurData ( array ( 
@@ -166,7 +168,7 @@ class bladelogic_datasTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers bladelogic_datas::recupere_donnees_bladelogic_serveur
+	 * @covers Zorille\framework\bladelogic_datas::recupere_donnees_bladelogic_serveur
 	 */
 	public function testRecupere_donnees_bladelogic_serveur_exception2() {
 		$this->object ->setServeurData ( array ( 
@@ -181,7 +183,7 @@ class bladelogic_datasTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers bladelogic_datas::recupere_donnees_bladelogic_serveur
+	 * @covers Zorille\framework\bladelogic_datas::recupere_donnees_bladelogic_serveur
 	 */
 	public function testRecupere_donnees_bladelogic_serveur_false() {
 		$this->object ->setServeurData ( array ( 
@@ -194,7 +196,7 @@ class bladelogic_datasTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers bladelogic_datas::recupere_donnees_bladelogic_serveur
+	 * @covers Zorille\framework\bladelogic_datas::recupere_donnees_bladelogic_serveur
 	 */
 	public function testRecupere_donnees_bladelogic_serveur_valide() {
 		$this->object ->setServeurData ( array ( 

@@ -1,4 +1,5 @@
 <?php
+namespace Zorille\framework;
 /**
  * @ignore
  */
@@ -35,17 +36,17 @@ class fonctions_standards_datesTest extends MockedListeOptions {
 	}
 	
 	/**
-	 * @covers fonctions_standards_dates::creer_liste_dates
+	 * @covers Zorille\framework\fonctions_standards_dates::creer_liste_dates
 	 */
 	public function testCreer_liste_dates() {
 		$this->getListeOption()->expects($this->at(0))->method('verifie_option_existe')->with("date")->will($this->returnValue(true));
 		$this->getListeOption()->expects($this->at(1))->method('getOption')->with("date")->will($this->returnValue("20101202"));
-		$this->assertInstanceOf('dates', $this->object->creer_liste_dates($this->getListeOption()));
+		$this->assertInstanceOf('Zorille\framework\dates', $this->object->creer_liste_dates($this->getListeOption()));
 		
 		$this->getListeOption()->expects($this->at(0))->method('verifie_option_existe')->with("date")->will($this->returnValue(true));
 		$this->getListeOption()->expects($this->at(1))->method('getOption')->with("date")->will($this->returnValue("20101202"));
 		$this->getListeOption()->expects($this->at(2))->method('verifie_option_existe')->with("ajouter_week_extreme")->will($this->returnValue(true));
-		$this->assertInstanceOf('dates', $this->object->creer_liste_dates($this->getListeOption()));
+		$this->assertInstanceOf('Zorille\framework\dates', $this->object->creer_liste_dates($this->getListeOption()));
 		
 		$this->getListeOption()->expects($this->at(0))->method('verifie_option_existe')->with("date")->will($this->returnValue(true));
 		$this->getListeOption()->expects($this->at(1))->method('getOption')->with("date")->will($this->returnValue("20101202"));
@@ -53,21 +54,21 @@ class fonctions_standards_datesTest extends MockedListeOptions {
 		$this->getListeOption()->expects($this->at(3))->method('verifie_option_existe')->with("ajouter_month_extreme")->will($this->returnValue(true));
 		$this->getListeOption()->expects($this->at(4))->method('setOption')->with("date")->will($this->returnValue(true));
 		$this->getListeOption()->expects($this->at(5))->method('verifie_option_existe')->with("ajouter_dates_feries")->will($this->returnValue(true));
-		$this->assertInstanceOf('dates', $this->object->creer_liste_dates($this->getListeOption()));
+		$this->assertInstanceOf('Zorille\framework\dates', $this->object->creer_liste_dates($this->getListeOption()));
 		
 		$this->getListeOption()->expects($this->at(0))->method('verifie_option_existe')->with("date")->will($this->returnValue(false));
 		$this->getListeOption()->expects($this->at(1))->method('verifie_option_existe')->with("date_debut")->will($this->returnValue(false));
 		$this->getListeOption()->expects($this->at(2))->method('verifie_option_existe')->with("date_fin")->will($this->returnValue(false));
 		$this->getListeOption()->expects($this->at(3))->method('verifie_option_existe')->with("ajouter_week_extreme")->will($this->returnValue(true));
 		$this->getListeOption()->expects($this->at(4))->method('verifie_option_existe')->with("ajouter_month_extreme")->will($this->returnValue(true));
-		$this->assertInstanceOf('dates', $this->object->creer_liste_dates($this->getListeOption()));
+		$this->assertInstanceOf('Zorille\framework\dates', $this->object->creer_liste_dates($this->getListeOption()));
 		
 		$this->getListeOption()->expects($this->at(0))->method('verifie_option_existe')->with("date")->will($this->returnValue(false));
 		$this->getListeOption()->expects($this->at(1))->method('verifie_option_existe')->with("date_debut")->will($this->returnValue(true));
 		$this->getListeOption()->expects($this->at(2))->method('getOption')->with("date_debut")->will($this->returnValue("20101202"));
 		$this->getListeOption()->expects($this->at(3))->method('verifie_option_existe')->with("date_fin")->will($this->returnValue(true));
 		$this->getListeOption()->expects($this->at(4))->method('getOption')->with("date_fin")->will($this->returnValue("20101205"));
-		$this->assertInstanceOf('dates', $this->object->creer_liste_dates($this->getListeOption()));
+		$this->assertInstanceOf('Zorille\framework\dates', $this->object->creer_liste_dates($this->getListeOption()));
 	}
 }
 ?>

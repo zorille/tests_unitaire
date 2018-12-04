@@ -1,4 +1,5 @@
 <?php
+namespace Zorille\framework;
 /**
  * @ignore
  */
@@ -33,8 +34,8 @@ class gestion_fichierTest extends MockedListeOptions {
 		
 		$this->object = new gestion_fichier ( false, "TEST GESTION FICHIER" );
 		$this->object->setListeOptions ( $this->getListeOption () );
-		$this->object_relation_fichier_machine = $this->createMock ( 'relation_fichier_machine' );
-		$this->object_copie_donnees = $this->createMock ( 'copie_donnees', array (), array () );
+		$this->object_relation_fichier_machine = $this->createMock('Zorille\framework\relation_fichier_machine' );
+		$this->object_copie_donnees = $this->createMock('Zorille\framework\copie_donnees', array (), array () );
 	}
 
 	/**
@@ -46,7 +47,7 @@ class gestion_fichierTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers gestion_fichier::transfert_standard
+	 * @covers Zorille\framework\gestion_fichier::transfert_standard
 	 */
 	public function testTransfert_standard() {
 		$this->object_copie_donnees->expects ( $this->any () )

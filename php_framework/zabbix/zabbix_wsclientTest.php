@@ -1,4 +1,6 @@
 <?php
+namespace Zorille\framework;
+use \Exception as Exception;
 if (! defined ( '__DOCUMENT_ROOT__' )) {
 	require_once $_SERVER ["PWD"] . '/prepare.php';
 }
@@ -19,14 +21,16 @@ class zabbix_wsclientTest extends MockedListeOptions {
 	protected function setUp() {
 		ob_start ();
 		
-		$utilisateurs = $this ->createMock ( "utilisateurs" );
-		$gestion_connexion_url = $this ->createMock ( "gestion_connexion_url" );
+		$utilisateurs = $this ->createMock('Zorille\framework\utilisateurs' );
+		$gestion_connexion_url = $this ->createMock('Zorille\framework\gestion_connexion_url' );
 		$gestion_connexion_url ->expects ( $this ->any () ) 
 			->method ( 'getObjetUtilisateurs' ) 
 			->will ( $this ->returnValue ( $utilisateurs ) );
-		$zabbix_datas = $this ->createMock ( "zabbix_datas" );
-		$curl = $this ->createMock ( "curl" );
-		
+		$zabbix_datas = $this ->createMock('Zorille\framework\zabbix_datas' );
+		$curl = $this ->createMock('Zorille\framework\curl' );
+		$curl ->expects ( $this ->any () )
+		->method ( 'setUserPasswd', 'setHttpHAuth' )
+		->will ( $this ->returnSelf () );
 		$this->object = new zabbix_wsclient ( false, "zabbix_wsclient" );
 		$this->object ->setListeOptions ( $this ->getListeOption () ) 
 			->setGestionConnexionUrl ( $gestion_connexion_url ) 
@@ -43,7 +47,7 @@ class zabbix_wsclientTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_wsclient::prepare_connexion
+     * @covers Zorille\framework\zabbix_wsclient::prepare_connexion
      */
 	public function testPrepare_connexion_exception1() {
 		$this->object ->getGestionConnexionUrl () 
@@ -64,7 +68,7 @@ class zabbix_wsclientTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_wsclient::prepare_connexion
+	 * @covers Zorille\framework\zabbix_wsclient::prepare_connexion
 	 */
 	public function testPrepare_connexion_exception2() {
 		$this->object ->getGestionConnexionUrl () 
@@ -85,7 +89,7 @@ class zabbix_wsclientTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_wsclient::prepare_connexion
+	 * @covers Zorille\framework\zabbix_wsclient::prepare_connexion
 	 */
 	public function testPrepare_connexion_exception3() {
 		$this->object ->getGestionConnexionUrl () 
@@ -107,7 +111,7 @@ class zabbix_wsclientTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_wsclient::prepare_connexion
+	 * @covers Zorille\framework\zabbix_wsclient::prepare_connexion
 	 */
 	public function testPrepare_connexion_exception4() {
 		$this->object ->getGestionConnexionUrl () 
@@ -130,7 +134,7 @@ class zabbix_wsclientTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_wsclient::prepare_connexion
+	 * @covers Zorille\framework\zabbix_wsclient::prepare_connexion
 	 */
 	public function testPrepare_connexion_valide() {
 		$this->object ->getGestionConnexionUrl () 
@@ -152,14 +156,14 @@ class zabbix_wsclientTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_wsclient::encode_json
+	 * @covers Zorille\framework\zabbix_wsclient::encode_json
 	 */
 	public function testencode_json_vide() {
 		$this ->assertContains ( '{"jsonrpc":"2.0","method":"action.get","params":[],"id":', $this->object ->encode_json ( "action.get", "", false ) );
 	}
 
 	/**
-	 * @covers zabbix_wsclient::encode_json
+	 * @covers Zorille\framework\zabbix_wsclient::encode_json
 	 */
 	public function testencode_json_auth() {
 		$this ->assertContains ( '{"jsonrpc":"2.0","method":"action.get","params":["params"],"id":"', $this->object ->encode_json ( "action.get", "params", true ) );
@@ -167,7 +171,7 @@ class zabbix_wsclientTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_wsclient::prepare_requete_json
+	 * @covers Zorille\framework\zabbix_wsclient::prepare_requete_json
 	 */
 	public function testprepare_requete_json_exception() {
 		$this->object ->getObjetCurl () 
@@ -180,7 +184,7 @@ class zabbix_wsclientTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_wsclient::prepare_requete_json
+	 * @covers Zorille\framework\zabbix_wsclient::prepare_requete_json
 	 */
 	public function testprepare_requete_json_dry_run() {
 		$this->object ->getListeOptions () 
@@ -190,14 +194,14 @@ class zabbix_wsclientTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_wsclient::prepare_requete_json
+	 * @covers Zorille\framework\zabbix_wsclient::prepare_requete_json
 	 */
 	public function testprepare_requete_json_valide1() {
 		$this ->assertSame ( '', $this->object ->prepare_requete_json ( "action.get" ) );
 	}
 
 	/**
-	 * @covers zabbix_wsclient::prepare_requete_json
+	 * @covers Zorille\framework\zabbix_wsclient::prepare_requete_json
 	 */
 	public function testprepare_requete_json_valide2() {
 		$retour_json = '{"result":{"response":"TEST2","traitement":"T2"}}';
@@ -210,7 +214,7 @@ class zabbix_wsclientTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_wsclient::gestion_retour
+	 * @covers Zorille\framework\zabbix_wsclient::gestion_retour
 	 */
 	public function testgestion_retour_exception() {
 		$retour = array ( 
@@ -224,7 +228,7 @@ class zabbix_wsclientTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_wsclient::gestion_retour
+	 * @covers Zorille\framework\zabbix_wsclient::gestion_retour
 	 */
 	public function testgestion_retour_valide() {
 		$retour = array ( 
@@ -237,7 +241,7 @@ class zabbix_wsclientTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_wsclient::gestion_retour
+	 * @covers Zorille\framework\zabbix_wsclient::gestion_retour
 	 */
 	public function testgestion_retour_valide2() {
 		$retour = 'string';

@@ -1,4 +1,6 @@
 <?php
+namespace Zorille\framework;
+use \Exception as Exception;
 if (! defined ( '__DOCUMENT_ROOT__' )) {
 	require_once $_SERVER ["PWD"] . '/prepare.php';
 }
@@ -19,7 +21,7 @@ class zabbix_itemTest extends MockedListeOptions {
 	protected function setUp() {
 		ob_start ();
 		
-		$zabbix_wsclient = $this ->createMock ( "zabbix_wsclient" );
+		$zabbix_wsclient = $this ->createMock('Zorille\framework\zabbix_wsclient' );
 		
 		$this->object = new zabbix_item ( false, "TESTS zabbix HOST" );
 		$this->object ->setListeOptions ( $this ->getListeOption () ) 
@@ -35,7 +37,7 @@ class zabbix_itemTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_item::retrouve_zabbix_param
+	 * @covers Zorille\framework\zabbix_item::retrouve_zabbix_param
 	 */
 	public function testRetrouve_zabbix_param_Exception() {
 		$this ->getListeOption () 
@@ -52,7 +54,7 @@ class zabbix_itemTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_item::retrouve_zabbix_param
+	 * @covers Zorille\framework\zabbix_item::retrouve_zabbix_param
 	 */
 	public function testRetrouve_zabbix_param() {
 		$this ->getListeOption () 
@@ -70,7 +72,7 @@ class zabbix_itemTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_item::inserer_ws_item
+	 * @covers Zorille\framework\zabbix_item::inserer_ws_item
 	 */
 	public function testinserer_ws_item() {
 		$liste = array ( 
@@ -80,7 +82,7 @@ class zabbix_itemTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_item::creer_definition_item_ws
+	 * @covers Zorille\framework\zabbix_item::creer_definition_item_ws
 	 */
 	public function testcreer_definition_item_ws() {
 		$this ->assertEquals ( 
@@ -130,7 +132,7 @@ class zabbix_itemTest extends MockedListeOptions {
 	}
 
 	/**
-		 * @covers zabbix_item::creer_item
+		 * @covers Zorille\framework\zabbix_item::creer_item
 		 */
 	public function testcreer_item() {
 		$this->object ->getObjetZabbixWsclient () 
@@ -147,7 +149,7 @@ class zabbix_itemTest extends MockedListeOptions {
 	}
 
 	/**
-		 * @covers zabbix_item::creer_definition_item_delete_ws
+		 * @covers Zorille\framework\zabbix_item::creer_definition_item_delete_ws
 		 */
 	public function testcreer_definition_item_delete_ws() {
 		$this ->assertEquals ( array (), $this->object ->creer_definition_item_delete_ws () );
@@ -157,7 +159,7 @@ class zabbix_itemTest extends MockedListeOptions {
 	}
 
 	/**
-		 * @covers zabbix_item::supprime_item
+		 * @covers Zorille\framework\zabbix_item::supprime_item
 		 */
 	public function testsupprime_item() {
 		$this->object ->getObjetZabbixWsclient () 
@@ -175,7 +177,7 @@ class zabbix_itemTest extends MockedListeOptions {
 	}
 
 	/**
-		 * @covers zabbix_item::creer_definition_itemByName_get_ws
+		 * @covers Zorille\framework\zabbix_item::creer_definition_itemByName_get_ws
 		 */
 	public function testcreer_definition_itemByName_get_ws() {
 		$this->object ->setName ( "TEST" );
@@ -186,7 +188,7 @@ class zabbix_itemTest extends MockedListeOptions {
 	}
 
 	/**
-		 * @covers zabbix_item::recherche_itemid_by_Name
+		 * @covers Zorille\framework\zabbix_item::recherche_itemid_by_Name
 		 */
 	public function testrecherche_itemid_by_Name() {
 		$this->object ->setName ( "TEST" );
@@ -200,7 +202,7 @@ class zabbix_itemTest extends MockedListeOptions {
 	}
 
 	/**
-		 * @covers zabbix_item::recherche_donnees_by_Name
+		 * @covers Zorille\framework\zabbix_item::recherche_donnees_by_Name
 		 */
 	public function testrecherche_donnees_by_Name() {
 		$this->object ->setName ( "TEST" );
@@ -216,7 +218,7 @@ class zabbix_itemTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_item::compare_item
+	 * @covers Zorille\framework\zabbix_item::compare_item
 	 */
 	public function testcompare_item() {
 		$this->object ->setName ( "NAME1" );
@@ -232,7 +234,7 @@ class zabbix_itemTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_item::retrouve_Type
+	 * @covers Zorille\framework\zabbix_item::retrouve_Type
 	 */
 	public function testretrouve_Type() {
 		$this ->assertEquals ( 0, $this->object ->retrouve_Type ( "" ) );
@@ -258,7 +260,7 @@ class zabbix_itemTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_item::retrouve_ValueType
+	 * @covers Zorille\framework\zabbix_item::retrouve_ValueType
 	 */
 	public function testretrouve_ValueType() {
 		$this ->assertEquals ( 0, $this->object ->retrouve_ValueType ( "" ) );
@@ -271,7 +273,7 @@ class zabbix_itemTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_item::retrouve_Authtype
+	 * @covers Zorille\framework\zabbix_item::retrouve_Authtype
 	 */
 	public function testretrouve_Authtype() {
 		$this ->assertEquals ( 0, $this->object ->retrouve_Authtype ( "" ) );
@@ -281,7 +283,7 @@ class zabbix_itemTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_item::retrouve_DataType
+	 * @covers Zorille\framework\zabbix_item::retrouve_DataType
 	 */
 	public function testretrouve_DataType() {
 		$this ->assertEquals ( 0, $this->object ->retrouve_DataType ( "" ) );
@@ -293,7 +295,7 @@ class zabbix_itemTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_item::retrouve_Delta
+	 * @covers Zorille\framework\zabbix_item::retrouve_Delta
 	 */
 	public function testretrouve_Delta() {
 		$this ->assertEquals ( 0, $this->object ->retrouve_Delta ( "" ) );
@@ -304,7 +306,7 @@ class zabbix_itemTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_item::retrouve_Snmpv3Authprotocol
+	 * @covers Zorille\framework\zabbix_item::retrouve_Snmpv3Authprotocol
 	 */
 	public function testretrouve_Snmpv3Authprotocol() {
 		$this ->assertEquals ( 0, $this->object ->retrouve_Snmpv3Authprotocol ( "" ) );
@@ -314,7 +316,7 @@ class zabbix_itemTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_item::retrouve_Snmpv3Privprotocol
+	 * @covers Zorille\framework\zabbix_item::retrouve_Snmpv3Privprotocol
 	 */
 	public function testretrouve_Snmpv3Privprotocol() {
 		$this ->assertEquals ( 0, $this->object ->retrouve_Snmpv3Privprotocol ( "" ) );
@@ -324,7 +326,7 @@ class zabbix_itemTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_item::retrouve_Snmpv3Securitylevel
+	 * @covers Zorille\framework\zabbix_item::retrouve_Snmpv3Securitylevel
 	 */
 	public function testretrouve_Snmpv3Securitylevel() {
 		$this ->assertEquals ( 0, $this->object ->retrouve_Snmpv3Securitylevel ( "" ) );
@@ -335,7 +337,7 @@ class zabbix_itemTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_item::retrouve_State
+	 * @covers Zorille\framework\zabbix_item::retrouve_State
 	 */
 	public function testretrouve_State() {
 		$this ->assertEquals ( 0, $this->object ->retrouve_State ( "" ) );
@@ -345,7 +347,7 @@ class zabbix_itemTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_item::retrouve_Status
+	 * @covers Zorille\framework\zabbix_item::retrouve_Status
 	 */
 	public function testRetrouve_Status() {
 		$this ->assertEquals ( 0, $this->object ->retrouve_Status ( "" ) );

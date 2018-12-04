@@ -1,5 +1,6 @@
 <?php
-
+namespace Zorille\framework;
+use \Exception as Exception;
 /**
  * @author dvargas
  * @package Lib
@@ -24,7 +25,7 @@ class flux_datasTest extends MockedListeOptions {
 	protected function setUp() {
 		ob_start ();
 		
-		$utilisateurs = $this ->createMock ( "utilisateurs" );
+		$utilisateurs = $this ->createMock('Zorille\framework\utilisateurs' );
 		
 		$this->object = new flux_datas ( false, "TESTS flux_datas" );
 		$this->object ->setListeOptions ( $this ->getListeOption () ) 
@@ -40,7 +41,7 @@ class flux_datasTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers flux_datas::retrouve_flux_param
+	 * @covers Zorille\framework\flux_datas::retrouve_flux_param
 	 */
 	public function testretrouve_flux_param_Exception() {
 		$this->object ->getListeOptions () 
@@ -53,7 +54,7 @@ class flux_datasTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers flux_datas::retrouve_flux_param
+	 * @covers Zorille\framework\flux_datas::retrouve_flux_param
 	 */
 	public function testretrouve_flux_param() {
 		$this->object ->getListeOptions () 
@@ -70,7 +71,7 @@ class flux_datasTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers flux_datas::valide_presence_flux_data
+	 * @covers Zorille\framework\flux_datas::valide_presence_flux_data
 	 */
 	public function testvalide_presence_flux_data() {
 		$this->object ->getObjetUtilisateurs () 

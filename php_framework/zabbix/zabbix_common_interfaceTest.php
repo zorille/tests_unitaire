@@ -1,4 +1,6 @@
 <?php
+namespace Zorille\framework;
+use \Exception as Exception;
 if (! defined ( '__DOCUMENT_ROOT__' )) {
 	require_once $_SERVER ["PWD"] . '/prepare.php';
 }
@@ -32,7 +34,7 @@ class zabbix_common_interfaceTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_common_interface::retrouve_zabbix_common_param
+	 * @covers Zorille\framework\zabbix_common_interface::retrouve_zabbix_common_param
 	 */
 	public function testRetrouve_zabbix_common_param_Exception2() {
 		$this ->getListeOption () 
@@ -51,7 +53,7 @@ class zabbix_common_interfaceTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_common_interface::retrouve_zabbix_common_param
+	 * @covers Zorille\framework\zabbix_common_interface::retrouve_zabbix_common_param
 	 */
 	public function testRetrouve_zabbix_common_param_Exception3() {
 		$this ->getListeOption () 
@@ -69,7 +71,7 @@ class zabbix_common_interfaceTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_common_interface::retrouve_zabbix_common_param
+	 * @covers Zorille\framework\zabbix_common_interface::retrouve_zabbix_common_param
 	 */
 	public function testRetrouve_zabbix_common_param_valide1() {
 		$this ->getListeOption () 
@@ -85,7 +87,7 @@ class zabbix_common_interfaceTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_common_interface::retrouve_zabbix_common_param
+	 * @covers Zorille\framework\zabbix_common_interface::retrouve_zabbix_common_param
 	 */
 	public function testRetrouve_zabbix_common_param_valide2() {
 		$this ->getListeOption () 
@@ -102,7 +104,7 @@ class zabbix_common_interfaceTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_common_interface::creer_une_interface
+	 * @covers Zorille\framework\zabbix_common_interface::creer_une_interface
 	 */
 	public function testCreer_une_interface_exception1() {
 		$this ->expectException(Exception::class);
@@ -113,7 +115,7 @@ class zabbix_common_interfaceTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_common_interface::creer_une_interface
+	 * @covers Zorille\framework\zabbix_common_interface::creer_une_interface
 	 */
 	public function testCreer_une_interface_exception2() {
 		$this ->expectException(Exception::class);
@@ -124,7 +126,7 @@ class zabbix_common_interfaceTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_common_interface::creer_une_interface
+	 * @covers Zorille\framework\zabbix_common_interface::creer_une_interface
 	 */
 	public function testCreer_une_interface_valide() {
 		$this ->assertSame ( $this->object, $this->object ->creer_une_interface ( "USEIP", "IP", "FQDN" ) );
@@ -140,7 +142,7 @@ class zabbix_common_interfaceTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_common_interface::retrouve_useip
+	 * @covers Zorille\framework\zabbix_common_interface::retrouve_useip
 	 */
 	public function testRetrouve_useip() {
 		$this ->assertEquals ( 0, $this->object ->retrouve_useip ( "" ) );

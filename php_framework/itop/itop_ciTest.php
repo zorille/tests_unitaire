@@ -1,4 +1,7 @@
 <?php
+namespace Zorille\itop;
+use Zorille\framework as Core;
+use \Exception as Exception;
 /**
  * @author dvargas
  * @package Lib
@@ -7,9 +10,9 @@
 if (! defined ( '__DOCUMENT_ROOT__' )) {
 	require_once $_SERVER ["PWD"] . '/prepare.php';
 }
-class itop_ciTest extends MockedListeOptions {
+class ciTest extends Core\MockedListeOptions {
 	/**
-	 * @var itop_ci
+	 * @var ci
 	 */
 	protected $object;
 
@@ -20,9 +23,9 @@ class itop_ciTest extends MockedListeOptions {
 	protected function setUp() {
 		ob_start ();
 		
-		$itop_wsclient_rest = $this ->createMock ( "itop_wsclient_rest" );
+		$itop_wsclient_rest = $this ->createMock('Zorille\itop\wsclient_rest' );
 		
-		$this->object = new itop_ci ( false, "TESTS itop_ci" );
+		$this->object = new ci ( false, "TESTS ci" );
 		$this->object ->setListeOptions ( $this ->getListeOption () ) 
 			->setObjetItopWsclientRest ( $itop_wsclient_rest );
 	}
@@ -36,7 +39,7 @@ class itop_ciTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers itop_ci::enregistre_ci_a_partir_rest
+	 * @covers Zorille\itop\ci::enregistre_ci_a_partir_rest
 	 */
 	public function testenregistre_ci_a_partir_rest() {
 		$ci = array ( 
@@ -59,7 +62,7 @@ class itop_ciTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers itop_ci::recupere_ci_dans_itop
+	 * @covers Zorille\itop\ci::recupere_ci_dans_itop
 	 */
 	public function testrecupere_ci_dans_itop() {
 		$this->object ->getObjetItopWsclientRest () 
@@ -72,7 +75,7 @@ class itop_ciTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers itop_ci::retrouve_ci
+	 * @covers Zorille\itop\ci::retrouve_ci
 	 */
 	public function testretrouve_ci_exception() {
 		$this->object ->getObjetItopWsclientRest () 
@@ -83,12 +86,12 @@ class itop_ciTest extends MockedListeOptions {
 				'message' => 'Found: 10' ) ) );
 		$this->object ->setOqlCi ( "SELECT CI" );
 		$this ->expectException(Exception::class);
-        $this->expectExceptionMessage( '(TESTS itop_ci) Probleme avec la requete : SELECT CI : Found: 10' );
+        $this->expectExceptionMessage( '(TESTS ci) Probleme avec la requete : SELECT CI : Found: 10' );
 		$this->object ->retrouve_ci ();
 	}
 
 	/**
-	 * @covers itop_ci::retrouve_ci
+	 * @covers Zorille\itop\ci::retrouve_ci
 	 */
 	public function testretrouve_ci() {
 		$this->object ->getObjetItopWsclientRest () 
@@ -111,7 +114,7 @@ class itop_ciTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers itop_ci::retrouve_ci
+	 * @covers Zorille\itop\ci::retrouve_ci
 	 */
 	public function testretrouve_ci_deja_a_jour() {
 		$this->object ->setDonnees ( array ( 
@@ -122,7 +125,7 @@ class itop_ciTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers itop_ci::valide_ci_existe
+	 * @covers Zorille\itop\ci::valide_ci_existe
 	 */
 	public function testvalide_ci_existe_null() {
 		$this->object ->getObjetItopWsclientRest () 
@@ -136,7 +139,7 @@ class itop_ciTest extends MockedListeOptions {
 	}
 	
 	/**
-	 * @covers itop_ci::valide_ci_existe
+	 * @covers Zorille\itop\ci::valide_ci_existe
 	 */
 	public function testvalide_ci_existe_deja_a_jour() {
 		$this->object ->setDonnees ( array (
@@ -147,7 +150,7 @@ class itop_ciTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers itop_ci::valide_ci_existe
+	 * @covers Zorille\itop\ci::valide_ci_existe
 	 */
 	public function testvalide_ci_existe() {
 		$this->object ->getObjetItopWsclientRest () 
@@ -170,7 +173,7 @@ class itop_ciTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers itop_ci::creer_ci
+	 * @covers Zorille\itop\ci::creer_ci
 	 */
 	public function testcreer_ci() {
 		$this->object ->getObjetItopWsclientRest () 

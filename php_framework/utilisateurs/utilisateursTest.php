@@ -1,4 +1,6 @@
 <?php
+namespace Zorille\framework;
+use \Exception as Exception;
 
 /**
  * @author dvargas
@@ -36,7 +38,7 @@ class utilisateursTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers utilisateurs::retrouve_utilisateurs_param
+	 * @covers Zorille\framework\utilisateurs::retrouve_utilisateurs_param
 	 */
 	public function testretrouve_utilisateurs_param() {
 		$this->object ->getListeOptions () 
@@ -57,7 +59,7 @@ class utilisateursTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers utilisateurs::prepare_cryptage
+	 * @covers Zorille\framework\utilisateurs::prepare_cryptage
 	 */
 	public function testPrepare_cryptage() {
 		$this ->assertSame ( $this->object, $this->object ->prepare_cryptage () );
@@ -66,7 +68,7 @@ class utilisateursTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers utilisateurs::retrouve_utilisateur_centralise
+	 * @covers Zorille\framework\utilisateurs::retrouve_utilisateur_centralise
 	 */
 	public function testretrouve_utilisateur_centralise_Exception1() {
 		$this ->expectException(Exception::class);
@@ -75,7 +77,7 @@ class utilisateursTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers utilisateurs::retrouve_utilisateur_centralise
+	 * @covers Zorille\framework\utilisateurs::retrouve_utilisateur_centralise
 	 */
 	public function testretrouve_utilisateur_centralise() {
 		$this->object ->setListeUtilisateurs ( array ( 
@@ -85,7 +87,7 @@ class utilisateursTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers utilisateurs::retrouve_utilisateurs_cli
+	 * @covers Zorille\framework\utilisateurs::retrouve_utilisateurs_cli
 	 */
 	public function testRetrouve_utilisateurs_cli_Exception1() {
 		$this ->getListeOption () 
@@ -99,7 +101,7 @@ class utilisateursTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers utilisateurs::retrouve_utilisateurs_cli
+	 * @covers Zorille\framework\utilisateurs::retrouve_utilisateurs_cli
 	 */
 	public function testRetrouve_utilisateurs_cli_Exception2() {
 		$this ->getListeOption () 
@@ -113,7 +115,7 @@ class utilisateursTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers utilisateurs::retrouve_utilisateurs_cli
+	 * @covers Zorille\framework\utilisateurs::retrouve_utilisateurs_cli
 	 */
 	public function testRetrouve_utilisateurs_cli() {
 		$this ->getListeOption () 
@@ -125,7 +127,7 @@ class utilisateursTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers utilisateurs::retrouve_utilisateurs_cli
+	 * @covers Zorille\framework\utilisateurs::retrouve_utilisateurs_cli
 	 */
 	public function testRetrouve_utilisateurs_cli_crypt_password() {
 		$this ->getListeOption () 
@@ -143,7 +145,7 @@ class utilisateursTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers utilisateurs::retrouve_utilisateurs_array
+	 * @covers Zorille\framework\utilisateurs::retrouve_utilisateurs_array
 	 */
 	public function testRetrouve_utilisateurs_array_empty() {
 		$datas = array ();
@@ -153,7 +155,7 @@ class utilisateursTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers utilisateurs::retrouve_utilisateurs_array
+	 * @covers Zorille\framework\utilisateurs::retrouve_utilisateurs_array
 	 */
 	public function testRetrouve_utilisateurs_array_user_pass() {
 		$datas = array ( 
@@ -165,7 +167,7 @@ class utilisateursTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers utilisateurs::retrouve_utilisateurs_array
+	 * @covers Zorille\framework\utilisateurs::retrouve_utilisateurs_array
 	 */
 	public function testRetrouve_utilisateurs_array_user_crypt_pass() {
 		$datas = array ( 
@@ -177,7 +179,7 @@ class utilisateursTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers utilisateurs::retrouve_utilisateurs_array
+	 * @covers Zorille\framework\utilisateurs::retrouve_utilisateurs_array
 	 */
 	public function testRetrouve_utilisateurs_array_centralized_user() {
 		$this->object ->setListeUtilisateurs ( array ( 
@@ -192,14 +194,14 @@ class utilisateursTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers utilisateurs::encrypt
+	 * @covers Zorille\framework\utilisateurs::encrypt
 	 */
 	public function testEncrypt() {
 		$this ->assertTrue ( true );
 	}
 
 	/**
-	 * @covers utilisateurs::decrypt
+	 * @covers Zorille\framework\utilisateurs::decrypt
 	 */
 	public function testDecrypt() {
 		$this ->assertEquals ( 'mdpUnitaire', $this->object ->decrypt ( "8Un/ml74+vWM4vmyusg4fvtxo4CPYPuXcVgySUbJmoA=" ) );

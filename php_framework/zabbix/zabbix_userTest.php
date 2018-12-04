@@ -1,4 +1,6 @@
 <?php
+namespace Zorille\framework;
+use \Exception as Exception;
 if (! defined ( '__DOCUMENT_ROOT__' )) {
 	require_once $_SERVER ["PWD"] . '/prepare.php';
 }
@@ -18,9 +20,9 @@ class zabbix_userTest extends MockedListeOptions {
      */
 	protected function setUp() {
 		ob_start ();
-		$zabbix_wsclient = $this ->createMock ( "zabbix_wsclient" );
-		$zabbix_usergroups = $this ->createMock ( "zabbix_usergroups" );
-		$zabbix_usermedia = $this ->createMock ( "zabbix_usermedia" );
+		$zabbix_wsclient = $this ->createMock('Zorille\framework\zabbix_wsclient' );
+		$zabbix_usergroups = $this ->createMock('Zorille\framework\zabbix_usergroups' );
+		$zabbix_usermedia = $this ->createMock('Zorille\framework\zabbix_usermedia' );
 		
 		$this->object = new zabbix_user ( false, "zabbix_user" );
 		$this->object ->setObjetZabbixWsclient ( $zabbix_wsclient ) 
@@ -37,7 +39,7 @@ class zabbix_userTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_user::retrouve_zabbix_param
+     * @covers Zorille\framework\zabbix_user::retrouve_zabbix_param
      */
 	public function testRetrouve_zabbix_param_Exception() {
 		$this ->getListeOption () 
@@ -52,7 +54,7 @@ class zabbix_userTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_user::retrouve_zabbix_param
+	 * @covers Zorille\framework\zabbix_user::retrouve_zabbix_param
 	 */
 	public function testRetrouve_zabbix_param() {
 		$this ->getListeOption () 
@@ -69,7 +71,7 @@ class zabbix_userTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_user::creer_definition_user_create_ws
+     * @covers Zorille\framework\zabbix_user::creer_definition_user_create_ws
      */
 	public function testCreer_definition_user_create_ws() {
 		$this->object ->setAlias ( "ALIAS1" );
@@ -104,7 +106,7 @@ class zabbix_userTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_user::creer_user
+     * @covers Zorille\framework\zabbix_user::creer_user
      */
 	public function testCreer_user() {
 		$this->object ->setAlias ( "ALIAS1" );
@@ -121,7 +123,7 @@ class zabbix_userTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_user::creer_definition_user_delete_ws
+     * @covers Zorille\framework\zabbix_user::creer_definition_user_delete_ws
      */
 	public function testCreer_definition_user_delete_ws() {
 		$this ->assertEquals ( array (), $this->object ->creer_definition_user_delete_ws () );
@@ -131,7 +133,7 @@ class zabbix_userTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_user::supprime_user
+     * @covers Zorille\framework\zabbix_user::supprime_user
      */
 	public function testSupprime_user() {
 		$this->object ->getObjetZabbixWsclient () 
@@ -147,7 +149,7 @@ class zabbix_userTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_user::creer_definition_user_get_ws
+     * @covers Zorille\framework\zabbix_user::creer_definition_user_get_ws
      */
 	public function testCreer_definition_user_get_ws() {
 		$this->object ->setAlias ( "ALIAS1" );
@@ -161,7 +163,7 @@ class zabbix_userTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_user::recherche_user
+     * @covers Zorille\framework\zabbix_user::recherche_user
      */
 	public function testRecherche_user() {
 		$this->object ->getObjetZabbixWsclient () 
@@ -177,7 +179,7 @@ class zabbix_userTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_user::creer_definition_userByAlias_get_ws
+     * @covers Zorille\framework\zabbix_user::creer_definition_userByAlias_get_ws
      */
 	public function testCreer_definition_userByAlias_get_ws() {
 		$this->object ->setAlias ( "ALIAS1" );
@@ -189,7 +191,7 @@ class zabbix_userTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_user::creer_definition_userid_get_ws
+	 * @covers Zorille\framework\zabbix_user::creer_definition_userid_get_ws
 	 */
 	public function testCreer_definition_userid_get_ws() {
 		$this->object ->setUsrId ( 10 );
@@ -198,7 +200,7 @@ class zabbix_userTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_user::recherche_userid_by_Alias
+     * @covers Zorille\framework\zabbix_user::recherche_userid_by_Alias
      */
 	public function testRecherche_userid_by_Alias() {
 		$this->object ->getObjetZabbixWsclient () 
@@ -213,7 +215,7 @@ class zabbix_userTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_user::retrouve_Autologin
+     * @covers Zorille\framework\zabbix_user::retrouve_Autologin
      */
 	public function testRetrouve_Autologin() {
 		$this ->assertEquals ( 0, $this->object ->retrouve_Autologin ( "" ) );
@@ -223,7 +225,7 @@ class zabbix_userTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_user::retrouve_Type
+     * @covers Zorille\framework\zabbix_user::retrouve_Type
      */
 	public function testRetrouve_Type() {
 		$this ->assertEquals ( 1, $this->object ->retrouve_Type ( "" ) );

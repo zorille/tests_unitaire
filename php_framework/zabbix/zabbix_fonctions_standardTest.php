@@ -1,4 +1,6 @@
 <?php
+namespace Zorille\framework;
+use \Exception as Exception;
 if (! defined ( '__DOCUMENT_ROOT__' )) {
 	require_once $_SERVER ["PWD"] . '/prepare.php';
 }
@@ -30,7 +32,7 @@ class zabbix_fonctions_standardTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_fonctions_standard::_valideOption
+     * @covers Zorille\framework\zabbix_fonctions_standard::_valideOption
      */
 	public function test_valideOption_Exception() {
 		$this ->getListeOption () 
@@ -44,7 +46,7 @@ class zabbix_fonctions_standardTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_fonctions_standard::_valideOption
+	 * @covers Zorille\framework\zabbix_fonctions_standard::_valideOption
 	 */
 	public function test_valideOption() {
 		$this ->getListeOption () 

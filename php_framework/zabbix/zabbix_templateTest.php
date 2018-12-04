@@ -1,4 +1,6 @@
 <?php
+namespace Zorille\framework;
+use \Exception as Exception;
 if (! defined ( '__DOCUMENT_ROOT__' )) {
 	require_once $_SERVER ["PWD"] . '/prepare.php';
 }
@@ -18,7 +20,7 @@ class zabbix_templateTest extends MockedListeOptions {
      */
 	protected function setUp() {
 		ob_start ();
-		$zabbix_wsclient = $this->createMock ( "zabbix_wsclient" );
+		$zabbix_wsclient = $this->createMock('Zorille\framework\zabbix_wsclient' );
 		
 		$this->object = new zabbix_template ( false, "zabbix_template" );
 		$this->object->setObjetZabbixWsclient ( $zabbix_wsclient );
@@ -33,7 +35,7 @@ class zabbix_templateTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_template::retrouve_zabbix_param
+     * @covers Zorille\framework\zabbix_template::retrouve_zabbix_param
      */
 	public function testRetrouve_zabbix_param_Exception() {
 			
@@ -50,7 +52,7 @@ class zabbix_templateTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_template::retrouve_zabbix_param
+	 * @covers Zorille\framework\zabbix_template::retrouve_zabbix_param
 	 */
 	public function testRetrouve_zabbix_param() {
 		$this->getListeOption ()
@@ -68,7 +70,7 @@ class zabbix_templateTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_template::creer_definition_template_create_ws
+     * @covers Zorille\framework\zabbix_template::creer_definition_template_create_ws
      */
 	public function testCreer_definition_template_create_ws() {
 		$this->object->setName ( "DESC" );
@@ -86,7 +88,7 @@ class zabbix_templateTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_template::creer_template
+     * @covers Zorille\framework\zabbix_template::creer_template
      */
 	public function testCreer_template() {
 		$this->object->setName ( "DESC" );

@@ -1,4 +1,6 @@
 <?php
+namespace Zorille\itop;
+use Zorille\framework as Core;
 /**
  * @author dvargas
  * @package Lib
@@ -7,9 +9,9 @@
 if (! defined ( '__DOCUMENT_ROOT__' )) {
 	require_once $_SERVER ["PWD"] . '/prepare.php';
 }
-class itop_PhysicalInterfaceTest extends MockedListeOptions {
+class PhysicalInterfaceTest extends Core\MockedListeOptions {
 	/**
-	 * @var itop_PhysicalInterface
+	 * @var PhysicalInterface
 	 */
 	protected $object;
 
@@ -20,9 +22,9 @@ class itop_PhysicalInterfaceTest extends MockedListeOptions {
 	protected function setUp() {
 		ob_start ();
 		
-		$itop_wsclient_rest = $this ->createMock ( "itop_wsclient_rest" );
+		$itop_wsclient_rest = $this ->createMock('Zorille\itop\wsclient_rest' );
 		
-		$this->object = new itop_PhysicalInterface ( false, "TESTS itop_PhysicalInterface" );
+		$this->object = new PhysicalInterface ( false, "TESTS PhysicalInterface" );
 		$this->object ->setListeOptions ( $this ->getListeOption () ) 
 			->setObjetItopWsclientRest ( $itop_wsclient_rest );
 		
@@ -38,7 +40,7 @@ class itop_PhysicalInterfaceTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers itop_PhysicalInterface::retrouve_PhysicalInterface
+	 * @covers Zorille\itop\PhysicalInterface::retrouve_PhysicalInterface
 	 */
 	public function testretrouve_PhysicalInterface() {
 		$this->object ->getObjetItopWsclientRest () 
@@ -56,7 +58,7 @@ class itop_PhysicalInterfaceTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers itop_PhysicalInterface::creer_oql
+	 * @covers Zorille\itop\PhysicalInterface::creer_oql
 	 */
 	public function testcreer_oql() {
 		$this ->assertSame ( $this->object, $this->object ->creer_oql ( 'NAME1','server_name' ) );
@@ -64,7 +66,7 @@ class itop_PhysicalInterfaceTest extends MockedListeOptions {
 	}
 	
 	/**
-	 * @covers itop_PhysicalInterface::creer_oql
+	 * @covers Zorille\itop\PhysicalInterface::creer_oql
 	 */
 	public function testcreer_oql_sans_servername() {
 		$this ->assertSame ( $this->object, $this->object ->creer_oql ( 'NAME2 server_name' ) );
@@ -72,7 +74,7 @@ class itop_PhysicalInterfaceTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers itop_PhysicalInterface::gestion_PhysicalInterface
+	 * @covers Zorille\itop\PhysicalInterface::gestion_PhysicalInterface
 	 */
 	public function testgestion_PhysicalInterface() {
 		$this->object ->getObjetItopWsclientRest () 

@@ -1,4 +1,7 @@
 <?php
+namespace Zorille\framework;
+use \Exception as Exception;
+use \stdClass as stdClass;
 if (! defined('__DOCUMENT_ROOT__')) {
     require_once $_SERVER["PWD"] . '/prepare.php';
 }
@@ -23,8 +26,8 @@ class bladelogic_wsclientTest extends MockedListeOptions
     {
         ob_start();
         
-        $bladelogic_datas = $this->createMock("bladelogic_datas");
-        $soap = $this->createMock("soap");
+        $bladelogic_datas = $this->createMock('Zorille\framework\bladelogic_datas');
+        $soap = $this->createMock('Zorille\framework\soap');
         
         $this->object = new bladelogic_wsclient(false, "TESTS bladelogic_wsclient");
         $this->object->setListeOptions($this->getListeOption())
@@ -42,7 +45,7 @@ class bladelogic_wsclientTest extends MockedListeOptions
     }
 
     /**
-     * @covers bladelogic_wsclient::prepare_connexion
+     * @covers Zorille\framework\bladelogic_wsclient::prepare_connexion
      */
     public function testPrepare_connexion_exception1()
     {
@@ -76,7 +79,7 @@ class bladelogic_wsclientTest extends MockedListeOptions
     }
 
     /**
-     * @covers bladelogic_wsclient::prepare_connexion
+     * @covers Zorille\framework\bladelogic_wsclient::prepare_connexion
      */
     public function testPrepare_connexion_exception2()
     {
@@ -110,7 +113,7 @@ class bladelogic_wsclientTest extends MockedListeOptions
     }
 
     /**
-     * @covers bladelogic_wsclient::prepare_connexion
+     * @covers Zorille\framework\bladelogic_wsclient::prepare_connexion
      */
     public function testPrepare_connexion_exception3()
     {
@@ -146,7 +149,7 @@ class bladelogic_wsclientTest extends MockedListeOptions
     }
 
     /**
-     * @covers bladelogic_wsclient::prepare_connexion
+     * @covers Zorille\framework\bladelogic_wsclient::prepare_connexion
      */
     public function testPrepare_connexion_exception4()
     {
@@ -183,7 +186,7 @@ class bladelogic_wsclientTest extends MockedListeOptions
     }
 
     /**
-     * @covers bladelogic_wsclient::prepare_connexion
+     * @covers Zorille\framework\bladelogic_wsclient::prepare_connexion
      */
     public function testPrepare_connexion_valide()
     {
@@ -227,7 +230,7 @@ class bladelogic_wsclientTest extends MockedListeOptions
     }
 
     /**
-     * @covers bladelogic_wsclient::connecte_bsa
+     * @covers Zorille\framework\bladelogic_wsclient::connecte_bsa
      */
     public function testConnecte_bsa()
     {
@@ -258,7 +261,7 @@ class bladelogic_wsclientTest extends MockedListeOptions
         $SoapClient->expects($this->any())
             ->method('__call')
             ->will($call_return);
-        $soap = $this->createMock("soap");
+        $soap = $this->createMock('Zorille\framework\soap');
         $soap->expects($this->any())
             ->method('getSoapClient')
             ->will($this->returnValue($SoapClient));
@@ -275,7 +278,7 @@ class bladelogic_wsclientTest extends MockedListeOptions
     }
 
     /**
-     * @covers bladelogic_wsclient::applique_requete_soap
+     * @covers Zorille\framework\bladelogic_wsclient::applique_requete_soap
      */
     public function testApplique_requete_soap_false()
     {
@@ -287,7 +290,7 @@ class bladelogic_wsclientTest extends MockedListeOptions
     }
 
     /**
-     * @covers bladelogic_wsclient::applique_requete_soap
+     * @covers Zorille\framework\bladelogic_wsclient::applique_requete_soap
      */
     public function testApplique_requete_soap_response1()
     {
@@ -304,7 +307,7 @@ class bladelogic_wsclientTest extends MockedListeOptions
     }
 
     /**
-     * @covers bladelogic_wsclient::applique_requete_soap
+     * @covers Zorille\framework\bladelogic_wsclient::applique_requete_soap
      */
     public function testApplique_requete_soap_response2()
     {
@@ -321,7 +324,7 @@ class bladelogic_wsclientTest extends MockedListeOptions
     }
 
     /**
-     * @covers bladelogic_wsclient::applique_requete_soap
+     * @covers Zorille\framework\bladelogic_wsclient::applique_requete_soap
      */
     public function testApplique_requete_soap_response3()
     {
@@ -329,7 +332,7 @@ class bladelogic_wsclientTest extends MockedListeOptions
             ->method('getOption')
             ->will($this->returnValue(false));
         
-        $exception=new Exception('EXCEP1');
+        $exception=new Exception('(TESTS bladelogic_wsclient) EXCEP1');
         $this->_prepareSoapRequest($this->throwException($exception));
         $this->expectException(Exception::class);
         $this->expectExceptionMessage('(TESTS bladelogic_wsclient) EXCEP1');
@@ -337,7 +340,7 @@ class bladelogic_wsclientTest extends MockedListeOptions
     }
 
     /**
-     * @covers bladelogic_wsclient::loginUsingUserCredential
+     * @covers Zorille\framework\bladelogic_wsclient::loginUsingUserCredential
      */
     public function testLoginUsingUserCredential_exception()
     {
@@ -355,7 +358,7 @@ class bladelogic_wsclientTest extends MockedListeOptions
     }
 
     /**
-     * @covers bladelogic_wsclient::loginUsingUserCredential
+     * @covers Zorille\framework\bladelogic_wsclient::loginUsingUserCredential
      */
     public function testLoginUsingUserCredential_valide()
     {
@@ -373,7 +376,7 @@ class bladelogic_wsclientTest extends MockedListeOptions
     }
 
     /**
-     * @covers bladelogic_wsclient::AssumeRole
+     * @covers Zorille\framework\bladelogic_wsclient::AssumeRole
      */
     public function testAssumeRole()
     {
@@ -391,7 +394,7 @@ class bladelogic_wsclientTest extends MockedListeOptions
     }
 
     /**
-     * @covers bladelogic_wsclient::executeCommandByParamString
+     * @covers Zorille\framework\bladelogic_wsclient::executeCommandByParamString
      */
     public function testExecuteCommandByParamString()
     {
@@ -409,7 +412,7 @@ class bladelogic_wsclientTest extends MockedListeOptions
     }
 
     /**
-     * @covers bladelogic_wsclient::RESTRequestService
+     * @covers Zorille\framework\bladelogic_wsclient::RESTRequestService
      */
     public function testRESTRequestService()
     {
@@ -422,7 +425,7 @@ class bladelogic_wsclientTest extends MockedListeOptions
     }
 
     /**
-     * @covers bladelogic_wsclient::HandshakeService
+     * @covers Zorille\framework\bladelogic_wsclient::HandshakeService
      */
     public function testHandshakeService()
     {
@@ -435,7 +438,7 @@ class bladelogic_wsclientTest extends MockedListeOptions
     }
 
     /**
-     * @covers bladelogic_wsclient::StandardAttributeInterfaceService
+     * @covers Zorille\framework\bladelogic_wsclient::StandardAttributeInterfaceService
      */
     public function testStandardAttributeInterfaceService()
     {

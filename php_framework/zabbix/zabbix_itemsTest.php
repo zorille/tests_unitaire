@@ -1,4 +1,6 @@
 <?php
+namespace Zorille\framework;
+use \Exception as Exception;
 if (! defined ( '__DOCUMENT_ROOT__' )) {
 	require_once $_SERVER ["PWD"] . '/prepare.php';
 }
@@ -18,8 +20,8 @@ class zabbix_itemsTest extends MockedListeOptions {
      */
 	protected function setUp() {
 		ob_start ();
-		$zabbix_wsclient = $this ->createMock ( "zabbix_wsclient" );
-		$zabbix_item_reference = $this ->createMock ( "zabbix_item" );
+		$zabbix_wsclient = $this ->createMock('Zorille\framework\zabbix_wsclient' );
+		$zabbix_item_reference = $this ->createMock('Zorille\framework\zabbix_item' );
 		
 		$this->object = new zabbix_items ( false, "zabbix_items" );
 		$this->object ->setObjetZabbixWsclient ( $zabbix_wsclient ) 
@@ -35,7 +37,7 @@ class zabbix_itemsTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_items::retrouve_zabbix_param
+     * @covers Zorille\framework\zabbix_items::retrouve_zabbix_param
      */
 	public function testRetrouve_zabbix_param_Exception() {
 		$this ->getListeOption () 
@@ -51,7 +53,7 @@ class zabbix_itemsTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_items::retrouve_zabbix_param
+	 * @covers Zorille\framework\zabbix_items::retrouve_zabbix_param
 	 */
 	public function testRetrouve_zabbix_param() {
 		$this ->getListeOption () 
@@ -77,7 +79,7 @@ class zabbix_itemsTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_items::recherche_liste_items
+     * @covers Zorille\framework\zabbix_items::recherche_liste_items
      */
 	public function testRecherche_liste_items() {
 		$this->object ->getObjetItemRef () 
@@ -96,7 +98,7 @@ class zabbix_itemsTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_items::recherche_liste_items_par_filtre
+	 * @covers Zorille\framework\zabbix_items::recherche_liste_items_par_filtre
 	 */
 	public function testrecherche_liste_items_par_filtre() {
 		$this->object ->getObjetItemRef () 
@@ -115,7 +117,7 @@ class zabbix_itemsTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_items::valide_liste_items
+     * @covers Zorille\framework\zabbix_items::valide_liste_items
      */
 	public function testValide_liste_items() {
 		$liste_item_cli = array ( 
@@ -156,7 +158,7 @@ class zabbix_itemsTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_items::creer_item
+     * @covers Zorille\framework\zabbix_items::creer_item
      */
 	public function testCreer_item() {
 		$this->object ->getObjetItemRef () 
@@ -170,7 +172,7 @@ class zabbix_itemsTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_items::ajoute_items
+     * @covers Zorille\framework\zabbix_items::ajoute_items
      */
 	public function testAjoute_items() {
 		$liste_item = array ( 
@@ -206,7 +208,7 @@ class zabbix_itemsTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_items::supprime_items
+     * @covers Zorille\framework\zabbix_items::supprime_items
      */
 	public function testSupprime_items() {
 		$liste_item = array ( 
@@ -240,7 +242,7 @@ class zabbix_itemsTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_items::creer_definition_items_ws
+     * @covers Zorille\framework\zabbix_items::creer_definition_items_ws
      */
 	public function testCreer_definition_items_ws() {
 		$this->object ->getObjetItemRef () 
@@ -257,7 +259,7 @@ class zabbix_itemsTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_items::creer_definition_itemids_ws
+     * @covers Zorille\framework\zabbix_items::creer_definition_itemids_ws
      */
 	public function testCreer_definition_itemids_ws() {
 		$this->object ->getObjetItemRef () 
@@ -276,7 +278,7 @@ class zabbix_itemsTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_items::creer_definition_itemids_sans_champ_itemid_ws
+	 * @covers Zorille\framework\zabbix_items::creer_definition_itemids_sans_champ_itemid_ws
 	 */
 	public function testcreer_definition_itemids_sans_champ_itemid_ws() {
 		$this->object ->getObjetItemRef () 

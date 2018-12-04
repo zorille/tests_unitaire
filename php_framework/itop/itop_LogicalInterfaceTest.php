@@ -1,4 +1,6 @@
 <?php
+namespace Zorille\itop;
+use Zorille\framework as Core;
 /**
  * @author dvargas
  * @package Lib
@@ -7,9 +9,9 @@
 if (! defined ( '__DOCUMENT_ROOT__' )) {
 	require_once $_SERVER ["PWD"] . '/prepare.php';
 }
-class itop_LogicalInterfaceTest extends MockedListeOptions {
+class LogicalInterfaceTest extends Core\MockedListeOptions {
 	/**
-	 * @var itop_LogicalInterface
+	 * @var LogicalInterface
 	 */
 	protected $object;
 
@@ -20,10 +22,10 @@ class itop_LogicalInterfaceTest extends MockedListeOptions {
 	protected function setUp() {
 		ob_start ();
 		
-		$itop_wsclient_rest = $this ->createMock ( "itop_wsclient_rest" );
-		$itop_VirtualMachine = $this ->createMock ( "itop_VirtualMachine" );
+		$itop_wsclient_rest = $this ->createMock('Zorille\itop\wsclient_rest' );
+		$itop_VirtualMachine = $this ->createMock('Zorille\itop\VirtualMachine' );
 		
-		$this->object = new itop_LogicalInterface ( false, "TESTS itop_LogicalInterface" );
+		$this->object = new LogicalInterface ( false, "TESTS LogicalInterface" );
 		$this->object ->setListeOptions ( $this ->getListeOption () ) 
 			->setObjetItopWsclientRest ( $itop_wsclient_rest ) 
 			->setObjetItopVirtualMachine ( $itop_VirtualMachine );
@@ -44,7 +46,7 @@ class itop_LogicalInterfaceTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers itop_LogicalInterface::retrouve_LogicalInterface
+	 * @covers Zorille\itop\LogicalInterface::retrouve_LogicalInterface
 	 */
 	public function testretrouve_LogicalInterface() {
 		$this->object ->getObjetItopWsclientRest () 
@@ -62,7 +64,7 @@ class itop_LogicalInterfaceTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers itop_LogicalInterface::creer_oql
+	 * @covers Zorille\itop\LogicalInterface::creer_oql
 	 */
 	public function testcreer_oql() {
 		$this ->assertSame ( $this->object, $this->object ->creer_oql ( 'NAME1','server_name' ) );
@@ -70,7 +72,7 @@ class itop_LogicalInterfaceTest extends MockedListeOptions {
 	}
 	
 	/**
-	 * @covers itop_LogicalInterface::creer_oql
+	 * @covers Zorille\itop\LogicalInterface::creer_oql
 	 */
 	public function testcreer_oql_sans_servername() {
 		$this ->assertSame ( $this->object, $this->object ->creer_oql ( 'NAME2 server_name' ) );
@@ -78,7 +80,7 @@ class itop_LogicalInterfaceTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers itop_LogicalInterface::gestion_LogicalInterface
+	 * @covers Zorille\itop\LogicalInterface::gestion_LogicalInterface
 	 */
 	public function testgestion_LogicalInterface() {
 		$this->object ->getObjetItopWsclientRest () 

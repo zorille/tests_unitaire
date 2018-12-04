@@ -1,4 +1,6 @@
 <?php
+namespace Zorille\framework;
+use \Exception as Exception;
 /**
  * @ignore
  */
@@ -40,7 +42,7 @@ class fichierTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers fichier::__construct
+	 * @covers Zorille\framework\fichier::__construct
 	 */
 	public function testNewFichier_Exception() {
 		$this ->expectException(Exception::class);
@@ -49,7 +51,7 @@ class fichierTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers fichier::ouvrir
+	 * @covers Zorille\framework\fichier::ouvrir
 	 */
 	public function testOuvrir() {
 		$this ->assertTrue ( $this->object ->ouvrir ( "w" ) );
@@ -57,7 +59,7 @@ class fichierTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers fichier::ecrit
+	 * @covers Zorille\framework\fichier::ecrit
 	 */
 	public function testEcrit() {
 		$this->object ->ouvrir ( "a" );
@@ -67,7 +69,7 @@ class fichierTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers fichier::lit_une_ligne
+	 * @covers Zorille\framework\fichier::lit_une_ligne
 	 */
 	public function testLit_une_ligne_406() {
 		$this->object ->ouvrir ( "r" );
@@ -76,7 +78,7 @@ class fichierTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers fichier::lit_une_ligne
+	 * @covers Zorille\framework\fichier::lit_une_ligne
 	 */
 	public function testLit_une_ligne_4() {
 		$this->object ->ouvrir ( "r" );
@@ -85,7 +87,7 @@ class fichierTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers fichier::charge_fichier
+	 * @covers Zorille\framework\fichier::charge_fichier
 	 */
 	public function testCharge_fichier() {
 		$this->object ->ouvrir ( "r" );
@@ -94,7 +96,7 @@ class fichierTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers fichier::charge_fichier
+	 * @covers Zorille\framework\fichier::charge_fichier
 	 */
 	public function testCharge_fichier_returnArray() {
 		$this->object ->ouvrir ( "r" );
@@ -104,7 +106,7 @@ class fichierTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers fichier::copie
+	 * @covers Zorille\framework\fichier::copie
 	 */
 	public function testCopie() {
 		$this ->assertEquals ( 0, fichier::copie ( $this->nom_fichier, "/tmp/fichier_test_copie", "oui" ) );
@@ -116,7 +118,7 @@ class fichierTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers fichier::deplace
+	 * @covers Zorille\framework\fichier::deplace
 	 */
 	public function testDeplace() {
 		$this ->assertEquals ( 0, fichier::deplace ( $this->nom_fichier, "/tmp/fichier_test_copie", "oui" ) );
@@ -125,7 +127,7 @@ class fichierTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers fichier::supprime_fichier
+	 * @covers Zorille\framework\fichier::supprime_fichier
 	 */
 	public function testSupprime_fichier() {
 		$this ->assertTrue ( fichier::supprime_fichier ( "/tmp/fichier_test_copie" ) );
@@ -133,14 +135,14 @@ class fichierTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers fichier::renomme
+	 * @covers Zorille\framework\fichier::renomme
 	 */
 	public function testRenomme() {
 		$this ->assertFalse ( fichier::renomme ( $this->nom_fichier, "/tmp/fichier_test_rename" ) );
 	}
 
 	/**
-	 * @covers fichier::close
+	 * @covers Zorille\framework\fichier::close
 	 */
 	public function testClose() {
 		$this->object ->ouvrir ( "r" );
@@ -148,7 +150,7 @@ class fichierTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers fichier::tester_fichier_existe
+	 * @covers Zorille\framework\fichier::tester_fichier_existe
 	 */
 	public function testTester_fichier_existe() {
 		$this ->assertTrue ( fichier::tester_fichier_existe ( $this->nom_fichier ) );
@@ -157,7 +159,7 @@ class fichierTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers fichier::tester_fichier_standard
+	 * @covers Zorille\framework\fichier::tester_fichier_standard
 	 */
 	public function testTester_fichier_standard() {
 		$this ->assertTrue ( fichier::tester_fichier_standard ( $this->nom_fichier ) );
@@ -166,7 +168,7 @@ class fichierTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers fichier::recupere_info_fichier
+	 * @covers Zorille\framework\fichier::recupere_info_fichier
 	 */
 	public function testRecupere_info_fichier() {
 		$this ->assertArrayHasKey ( 'size', fichier::recupere_info_fichier ( $this->nom_fichier ) );
@@ -175,14 +177,14 @@ class fichierTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers fichier::renvoi_nom_fichier
+	 * @covers Zorille\framework\fichier::renvoi_nom_fichier
 	 */
 	public function testrenvoi_nom_fichier() {
 		$this ->assertEquals ( '/tmp/fichier_test', $this->object ->renvoi_nom_fichier () );
 	}
 
 	/**
-	 * @covers fichier::recupere_taille_fichier
+	 * @covers Zorille\framework\fichier::recupere_taille_fichier
 	 */
 	public function testRecupere_taille_fichier() {
 		$this ->assertEquals ( 0, fichier::recupere_taille_fichier ( $this->nom_fichier ) );
@@ -191,7 +193,7 @@ class fichierTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers fichier::Lit_integralite_fichier
+	 * @covers Zorille\framework\fichier::Lit_integralite_fichier
 	 */
 	public function testLit_integralite_fichier() {
 		$this ->assertEquals ( '', fichier::Lit_integralite_fichier ( $this->nom_fichier ) );
@@ -200,7 +202,7 @@ class fichierTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers fichier::Lit_integralite_fichier_en_tableau
+	 * @covers Zorille\framework\fichier::Lit_integralite_fichier_en_tableau
 	 */
 	public function testLit_integralite_fichier_en_tableau() {
 		$this ->assertEquals ( array (), fichier::Lit_integralite_fichier_en_tableau ( $this->nom_fichier ) );

@@ -1,4 +1,6 @@
 <?php
+namespace Zorille\framework;
+use \Exception as Exception;
 if (! defined ( '__DOCUMENT_ROOT__' )) {
 	require_once $_SERVER ["PWD"] . '/prepare.php';
 }
@@ -18,8 +20,8 @@ class zabbix_valuemappingTest extends MockedListeOptions {
      */
 	protected function setUp() {
 		ob_start ();
-		$zabbix_wsclient = $this ->createMock ( "zabbix_wsclient" );
-		$zabbix_mappings = $this ->createMock ( "zabbix_mappings" );
+		$zabbix_wsclient = $this ->createMock('Zorille\framework\zabbix_wsclient' );
+		$zabbix_mappings = $this ->createMock('Zorille\framework\zabbix_mappings' );
 		
 		$this->object = new zabbix_valuemapping ( false, "zabbix_valuemapping" );
 		$this->object ->setObjetZabbixWsclient ( $zabbix_wsclient ) 
@@ -35,7 +37,7 @@ class zabbix_valuemappingTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_valuemapping::retrouve_zabbix_param
+     * @covers Zorille\framework\zabbix_valuemapping::retrouve_zabbix_param
      */
 	public function testRetrouve_zabbix_param_Exception() {
 		$this ->getListeOption () 
@@ -50,7 +52,7 @@ class zabbix_valuemappingTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_valuemapping::retrouve_zabbix_param
+	 * @covers Zorille\framework\zabbix_valuemapping::retrouve_zabbix_param
 	 */
 	public function testRetrouve_zabbix_param() {
 		$this ->getListeOption () 
@@ -68,7 +70,7 @@ class zabbix_valuemappingTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_valuemapping::creer_definition_valuemapping_create_ws
+     * @covers Zorille\framework\zabbix_valuemapping::creer_definition_valuemapping_create_ws
      */
 	public function testCreer_definition_valuemapping_create_ws() {
 		$this->object ->setName ( "Name1" );
@@ -82,7 +84,7 @@ class zabbix_valuemappingTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_valuemapping::creer_valuemapping
+     * @covers Zorille\framework\zabbix_valuemapping::creer_valuemapping
      */
 	public function testCreer_valuemapping() {
 		$this->object ->setName ( "Name1" );
@@ -104,7 +106,7 @@ class zabbix_valuemappingTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_valuemapping::creer_definition_valuemapping_delete_ws
+     * @covers Zorille\framework\zabbix_valuemapping::creer_definition_valuemapping_delete_ws
      */
 	public function testCreer_definition_valuemapping_delete_ws() {
 		$this ->assertEquals ( array (), $this->object ->creer_definition_valuemapping_delete_ws () );
@@ -114,7 +116,7 @@ class zabbix_valuemappingTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_valuemapping::supprime_valuemapping
+     * @covers Zorille\framework\zabbix_valuemapping::supprime_valuemapping
      */
 	public function testSupprime_valuemapping() {
 		$this->object ->getObjetZabbixWsclient () 
@@ -138,7 +140,7 @@ class zabbix_valuemappingTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_valuemapping::creer_definition_valuemapping_get_ws
+     * @covers Zorille\framework\zabbix_valuemapping::creer_definition_valuemapping_get_ws
      */
 	public function testCreer_definition_valuemapping_get_ws_without_mapping() {
 		$this->object ->setName ( "Name1" );
@@ -149,7 +151,7 @@ class zabbix_valuemappingTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_valuemapping::creer_definition_valuemapping_get_ws
+	 * @covers Zorille\framework\zabbix_valuemapping::creer_definition_valuemapping_get_ws
 	 */
 	public function testCreer_definition_valuemapping_get_ws_with_mapping() {
 		$this->object ->setName ( "Name1" );
@@ -161,7 +163,7 @@ class zabbix_valuemappingTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_valuemapping::creer_definition_valuemapping_get_ws
+	 * @covers Zorille\framework\zabbix_valuemapping::creer_definition_valuemapping_get_ws
 	 */
 	public function testCreer_definition_valuemapping_get_ws_extend() {
 		$this->object ->setName ( "Name2" );
@@ -173,7 +175,7 @@ class zabbix_valuemappingTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_valuemapping::recherche_valuemapping
+     * @covers Zorille\framework\zabbix_valuemapping::recherche_valuemapping
      */
 	public function testRecherche_valuemapping() {
 		$this->object ->getObjetZabbixWsclient () 
@@ -189,7 +191,7 @@ class zabbix_valuemappingTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_valuemapping::recherche_valuemappingid_by_Name
+	 * @covers Zorille\framework\zabbix_valuemapping::recherche_valuemappingid_by_Name
 	 */
 	public function testRecherche_valuemappingid_by_Name() {
 		$this->object ->getObjetZabbixWsclient () 

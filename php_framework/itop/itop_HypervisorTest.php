@@ -1,4 +1,6 @@
 <?php
+namespace Zorille\itop;
+use Zorille\framework as Core;
 /**
  * @author dvargas
  * @package Lib
@@ -7,9 +9,9 @@
 if (! defined ( '__DOCUMENT_ROOT__' )) {
 	require_once $_SERVER ["PWD"] . '/prepare.php';
 }
-class itop_HypervisorTest extends MockedListeOptions {
+class HypervisorTest extends Core\MockedListeOptions {
 	/**
-	 * @var itop_Hypervisor
+	 * @var Hypervisor
 	 */
 	protected $object;
 
@@ -20,10 +22,10 @@ class itop_HypervisorTest extends MockedListeOptions {
 	protected function setUp() {
 		ob_start ();
 		
-		$itop_wsclient_rest = $this ->createMock ( "itop_wsclient_rest" );
-		$itop_Organization = $this ->createMock ( "itop_Organization" );
+		$itop_wsclient_rest = $this ->createMock('Zorille\itop\wsclient_rest' );
+		$itop_Organization = $this ->createMock('Zorille\itop\Organization' );
 		
-		$this->object = new itop_Hypervisor ( false, "TESTS itop_Hypervisor" );
+		$this->object = new Hypervisor ( false, "TESTS Hypervisor" );
 		$this->object ->setListeOptions ( $this ->getListeOption () ) 
 			->setObjetItopWsclientRest ( $itop_wsclient_rest ) 
 			->setObjetItopOrganization ( $itop_Organization );
@@ -44,7 +46,7 @@ class itop_HypervisorTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers itop_Hypervisor::retrouve_Hypervisor
+	 * @covers Zorille\itop\Hypervisor::retrouve_Hypervisor
 	 */
 	public function testretrouve_Hypervisor() {
 		$this->object ->getObjetItopWsclientRest () 
@@ -62,7 +64,7 @@ class itop_HypervisorTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers itop_Hypervisor::creer_oql
+	 * @covers Zorille\itop\Hypervisor::creer_oql
 	 */
 	public function testcreer_oql() {
 		$this ->assertSame ( $this->object, $this->object ->creer_oql ( 'NAME1' ) );
@@ -70,7 +72,7 @@ class itop_HypervisorTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers itop_Hypervisor::gestion_Hypervisor
+	 * @covers Zorille\itop\Hypervisor::gestion_Hypervisor
 	 */
 	public function testgestion_Hypervisor() {
 		$this->object ->getObjetItopWsclientRest () 

@@ -1,4 +1,5 @@
 <?php
+namespace Zorille\framework;
 
 /**
  * @author dvargas
@@ -24,7 +25,7 @@ class serveur_datasTest extends MockedListeOptions {
 	protected function setUp() {
 		ob_start ();
 		
-		$utilisateurs = $this ->createMock ( "utilisateurs" );
+		$utilisateurs = $this ->createMock('Zorille\framework\utilisateurs' );
 		
 		$this->object = new serveur_datas ( false, "TESTS serveur HOST" );
 		$this->object ->setListeOptions ( $this ->getListeOption () ) 
@@ -40,7 +41,7 @@ class serveur_datasTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers serveur_datas::valide_presence_serveur_data
+	 * @covers Zorille\framework\serveur_datas::valide_presence_serveur_data
 	 */
 	public function testvalide_presence_serveur_data() {
 		$this->object ->getObjetUtilisateurs () 
@@ -73,7 +74,7 @@ class serveur_datasTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers serveur_datas::valide_presence_serveur_data
+	 * @covers Zorille\framework\serveur_datas::valide_presence_serveur_data
 	 */
 	public function testvalide_presence_serveur_data_protocole() {
 		$this->object ->getObjetUtilisateurs () 

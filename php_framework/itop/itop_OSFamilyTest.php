@@ -1,4 +1,6 @@
 <?php
+namespace Zorille\itop;
+use Zorille\framework as Core;
 /**
  * @author dvargas
  * @package Lib
@@ -7,9 +9,9 @@
 if (! defined ( '__DOCUMENT_ROOT__' )) {
 	require_once $_SERVER ["PWD"] . '/prepare.php';
 }
-class itop_OSFamilyTest extends MockedListeOptions {
+class OSFamilyTest extends Core\MockedListeOptions {
 	/**
-	 * @var itop_OSFamily
+	 * @var OSFamily
 	 */
 	protected $object;
 
@@ -20,9 +22,9 @@ class itop_OSFamilyTest extends MockedListeOptions {
 	protected function setUp() {
 		ob_start ();
 		
-		$itop_wsclient_rest = $this ->createMock ( "itop_wsclient_rest" );
+		$itop_wsclient_rest = $this ->createMock('Zorille\itop\wsclient_rest' );
 		
-		$this->object = new itop_OSFamily ( false, "TESTS itop_OSFamily" );
+		$this->object = new OSFamily ( false, "TESTS OSFamily" );
 		$this->object ->setListeOptions ( $this ->getListeOption () ) 
 			->setObjetItopWsclientRest ( $itop_wsclient_rest );
 		
@@ -38,7 +40,7 @@ class itop_OSFamilyTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers itop_OSFamily::retrouve_OSFamily
+	 * @covers Zorille\itop\OSFamily::retrouve_OSFamily
 	 */
 	public function testretrouve_OSFamily() {
 		$this->object ->getObjetItopWsclientRest () 
@@ -56,7 +58,7 @@ class itop_OSFamilyTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers itop_OSFamily::creer_oql
+	 * @covers Zorille\itop\OSFamily::creer_oql
 	 */
 	public function testcreer_oql() {
 		$this ->assertSame ( $this->object, $this->object ->creer_oql ( 'NAME1' ) );
@@ -64,7 +66,7 @@ class itop_OSFamilyTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers itop_OSFamily::gestion_OSFamily
+	 * @covers Zorille\itop\OSFamily::gestion_OSFamily
 	 */
 	public function testgestion_OSFamily() {
 		$this->object ->getObjetItopWsclientRest () 

@@ -1,4 +1,6 @@
 <?php
+namespace Zorille\framework;
+use \Exception as Exception;
 /**
  * @ignore
  */
@@ -41,7 +43,7 @@ class fichier_gzTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers fichier::__construct
+	 * @covers Zorille\framework\fichier::__construct
 	 */
 	public function testNewFichier_Exception() {
 		$this ->expectException(Exception::class);

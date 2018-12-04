@@ -1,4 +1,6 @@
 <?php
+namespace Zorille\framework;
+use \Exception as Exception;
 if (! defined ( '__DOCUMENT_ROOT__' )) {
 	require_once $_SERVER ["PWD"] . '/prepare.php';
 }
@@ -30,7 +32,7 @@ class zabbix_action_operation_commandTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_action_operation_command::retrouve_zabbix_param
+     * @covers Zorille\framework\zabbix_action_operation_command::retrouve_zabbix_param
      */
 	public function testRetrouve_zabbix_param_Exception1() {
 		$this ->getListeOption () 
@@ -44,7 +46,7 @@ class zabbix_action_operation_commandTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_action_operation_command::retrouve_zabbix_param
+	 * @covers Zorille\framework\zabbix_action_operation_command::retrouve_zabbix_param
 	 */
 	public function testRetrouve_zabbix_param_Exception2() {
 		$this ->getListeOption () 
@@ -64,7 +66,7 @@ class zabbix_action_operation_commandTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_action_operation_command::retrouve_zabbix_param
+	 * @covers Zorille\framework\zabbix_action_operation_command::retrouve_zabbix_param
 	 */
 	public function testRetrouve_zabbix_param_0() {
 		$this ->getListeOption () 
@@ -82,7 +84,7 @@ class zabbix_action_operation_commandTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_action_operation_command::retrouve_zabbix_param
+	 * @covers Zorille\framework\zabbix_action_operation_command::retrouve_zabbix_param
 	 */
 	public function testRetrouve_zabbix_param_1() {
 		$this ->getListeOption () 
@@ -100,7 +102,7 @@ class zabbix_action_operation_commandTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_action_operation_command::retrouve_zabbix_param
+	 * @covers Zorille\framework\zabbix_action_operation_command::retrouve_zabbix_param
 	 */
 	public function testRetrouve_zabbix_param_2() {
 		$this ->getListeOption () 
@@ -118,7 +120,7 @@ class zabbix_action_operation_commandTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_action_operation_command::retrouve_zabbix_param
+	 * @covers Zorille\framework\zabbix_action_operation_command::retrouve_zabbix_param
 	 */
 	public function testRetrouve_zabbix_param_3() {
 		$this ->getListeOption () 
@@ -136,7 +138,7 @@ class zabbix_action_operation_commandTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_action_operation_command::retrouve_zabbix_param
+	 * @covers Zorille\framework\zabbix_action_operation_command::retrouve_zabbix_param
 	 */
 	public function testRetrouve_zabbix_param_4() {
 		$this ->getListeOption () 
@@ -154,7 +156,7 @@ class zabbix_action_operation_commandTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_action_operation_command::creer_definition_zabbix_operation_command_ws
+     * @covers Zorille\framework\zabbix_action_operation_command::creer_definition_zabbix_operation_command_ws
      */
 	public function testCreer_definition_zabbix_operation_command_ws_exception1() {
 		$this->object ->setType ( 0 );
@@ -165,7 +167,7 @@ class zabbix_action_operation_commandTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_action_operation_command::creer_definition_zabbix_operation_command_ws
+	 * @covers Zorille\framework\zabbix_action_operation_command::creer_definition_zabbix_operation_command_ws
 	 */
 	public function testCreer_definition_zabbix_operation_command_ws_exception2() {
 		$this->object ->setCommand ( "COMMAND" );
@@ -177,7 +179,7 @@ class zabbix_action_operation_commandTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_action_operation_command::creer_definition_zabbix_operation_command_ws
+	 * @covers Zorille\framework\zabbix_action_operation_command::creer_definition_zabbix_operation_command_ws
 	 */
 	public function testCreer_definition_zabbix_operation_command_ws_valide() {
 		$this ->assertEquals ( array (), $this->object ->creer_definition_zabbix_operation_command_ws () );
@@ -234,7 +236,7 @@ class zabbix_action_operation_commandTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_action_operation_command::retrouve_Type
+     * @covers Zorille\framework\zabbix_action_operation_command::retrouve_Type
      */
 	public function testRetrouve_Type() {
 		$this ->assertEquals ( 0, $this->object ->retrouve_Type ( "" ) );
@@ -247,7 +249,7 @@ class zabbix_action_operation_commandTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_action_operation_command::retrouve_ExecuteOn
+     * @covers Zorille\framework\zabbix_action_operation_command::retrouve_ExecuteOn
      */
 	public function testRetrouve_ExecuteOn() {
 		$this ->assertEquals ( 0, $this->object ->retrouve_ExecuteOn ( "" ) );
@@ -257,7 +259,7 @@ class zabbix_action_operation_commandTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_action_operation_command::retrouve_Authtype
+     * @covers Zorille\framework\zabbix_action_operation_command::retrouve_Authtype
      */
 	public function testRetrouve_Authtype() {
 		$this ->assertEquals ( 0, $this->object ->retrouve_Authtype ( "" ) );

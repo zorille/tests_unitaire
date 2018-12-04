@@ -1,4 +1,6 @@
 <?php
+namespace Zorille\framework;
+use \Exception as Exception;
 if (! defined ( '__DOCUMENT_ROOT__' )) {
 	require_once $_SERVER ["PWD"] . '/prepare.php';
 }
@@ -18,7 +20,7 @@ class zabbix_connexionTest extends MockedListeOptions {
      */
 	protected function setUp() {
 		ob_start ();
-		$zabbix_wsclient = $this ->createMock ( "zabbix_wsclient" );
+		$zabbix_wsclient = $this ->createMock('Zorille\framework\zabbix_wsclient' );
 		
 		$this->object = new zabbix_connexion ( false, "zabbix_connexion" );
 		$this->object ->setObjetZabbixWsclient ( $zabbix_wsclient );
@@ -33,7 +35,7 @@ class zabbix_connexionTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_connexion::connect_zabbix
+     * @covers Zorille\framework\zabbix_connexion::connect_zabbix
      */
 	public function testconnect_zabbix_Exception() {
 		$this ->getListeOption () 
@@ -48,7 +50,7 @@ class zabbix_connexionTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_connexion::connect_zabbix
+	 * @covers Zorille\framework\zabbix_connexion::connect_zabbix
 	 */
 	public function testconnect_zabbix() {
 		$this ->getListeOption () 

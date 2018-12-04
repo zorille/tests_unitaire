@@ -1,4 +1,7 @@
 <?php
+namespace Zorille\framework;
+use \Exception as Exception;
+use \SimpleXMLElement as SimpleXMLElement;
 if (! defined ( '__DOCUMENT_ROOT__' )) {
 	require_once $_SERVER ["PWD"] . '/prepare.php';
 }
@@ -19,17 +22,19 @@ class splunk_wsclientTest extends MockedListeOptions {
 	protected function setUp() {
 		ob_start ();
 		
-		$utilisateurs = $this ->createMock ( "utilisateurs" );
+		$utilisateurs = $this ->createMock('Zorille\framework\utilisateurs' );
 		$utilisateurs ->expects ( $this ->any () ) 
 			->method ( 'setUsername', 'setPassword' ) 
 			->will ( $this ->returnSelf () );
-		$gestion_connexion_url = $this ->createMock ( "gestion_connexion_url" );
+		$gestion_connexion_url = $this ->createMock('Zorille\framework\gestion_connexion_url' );
 		$gestion_connexion_url ->expects ( $this ->any () ) 
 			->method ( 'getObjetUtilisateurs' ) 
 			->will ( $this ->returnValue ( $utilisateurs ) );
-		$splunk_datas = $this ->createMock ( "splunk_datas" );
-		$curl = $this ->createMock ( "curl" );
-		
+		$splunk_datas = $this ->createMock('Zorille\framework\splunk_datas' );
+		$curl = $this ->createMock('Zorille\framework\curl' );
+		$curl ->expects ( $this ->any () )
+		->method ( 'setUserPasswd', 'setHttpHAuth' )
+		->will ( $this ->returnSelf () );
 		$this->object = new splunk_wsclient ( false, "splunk_wsclient" );
 		$this->object ->setListeOptions ( $this ->getListeOption () ) 
 			->setGestionConnexionUrl ( $gestion_connexion_url ) 
@@ -46,7 +51,7 @@ class splunk_wsclientTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers splunk_wsclient::prepare_connexion
+     * @covers Zorille\framework\splunk_wsclient::prepare_connexion
      */
 	public function testPrepare_connexion_exception1() {
 		$this->object ->getGestionConnexionUrl () 
@@ -67,7 +72,7 @@ class splunk_wsclientTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers splunk_wsclient::prepare_connexion
+	 * @covers Zorille\framework\splunk_wsclient::prepare_connexion
 	 */
 	public function testPrepare_connexion_exception2() {
 		$this->object ->getGestionConnexionUrl () 
@@ -88,7 +93,7 @@ class splunk_wsclientTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers splunk_wsclient::prepare_connexion
+	 * @covers Zorille\framework\splunk_wsclient::prepare_connexion
 	 */
 	public function testPrepare_connexion_exception3() {
 		$this->object ->getGestionConnexionUrl () 
@@ -110,7 +115,7 @@ class splunk_wsclientTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers splunk_wsclient::prepare_connexion
+	 * @covers Zorille\framework\splunk_wsclient::prepare_connexion
 	 */
 	public function testPrepare_connexion_exception4() {
 		$this->object ->getGestionConnexionUrl () 
@@ -133,7 +138,7 @@ class splunk_wsclientTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers splunk_wsclient::prepare_connexion
+	 * @covers Zorille\framework\splunk_wsclient::prepare_connexion
 	 */
 	public function testPrepare_connexion_valide() {
 		$this->object ->getGestionConnexionUrl () 
@@ -158,7 +163,7 @@ class splunk_wsclientTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers splunk_wsclient::prepare_requete
+	 * @covers Zorille\framework\splunk_wsclient::prepare_requete
 	 */
 	public function testprepare_requete_dry_run() {
 		$this->object ->getListeOptions () 
@@ -170,7 +175,7 @@ class splunk_wsclientTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers splunk_wsclient::prepare_requete
+	 * @covers Zorille\framework\splunk_wsclient::prepare_requete
 	 */
 	public function testprepare_requete_valide_no_Auth() {
 		$this->object ->getObjetCurl () 
@@ -181,7 +186,7 @@ class splunk_wsclientTest extends MockedListeOptions {
 	}
 	
 	/**
-	 * @covers splunk_wsclient::prepare_requete
+	 * @covers Zorille\framework\splunk_wsclient::prepare_requete
 	 */
 	public function testprepare_requete_valide_with_Auth() {
 		$this->object ->setAuth('KEY');

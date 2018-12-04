@@ -1,4 +1,6 @@
 <?php
+namespace Zorille\framework;
+use \Exception as Exception;
 if (! defined ( '__DOCUMENT_ROOT__' )) {
 	require_once $_SERVER ["PWD"] . '/prepare.php';
 }
@@ -18,8 +20,8 @@ class zabbix_usergroupTest extends MockedListeOptions {
      */
 	protected function setUp() {
 		ob_start ();
-		$zabbix_wsclient = $this ->createMock ( "zabbix_wsclient" );
-		$zabbix_permissions = $this ->createMock ( "zabbix_permissions" );
+		$zabbix_wsclient = $this ->createMock('Zorille\framework\zabbix_wsclient' );
+		$zabbix_permissions = $this ->createMock('Zorille\framework\zabbix_permissions' );
 		
 		$this->object = new zabbix_usergroup ( false, "zabbix_usergroup" );
 		$this->object ->setObjetZabbixWsclient ( $zabbix_wsclient ) 
@@ -35,7 +37,7 @@ class zabbix_usergroupTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_usergroup::retrouve_zabbix_param
+     * @covers Zorille\framework\zabbix_usergroup::retrouve_zabbix_param
      */
 	public function testRetrouve_zabbix_param_Exception() {
 		$this ->getListeOption () 
@@ -50,7 +52,7 @@ class zabbix_usergroupTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_usergroup::retrouve_zabbix_param
+	 * @covers Zorille\framework\zabbix_usergroup::retrouve_zabbix_param
 	 */
 	public function testRetrouve_zabbix_param() {
 		$this ->getListeOption () 
@@ -71,7 +73,7 @@ class zabbix_usergroupTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_usergroup::compare_usergroup
+     * @covers Zorille\framework\zabbix_usergroup::compare_usergroup
      */
 	public function testCompare_usergroup() {
 		$this->object ->setName ( "NAME1" );
@@ -99,7 +101,7 @@ class zabbix_usergroupTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_usergroup::creer_definition_userGroup_create_ws
+     * @covers Zorille\framework\zabbix_usergroup::creer_definition_userGroup_create_ws
      */
 	public function testCreer_definition_userGroup_create_ws() {
 		$this->object ->setName ( "NAME1" );
@@ -122,7 +124,7 @@ class zabbix_usergroupTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_usergroup::creer_userGroup
+     * @covers Zorille\framework\zabbix_usergroup::creer_userGroup
      */
 	public function testCreer_userGroup() {
 		$this->object ->setName ( "NAME1" );
@@ -147,7 +149,7 @@ class zabbix_usergroupTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_usergroup::creer_definition_userGroup_delete_ws
+     * @covers Zorille\framework\zabbix_usergroup::creer_definition_userGroup_delete_ws
      */
 	public function testCreer_definition_userGroup_delete_ws() {
 		$this ->assertEquals ( array (), $this->object ->creer_definition_userGroup_delete_ws () );
@@ -157,7 +159,7 @@ class zabbix_usergroupTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_usergroup::supprime_userGroup
+     * @covers Zorille\framework\zabbix_usergroup::supprime_userGroup
      */
 	public function testSupprime_userGroup() {
 		$this->object ->getObjetZabbixWsclient () 
@@ -173,7 +175,7 @@ class zabbix_usergroupTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_usergroup::creer_definition_userGroup_get_ws
+     * @covers Zorille\framework\zabbix_usergroup::creer_definition_userGroup_get_ws
      */
 	public function testCreer_definition_userGroup_get_ws() {
 		$this->object ->setName ( "NAME1" );
@@ -184,7 +186,7 @@ class zabbix_usergroupTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_usergroup::recherche_userGroup
+     * @covers Zorille\framework\zabbix_usergroup::recherche_userGroup
      */
 	public function testRecherche_userGroup() {
 		$this->object ->getObjetZabbixWsclient () 
@@ -208,7 +210,7 @@ class zabbix_usergroupTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_usergroup::creer_definition_usrgrpidByName_get_ws
+	 * @covers Zorille\framework\zabbix_usergroup::creer_definition_usrgrpidByName_get_ws
 	 */
 	public function testCreer_definition_usrgrpidByName_get_ws() {
 		$this->object ->setName ( "NAME1" );
@@ -219,7 +221,7 @@ class zabbix_usergroupTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_usergroup::creer_definition_usrgrpid_get_ws
+	 * @covers Zorille\framework\zabbix_usergroup::creer_definition_usrgrpid_get_ws
 	 */
 	public function testCreer_definition_usrgrpid_get_ws() {
 		$this->object ->setUsrgrpId ( 10 );
@@ -228,7 +230,7 @@ class zabbix_usergroupTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_usergroup::recherche_userGroupid_by_Name
+	 * @covers Zorille\framework\zabbix_usergroup::recherche_userGroupid_by_Name
 	 */
 	public function testRecherche_userGroupid_by_Name() {
 		$this->object ->getObjetZabbixWsclient () 
@@ -243,7 +245,7 @@ class zabbix_usergroupTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_usergroup::retrouve_DebugMode
+     * @covers Zorille\framework\zabbix_usergroup::retrouve_DebugMode
      */
 	public function testRetrouve_DebugMode() {
 		$this ->assertEquals ( 0, $this->object ->retrouve_DebugMode ( "" ) );
@@ -253,7 +255,7 @@ class zabbix_usergroupTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_usergroup::retrouve_GuiAccess
+     * @covers Zorille\framework\zabbix_usergroup::retrouve_GuiAccess
      */
 	public function testRetrouve_GuiAccess() {
 		$this ->assertEquals ( 0, $this->object ->retrouve_GuiAccess ( "" ) );
@@ -264,7 +266,7 @@ class zabbix_usergroupTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_usergroup::retrouve_UsersStatus
+     * @covers Zorille\framework\zabbix_usergroup::retrouve_UsersStatus
      */
 	public function testRetrouve_UsersStatus() {
 		$this ->assertEquals ( 0, $this->object ->retrouve_UsersStatus ( "" ) );

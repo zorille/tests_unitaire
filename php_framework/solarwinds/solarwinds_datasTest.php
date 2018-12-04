@@ -1,4 +1,6 @@
 <?php
+namespace Zorille\framework;
+use \Exception as Exception;
 
 /**
  * @author dvargas
@@ -24,7 +26,7 @@ class solarwinds_datasTest extends MockedListeOptions {
 	protected function setUp() {
 		ob_start ();
 		
-		$utilisateurs = $this ->createMock ( "utilisateurs" );
+		$utilisateurs = $this ->createMock('Zorille\framework\utilisateurs' );
 		$utilisateurs ->expects ( $this ->any () ) 
 			->method ( 'retrouve_utilisateurs_array' ) 
 			->will ( $this ->returnValue ( $utilisateurs ) );
@@ -49,7 +51,7 @@ class solarwinds_datasTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers solarwinds_datas::retrouve_solarwinds_param
+	 * @covers Zorille\framework\solarwinds_datas::retrouve_solarwinds_param
 	 */
 	public function testRetrouve_solarwinds_param_exception1() {
 		$this->object ->getListeOptions () 
@@ -68,7 +70,7 @@ class solarwinds_datasTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers solarwinds_datas::retrouve_solarwinds_param
+	 * @covers Zorille\framework\solarwinds_datas::retrouve_solarwinds_param
 	 */
 	public function testRetrouve_solarwinds_param_exception2() {
 		$this->object ->getListeOptions () 
@@ -87,7 +89,7 @@ class solarwinds_datasTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers solarwinds_datas::retrouve_solarwinds_param
+	 * @covers Zorille\framework\solarwinds_datas::retrouve_solarwinds_param
 	 */
 	public function testRetrouve_solarwinds_param_valide() {
 		$this->object ->getListeOptions () 
@@ -108,7 +110,7 @@ class solarwinds_datasTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers solarwinds_datas::valide_presence_solarwinds_data
+	 * @covers Zorille\framework\solarwinds_datas::valide_presence_solarwinds_data
 	 */
 	public function testvalide_presence_solarwinds_data() {
 		$this->object ->setServeurData ( array ( 
@@ -128,7 +130,7 @@ class solarwinds_datasTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers solarwinds_datas::retrouve_wsdl
+	 * @covers Zorille\framework\solarwinds_datas::retrouve_wsdl
 	 */
 	public function testRetrouve_wsdl_exception() {
 		$this->object ->setWsdlData ( array ( 
@@ -142,7 +144,7 @@ class solarwinds_datasTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers solarwinds_datas::retrouve_wsdl
+	 * @covers Zorille\framework\solarwinds_datas::retrouve_wsdl
 	 */
 	public function testRetrouve_wsdl_valide() {
 		$this->object ->setWsdlData ( array ( 
@@ -155,7 +157,7 @@ class solarwinds_datasTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers solarwinds_datas::recupere_donnees_solarwinds_serveur
+	 * @covers Zorille\framework\solarwinds_datas::recupere_donnees_solarwinds_serveur
 	 */
 	public function testRecupere_donnees_solarwinds_serveur_exception1() {
 		$this->object ->setServeurData ( array ( 
@@ -170,7 +172,7 @@ class solarwinds_datasTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers solarwinds_datas::recupere_donnees_solarwinds_serveur
+	 * @covers Zorille\framework\solarwinds_datas::recupere_donnees_solarwinds_serveur
 	 */
 	public function testRecupere_donnees_solarwinds_serveur_exception2() {
 		$this->object ->setServeurData ( array ( 
@@ -185,7 +187,7 @@ class solarwinds_datasTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers solarwinds_datas::recupere_donnees_solarwinds_serveur
+	 * @covers Zorille\framework\solarwinds_datas::recupere_donnees_solarwinds_serveur
 	 */
 	public function testRecupere_donnees_solarwinds_serveur_exception3() {
 		$this->object ->setServeurData ( array ( 
@@ -199,7 +201,7 @@ class solarwinds_datasTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers solarwinds_datas::recupere_donnees_solarwinds_serveur
+	 * @covers Zorille\framework\solarwinds_datas::recupere_donnees_solarwinds_serveur
 	 */
 	public function testRecupere_donnees_solarwinds_serveur_valide() {
 		$this->object ->setServeurData ( array ( 

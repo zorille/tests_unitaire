@@ -1,4 +1,6 @@
 <?php
+namespace Zorille\framework;
+use \Exception as Exception;
 if (! defined ( '__DOCUMENT_ROOT__' )) {
 	require_once $_SERVER ["PWD"] . '/prepare.php';
 }
@@ -19,8 +21,8 @@ class zabbix_host_interfacesTest extends MockedListeOptions {
 	protected function setUp() {
 		ob_start ();
 		
-		$zabbix_wsclient = $this ->createMock ( "zabbix_wsclient" );
-		$zabbix_interface_reference = $this ->createMock ( "zabbix_host_interface" );
+		$zabbix_wsclient = $this ->createMock('Zorille\framework\zabbix_wsclient' );
+		$zabbix_interface_reference = $this ->createMock('Zorille\framework\zabbix_host_interface' );
 		
 		$this->object = new zabbix_host_interfaces ( false, "TESTS zabbix HOST_interfaces" );
 		$this->object ->setListeOptions ( $this ->getListeOption () ) 
@@ -37,7 +39,7 @@ class zabbix_host_interfacesTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_host_interfaces::retrouve_zabbix_param
+	 * @covers Zorille\framework\zabbix_host_interfaces::retrouve_zabbix_param
 	 */
 	public function testRetrouve_zabbix_param_Exception() {
 		$this ->getListeOption () 
@@ -53,7 +55,7 @@ class zabbix_host_interfacesTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_host_interfaces::retrouve_zabbix_param
+	 * @covers Zorille\framework\zabbix_host_interfaces::retrouve_zabbix_param
 	 */
 	public function testRetrouve_zabbix_param() {
 		$this ->getListeOption () 
@@ -72,14 +74,14 @@ class zabbix_host_interfacesTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_host_interfaces::verifie_interface_existe
+	 * @covers Zorille\framework\zabbix_host_interfaces::verifie_interface_existe
 	 */
 	public function testverifie_interface_existe_no_duplicate_interface() {
-		$interface1 = $this ->createMock ( "zabbix_host_interface" );
+		$interface1 = $this ->createMock('Zorille\framework\zabbix_host_interface' );
 		$interface1 ->expects ( $this ->any () ) 
 			->method ( 'compare_interface' ) 
 			->will ( $this ->returnValue ( false ) );
-		$interface2 = $this ->createMock ( "zabbix_host_interface" );
+		$interface2 = $this ->createMock('Zorille\framework\zabbix_host_interface' );
 		$interface2 ->expects ( $this ->any () ) 
 			->method ( 'compare_interface' ) 
 			->will ( $this ->returnValue ( false ) );
@@ -91,14 +93,14 @@ class zabbix_host_interfacesTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_host_interfaces::verifie_interface_existe
+	 * @covers Zorille\framework\zabbix_host_interfaces::verifie_interface_existe
 	 */
 	public function testverifie_interface_existe_duplicate_interface() {
-		$interface1 = $this ->createMock ( "zabbix_host_interface" );
+		$interface1 = $this ->createMock('Zorille\framework\zabbix_host_interface' );
 		$interface1 ->expects ( $this ->any () ) 
 			->method ( 'compare_interface' ) 
 			->will ( $this ->returnValue ( true ) );
-		$interface2 = $this ->createMock ( "zabbix_host_interface" );
+		$interface2 = $this ->createMock('Zorille\framework\zabbix_host_interface' );
 		$interface2 ->expects ( $this ->any () ) 
 			->method ( 'compare_interface' ) 
 			->will ( $this ->returnValue ( false ) );
@@ -110,7 +112,7 @@ class zabbix_host_interfacesTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_host_interfaces::ajoute_interfaces_par_ligne
+	 * @covers Zorille\framework\zabbix_host_interfaces::ajoute_interfaces_par_ligne
 	 */
 	public function testajoute_interfaces_par_ligne_Exception() {
 		$this->object ->getObjetHostInterfaceRef () 
@@ -125,7 +127,7 @@ class zabbix_host_interfacesTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_host_interfaces::ajoute_interfaces_par_ligne
+	 * @covers Zorille\framework\zabbix_host_interfaces::ajoute_interfaces_par_ligne
 	 */
 	public function testajoute_interfaces_par_ligne_no_duplicate_interface() {
 		$this->object ->getObjetHostInterfaceRef () 
@@ -133,11 +135,11 @@ class zabbix_host_interfacesTest extends MockedListeOptions {
 			->method ( 'retrouve_zabbix_param' ) 
 			->will ( $this ->returnValue ( true ) );
 		
-		$interface1 = $this ->createMock ( "zabbix_host_interface" );
+		$interface1 = $this ->createMock('Zorille\framework\zabbix_host_interface' );
 		$interface1 ->expects ( $this ->any () ) 
 			->method ( 'compare_interface' ) 
 			->will ( $this ->returnValue ( false ) );
-		$interface2 = $this ->createMock ( "zabbix_host_interface" );
+		$interface2 = $this ->createMock('Zorille\framework\zabbix_host_interface' );
 		$interface2 ->expects ( $this ->any () ) 
 			->method ( 'compare_interface' ) 
 			->will ( $this ->returnValue ( false ) );
@@ -154,7 +156,7 @@ class zabbix_host_interfacesTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_host_interfaces::ajoute_interfaces_par_ligne
+	 * @covers Zorille\framework\zabbix_host_interfaces::ajoute_interfaces_par_ligne
 	 */
 	public function testajoute_interfaces_par_ligne_duplicate_interface() {
 		$this->object ->getObjetHostInterfaceRef () 
@@ -162,11 +164,11 @@ class zabbix_host_interfacesTest extends MockedListeOptions {
 			->method ( 'retrouve_zabbix_param' ) 
 			->will ( $this ->returnValue ( true ) );
 		
-		$interface1 = $this ->createMock ( "zabbix_host_interface" );
+		$interface1 = $this ->createMock('Zorille\framework\zabbix_host_interface' );
 		$interface1 ->expects ( $this ->any () ) 
 			->method ( 'compare_interface' ) 
 			->will ( $this ->returnValue ( false ) );
-		$interface2 = $this ->createMock ( "zabbix_host_interface" );
+		$interface2 = $this ->createMock('Zorille\framework\zabbix_host_interface' );
 		$interface2 ->expects ( $this ->any () ) 
 			->method ( 'compare_interface' ) 
 			->will ( $this ->returnValue ( true ) );
@@ -182,7 +184,7 @@ class zabbix_host_interfacesTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_host_interfaces::ajoute_interfaces
+	 * @covers Zorille\framework\zabbix_host_interfaces::ajoute_interfaces
 	 */
 	public function testAjoute_interfaces_duplicate() {
 		//["type"]["main"]["useip"]["ip"]["dns"]["port"]["interfaceid"]["hostid"]
@@ -197,12 +199,12 @@ class zabbix_host_interfacesTest extends MockedListeOptions {
 						"interfaceid" => "IT1", 
 						"hostid" => "H1" ) );
 		
-		$zabbix_interface_reference1 = $this ->createMock ( "zabbix_host_interface" );
+		$zabbix_interface_reference1 = $this ->createMock('Zorille\framework\zabbix_host_interface' );
 		$zabbix_interface_reference1 ->expects ( $this ->any () ) 
 			->method ( 'compare_interface' ) 
 			->will ( $this ->returnValue ( false ) );
 		
-		$zabbix_interface_reference2 = $this ->createMock ( "zabbix_host_interface" );
+		$zabbix_interface_reference2 = $this ->createMock('Zorille\framework\zabbix_host_interface' );
 		$zabbix_interface_reference2 ->expects ( $this ->any () ) 
 			->method ( 'compare_interface' ) 
 			->will ( $this ->returnValue ( true ) );
@@ -219,7 +221,7 @@ class zabbix_host_interfacesTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_host_interfaces::ajoute_interfaces
+	 * @covers Zorille\framework\zabbix_host_interfaces::ajoute_interfaces
 	 */
 	public function testAjoute_interfaces_no_duplicate() {
 		//["type"]["main"]["useip"]["ip"]["dns"]["port"]["interfaceid"]["hostid"]
@@ -234,12 +236,12 @@ class zabbix_host_interfacesTest extends MockedListeOptions {
 						"interfaceid" => "IT1", 
 						"hostid" => "H1" ) );
 		
-		$zabbix_interface_reference1 = $this ->createMock ( "zabbix_host_interface" );
+		$zabbix_interface_reference1 = $this ->createMock('Zorille\framework\zabbix_host_interface' );
 		$zabbix_interface_reference1 ->expects ( $this ->any () ) 
 			->method ( 'compare_interface' ) 
 			->will ( $this ->returnValue ( false ) );
 		
-		$zabbix_interface_reference2 = $this ->createMock ( "zabbix_host_interface" );
+		$zabbix_interface_reference2 = $this ->createMock('Zorille\framework\zabbix_host_interface' );
 		$zabbix_interface_reference2 ->expects ( $this ->any () ) 
 			->method ( 'compare_interface' ) 
 			->will ( $this ->returnValue ( false ) );
@@ -257,7 +259,7 @@ class zabbix_host_interfacesTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_host_interfaces::supprime_interfaces
+	 * @covers Zorille\framework\zabbix_host_interfaces::supprime_interfaces
 	 */
 	public function testSupprime_interfaces_existe_dans_zabbix() {
 		//["type"]["main"]["useip"]["ip"]["dns"]["port"]["interfaceid"]["hostid"]
@@ -281,7 +283,7 @@ class zabbix_host_interfacesTest extends MockedListeOptions {
 						"interfaceid" => "IT2", 
 						"hostid" => "H1" ) );
 		
-		$zabbix_interface_reference1 = $this ->createMock ( "zabbix_host_interface" );
+		$zabbix_interface_reference1 = $this ->createMock('Zorille\framework\zabbix_host_interface' );
 		$zabbix_interface_reference1 ->expects ( $this ->any () ) 
 			->method ( 'compare_interface' ) 
 			->will ( $this ->onConsecutiveCalls ( false, true ) );
@@ -296,7 +298,7 @@ class zabbix_host_interfacesTest extends MockedListeOptions {
 	}
 
 	/**
-	 * @covers zabbix_host_interfaces::supprime_interfaces
+	 * @covers Zorille\framework\zabbix_host_interfaces::supprime_interfaces
 	 */
 	public function testSupprime_interfaces_qui_n_existe_pas() {
 		//["type"]["main"]["useip"]["ip"]["dns"]["port"]["interfaceid"]["hostid"]
@@ -320,7 +322,7 @@ class zabbix_host_interfacesTest extends MockedListeOptions {
 						"interfaceid" => "IT2", 
 						"hostid" => "H1" ) );
 		
-		$zabbix_interface_reference1 = $this ->createMock ( "zabbix_host_interface" );
+		$zabbix_interface_reference1 = $this ->createMock('Zorille\framework\zabbix_host_interface' );
 		$zabbix_interface_reference1 ->expects ( $this ->any () ) 
 			->method ( 'compare_interface' ) 
 			->will ( $this ->returnValue ( false ) );
@@ -336,10 +338,10 @@ class zabbix_host_interfacesTest extends MockedListeOptions {
 	}
 
 	/**
-     * @covers zabbix_host_interfaces::creer_definition_host_interfaces_ws
+     * @covers Zorille\framework\zabbix_host_interfaces::creer_definition_host_interfaces_ws
      */
 	public function testCreer_definition_host_interfaces_ws() {
-		$zabbix_interface_reference1 = $this ->createMock ( "zabbix_host_interface" );
+		$zabbix_interface_reference1 = $this ->createMock('Zorille\framework\zabbix_host_interface' );
 		$zabbix_interface_reference1 ->expects ( $this ->any () ) 
 			->method ( 'creer_definition_host_interface_ws' ) 
 			->will ( $this ->returnValue ( array ( 
@@ -350,7 +352,7 @@ class zabbix_host_interfacesTest extends MockedListeOptions {
 				"dns" => "FQDN1", 
 				"port" => "Port1" ) ) );
 		
-		$zabbix_interface_reference2 = $this ->createMock ( "zabbix_host_interface" );
+		$zabbix_interface_reference2 = $this ->createMock('Zorille\framework\zabbix_host_interface' );
 		$zabbix_interface_reference2 ->expects ( $this ->any () ) 
 			->method ( 'creer_definition_host_interface_ws' ) 
 			->will ( $this ->returnValue ( array ( 
