@@ -8,6 +8,7 @@
         <directory suffix="Test.php" >php_framework/commandline/</directory>
         <directory suffix="Test.php" >php_framework/copie_donnees/</directory>
         <directory suffix="Test.php" >php_framework/dates/</directory>
+        <directory suffix="Test.php" >php_framework/dolibarr/</directory>
         <directory suffix="Test.php" >php_framework/fichier/</directory>
         <directory suffix="Test.php" >php_framework/flux/</directory>
         <directory suffix="Test.php" >php_framework/fork/</directory>
@@ -19,8 +20,10 @@
         <directory suffix="Test.php" >php_framework/HP/ucmdb/</directory>
         <directory suffix="Test.php" >php_framework/html/</directory>
         <directory suffix="Test.php" >php_framework/itop/</directory>
+        <directory suffix="Test.php" >php_framework/librenms/</directory>
         <directory suffix="Test.php" >php_framework/mail/</directory>
         <directory suffix="Test.php" >php_framework/monitoring/</directory>
+        <directory suffix="Test.php" >php_framework/opnsense/</directory>
         <directory suffix="Test.php" >php_framework/pingdom/</directory>
         <directory suffix="Test.php" >php_framework/sgbd/db_connue/</directory>
         <directory suffix="Test.php" >php_framework/sgbd/rep_requete/</directory>
